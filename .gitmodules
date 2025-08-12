@@ -1,0 +1,3 @@
+[submodule "arm_setup"]
+	path = arm_setup
+	url = https://github.com/ch-r-k/arm_m_setup
