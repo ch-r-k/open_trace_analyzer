@@ -2,7 +2,6 @@
 set(FEATURE_FLAGS
     -ffunction-sections
     -fdata-sections
-    -fno-exceptions
 )
 
 # Optional: defines for x86-specific code

@@ -55,8 +55,15 @@ include_directories(${INCLUDE_DIRS})
 add_executable( ${PROJECT} 
                 ${APP_CPP_SRCS})
 
-add_subdirectory(src EXCLUDE_FROM_ALL)
 target_include_directories(${PROJECT} PRIVATE include)
+
+# Add 3rdparty folder
+add_subdirectory(src/3d_party)
+add_subdirectory(src EXCLUDE_FROM_ALL)
+
+
+# Later, link it to your target
+target_link_libraries(${PROJECT} PRIVATE nlohmann_json::nlohmann_json)
 
 set(WARNINGS
     all
@@ -74,3 +81,12 @@ if (FATAL_ERRORS)
     target_compile_options(${PROJECT} PRIVATE "-Wfatal-errors")
 endif ()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-volatile")
+
+
+set(LAUNCH_FILE_INTERMEDIATE "${CMAKE_CURRENT_BINARY_DIR}/launch.json.in")
+configure_file("${CMAKE_CURRENT_LIST_DIR}/arm_setup/cmake/launch.json.in" ${LAUNCH_FILE_INTERMEDIATE} @ONLY)
+
+file(GENERATE
+    OUTPUT "${CMAKE_CURRENT_LIST_DIR}/.vscode/launch.json"
+    INPUT ${LAUNCH_FILE_INTERMEDIATE}
+)

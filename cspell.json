@@ -10,7 +10,9 @@
     ],
     "dictionaryDefinitions": [],
     "dictionaries": [],
-    "words": [],
+    "words": [
+        "QSPY"
+    ],
     "ignoreWords": [],
     "import": []
 }
