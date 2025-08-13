@@ -37,7 +37,6 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "MinSizeRel"
     set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 endif()
 
-#add_subdirectory(3d_party EXCLUDE_FROM_ALL)
 
 set(INCLUDE_DIRS
     src
@@ -56,6 +55,7 @@ include_directories(${INCLUDE_DIRS})
 add_executable( ${PROJECT} 
                 ${APP_CPP_SRCS})
 
+add_subdirectory(src EXCLUDE_FROM_ALL)
 target_include_directories(${PROJECT} PRIVATE include)
 
 set(WARNINGS
