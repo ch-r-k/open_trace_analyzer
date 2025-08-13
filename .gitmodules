@@ -1,3 +1,6 @@
 [submodule "arm_setup"]
 	path = arm_setup
 	url = https://github.com/ch-r-k/arm_m_setup
+[submodule "src/3d_party/json"]
+	path = src/3d_party/json
+	url = https://github.com/nlohmann/json
