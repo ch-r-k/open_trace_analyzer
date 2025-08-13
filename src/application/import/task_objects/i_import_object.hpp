@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include <list>
-#include <string_view>
+#include <string>
 #include "application/task_object/task_object.hpp"
 
 namespace application::import
@@ -19,7 +19,7 @@ class IImportObject
     };
 
     virtual void setConfig(FileConfig config) = 0;
-    virtual void setFile(std::string_view file_name) = 0;
+    virtual void setFile(std::string file_name) = 0;
     virtual void getTaskObject(const std::list<TaskObject>& lst) = 0;
 };
 }  // namespace application::import

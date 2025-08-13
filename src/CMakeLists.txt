@@ -8,6 +8,7 @@ set(SOURCE
     application/trace_entry/trace_entry.cpp
 
     application/import/task_objects/import_object.cpp
+    application/import/trace_files/import_trace.cpp
 )
 
 target_sources(${PROJECT} PRIVATE ${SOURCE})

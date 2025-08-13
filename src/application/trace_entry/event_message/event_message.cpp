@@ -5,8 +5,8 @@
 
 namespace application::trace_types
 {
-EventMessage::EventMessage(std::uint64_t timestamp, TaskObject& task_from,
-                           TaskObject& task_to, std::string_view text)
+EventMessage::EventMessage(std::uint64_t timestamp, const TaskObject& task_from,
+                           const TaskObject& task_to, std::string text)
     : TraceEntry{timestamp, TraceEntry::TraceType::EVENT_MESSAGE},
       task_from{task_to},
       task_to{task_from},

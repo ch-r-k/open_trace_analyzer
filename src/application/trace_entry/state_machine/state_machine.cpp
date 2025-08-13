@@ -6,7 +6,7 @@
 namespace application::trace_types
 {
 StateMachine::StateMachine(std::uint64_t timestamp, TaskObject& task,
-                           std::string_view state_name)
+                           std::string state_name)
     : TraceEntry{timestamp, TraceEntry::TraceType::STATE_MACHINE},
       task{task},
       state_name{state_name}

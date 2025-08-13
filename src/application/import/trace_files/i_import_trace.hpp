@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <string_view>
+#include <string>
 #include <list>
 
 #include "application/trace_entry/trace_entry.hpp"
@@ -26,7 +26,7 @@ class IImportTrace
     };
 
     virtual void setConfig(FileConfig config) = 0;
-    virtual void setFile(std::string_view file_name) = 0;
+    virtual void setFile(std::string file_name) = 0;
     virtual void get(const std::list<TraceEntry>& lst) = 0;
     virtual void get(const std::list<TaskSwitch>& lst) = 0;
     virtual void get(const std::list<EventMessage>& lst) = 0;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <string_view>
+#include <string>
 #include "../trace_entry.hpp"
 #include "application/task_object/task_object.hpp"
 
@@ -13,14 +13,14 @@ class StateMachine : public TraceEntry
 {
    public:
     StateMachine(std::uint64_t timestamp, TaskObject& task,
-                 std::string_view state_name);
+                 std::string state_name);
     ~StateMachine() = default;
 
     friend std::ostream& operator<<(std::ostream& os, const StateMachine& p);
 
    private:
     TaskObject& task;
-    std::string_view state_name;
+    std::string state_name;
 };
 
 }  // namespace application::trace_types
