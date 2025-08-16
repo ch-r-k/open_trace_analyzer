@@ -1,32 +1,7 @@
 [
   {
-    "name": "Table_inst",
-    "id": 1,
+    "name": "Blinky",
+    "id": "0x20001118",
     "priority": 1
-  },
-  {
-    "name": "Philo_inst[0]",
-    "id": 2,
-    "priority": 2
-  },
-  {
-    "name": "Philo_inst[1]",
-    "id": 3,
-    "priority": 3
-  },
-  {
-    "name": "Philo_inst[2]",
-    "id": 4,
-    "priority": 4
-  },
-  {
-    "name": "Philo_inst[3]",
-    "id": 5,
-    "priority": 5
-  },
-  {
-    "name": "Philo_inst[4]",
-    "id": 6,
-    "priority": 6
   }
 ]
