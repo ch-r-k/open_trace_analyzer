@@ -12,14 +12,14 @@ using task_types::TaskObject;
 class StateMachine : public TraceEntry
 {
    public:
-    StateMachine(std::uint64_t timestamp, TaskObject& task,
+    StateMachine(std::uint64_t timestamp, const TaskObject& task,
                  std::string state_name);
     ~StateMachine() = default;
 
     friend std::ostream& operator<<(std::ostream& os, const StateMachine& p);
 
    private:
-    TaskObject& task;
+    TaskObject task;
     std::string state_name;
 };
 

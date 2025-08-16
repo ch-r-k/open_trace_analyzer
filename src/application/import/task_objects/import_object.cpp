@@ -32,7 +32,7 @@ void ImportObject::getTaskObject(std::list<TaskObject>& lst)
     for (const auto& item : json_data)
     {
         TaskObject task_object{item.at("priority").get<std::uint32_t>(),
-                               item.at("id").get<std::uint32_t>(),
+                               item.at("id").get<std::string>(),
                                item.at("name").get<std::string>()};
 
         lst.emplace_back(task_object);

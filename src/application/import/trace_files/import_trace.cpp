@@ -61,16 +61,41 @@ void ImportTrace::get(std::list<EventMessage>& event_message_list)
     }
 }
 
-void ImportTrace::get(std::list<StateMachine>& event_message_list) const
+void ImportTrace::get(std::list<StateMachine>& state_list) const
 {
-    assert(false && "not implemented");
+    std::ifstream in(file_name);
+    if (!in.is_open())
+    {
+        throw std::runtime_error("Failed to open file: " + file_name);
+    }
+
+    std::string line;
+    // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
+
+    std::regex re(
+        R"(^\s*(\d+)\s+===\>Tran\s+Obj=([^,]+),.*State=[^>]+->([^,]+))");
+
+    while (std::getline(in, line))
+    {
+        std::smatch match;
+        if (std::regex_search(line, match, re))
+        {
+            uint64_t timestamp = std::stoull(match[1].str());
+            std::string task_from_name = match[2].str();
+            std::string state_name = match[3].str();
+
+            const TaskObject& task = findTask(task_from_name);
+
+            state_list.emplace_back(timestamp, task, state_name);
+        }
+    }
 }
 
 const TaskObject& ImportTrace::findTask(const std::string& name) const
 {
     for (const auto& task : task_objects)
     {
-        if (task.getName() == name)
+        if (task.getID() == name)
         {
             return task;
         }
