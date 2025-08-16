@@ -5,17 +5,17 @@
 
 namespace application::task_types
 {
-TaskObject::TaskObject(std::uint32_t priority, std::uint32_t id,
-                       std::string name)
+TaskObject::TaskObject(std::uint32_t priority, std::string id, std::string name)
     : priority{priority}, id{id}, name{name}
 {
 }
 
 std::string TaskObject::getName() const { return name; }
+std::string TaskObject::getID() const { return id; }
 
 std::ostream& operator<<(std::ostream& os, const TaskObject& p)
 {
-    os << "Name: " << p.name;
+    os << p.name;
     return os;
 }
 
