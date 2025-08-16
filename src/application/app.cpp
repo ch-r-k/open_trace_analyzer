@@ -11,7 +11,7 @@ void App::execute(void)
     qsp_import.getTaskObject(task_objects);
 
     // ad default object
-    import::TaskObject task_object{100, 100, "unknown"};
+    import::TaskObject task_object{100, "unknown", "unknown"};
 
     task_objects.emplace_back(task_object);
 
@@ -24,6 +24,13 @@ void App::execute(void)
     qspy_import.get(event_messages);
 
     for (const auto element : event_messages)
+    {
+        std::cout << element << "\n";
+    }
+
+    qspy_import.get(state_machine);
+
+    for (const auto element : state_machine)
     {
         std::cout << element << "\n";
     }
