@@ -9,11 +9,22 @@ int main(void)
 
     try
     {
-        app.execute();
+        app.importData();
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
+        std::cerr << "Exception caught in Import: " << e.what() << std::endl;
+        return 1;
+    }
+
+    try
+    {
+        app.combineTraces();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception caught in Trace Combining: " << e.what()
+                  << std::endl;
         return 1;
     }
 
