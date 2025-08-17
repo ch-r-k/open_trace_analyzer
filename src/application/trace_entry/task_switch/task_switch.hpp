@@ -1,5 +1,6 @@
 #pragma once
 
+#include <bits/c++config.h>
 #include <cstdint>
 #include "../trace_entry.hpp"
 #include "application/task_object/task_object.hpp"
@@ -11,7 +12,9 @@ using task_types::TaskObject;
 class TaskSwitch : public TraceEntry
 {
    public:
-    TaskSwitch(std::uint64_t timestamp, const TaskObject& task_from,
+    TaskSwitch(const std::size_t line_number,  //
+               const std::uint64_t timestamp,  //
+               const TaskObject& task_from,    //
                const TaskObject& task_to);
     ~TaskSwitch() = default;
 

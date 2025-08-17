@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 #include <string>
 #include "application/task_object/task_object.hpp"
@@ -12,8 +13,11 @@ using task_types::TaskObject;
 class EventMessage : public TraceEntry
 {
    public:
-    EventMessage(std::uint64_t timestamp, const TaskObject& task_from,
-                 const TaskObject& task_to, std::string text);
+    EventMessage(const size_t line_number,       //
+                 const std::uint64_t timestamp,  //
+                 const TaskObject& task_from,    //
+                 const TaskObject& task_to,      //
+                 std::string text);
     ~EventMessage() = default;
 
     friend std::ostream& operator<<(std::ostream& os, const EventMessage& p);

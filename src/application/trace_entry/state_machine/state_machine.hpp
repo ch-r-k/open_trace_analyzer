@@ -1,5 +1,6 @@
 #pragma once
 
+#include <bits/c++config.h>
 #include <cstdint>
 #include <string>
 #include "../trace_entry.hpp"
@@ -12,7 +13,9 @@ using task_types::TaskObject;
 class StateMachine : public TraceEntry
 {
    public:
-    StateMachine(std::uint64_t timestamp, const TaskObject& task,
+    StateMachine(const std::size_t line_number,  //
+                 const std::uint64_t timestamp,  //
+                 const TaskObject& task,         //
                  std::string state_name);
     ~StateMachine() = default;
 

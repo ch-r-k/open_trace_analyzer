@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <cstdint>
 #include <iostream>
 #include "event_message.hpp"
@@ -5,9 +6,12 @@
 
 namespace application::trace_types
 {
-EventMessage::EventMessage(std::uint64_t timestamp, const TaskObject& task_from,
-                           const TaskObject& task_to, std::string text)
-    : TraceEntry{timestamp, TraceEntry::TraceType::EVENT_MESSAGE},
+EventMessage::EventMessage(const size_t line_number,       //
+                           const std::uint64_t timestamp,  //
+                           const TaskObject& task_from,    //
+                           const TaskObject& task_to,      //
+                           std::string text)
+    : TraceEntry{line_number, timestamp, TraceEntry::TraceType::EVENT_MESSAGE},
       task_from{task_to},
       task_to{task_from},
       text{text}

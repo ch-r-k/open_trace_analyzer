@@ -1,4 +1,5 @@
 
+#include <bits/c++config.h>
 #include <cassert>
 #include <cstdint>
 #include <fstream>
@@ -37,6 +38,7 @@ void ImportTrace::get(std::list<TaskSwitch>& task_switch_list) const
     std::string line;
     // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
     std::regex re(R"(^\s*(\d+)\s+(Sch-(Next|Idle))\s+Pri=(\d+)->(\d+))");
+    std::size_t line_number{0};
 
     while (std::getline(in, line))
     {
@@ -52,8 +54,11 @@ void ImportTrace::get(std::list<TaskSwitch>& task_switch_list) const
             const TaskObject& task_from = findTask(task_from_priority);
             const TaskObject& task_to = findTask(task_to_priority);
 
-            task_switch_list.emplace_back(timestamp, task_from, task_to);
+            task_switch_list.emplace_back(line_number, timestamp, task_from,
+                                          task_to);
         }
+
+        line_number++;
     }
 }
 
@@ -66,6 +71,8 @@ void ImportTrace::get(std::list<EventMessage>& event_message_list)
     }
 
     std::string line;
+    std::size_t line_number{0};
+
     // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
     std::regex re(
         R"(^\s*(\d+).*AO-Post.*Sdr=([^,]+),Obj=([^,]+).*Sig=([^,>]+))");
@@ -83,9 +90,11 @@ void ImportTrace::get(std::list<EventMessage>& event_message_list)
             const TaskObject& task_from = findTask(task_from_name);
             const TaskObject& task_to = findTask(task_to_name);
 
-            event_message_list.emplace_back(timestamp, task_from, task_to,
-                                            text);
+            event_message_list.emplace_back(line_number, timestamp, task_from,
+                                            task_to, text);
         }
+
+        line_number++;
     }
 }
 
@@ -98,6 +107,7 @@ void ImportTrace::get(std::list<StateMachine>& state_list) const
     }
 
     std::string line;
+    std::size_t line_number{0};
     // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
 
     std::regex re(
@@ -114,8 +124,10 @@ void ImportTrace::get(std::list<StateMachine>& state_list) const
 
             const TaskObject& task = findTask(task_from_name);
 
-            state_list.emplace_back(timestamp, task, state_name);
+            state_list.emplace_back(line_number, timestamp, task, state_name);
         }
+
+        line_number++;
     }
 }
 

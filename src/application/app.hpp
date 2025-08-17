@@ -25,5 +25,6 @@ class App
     std::list<trace_types::EventMessage> event_messages{};
     std::list<trace_types::StateMachine> state_machine{};
     std::list<trace_types::TaskSwitch> task_switches{};
+    std::list<trace_types::TaskSwitch*> trace_entries{};
 };
 }  // namespace application

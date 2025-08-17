@@ -1,5 +1,6 @@
 #pragma once
 
+#include <bits/c++config.h>
 #include <cstdint>
 namespace application::trace_types
 {
@@ -15,10 +16,14 @@ class TraceEntry
         STATE_MACHINE,
     };
 
-    TraceEntry(std::uint64_t timestamp, TraceType type);
+    TraceEntry(std::size_t line_number, std::uint64_t timestamp,
+               TraceType type);
     ~TraceEntry() = default;
 
+    bool operator<(const TraceEntry& other) const noexcept;
+
    protected:
+    std::size_t line_number;
     std::uint64_t timestamp;
     TraceType type;
 };

@@ -1,3 +1,4 @@
+#include <bits/c++config.h>
 #include <cstdint>
 #include <iostream>
 #include "state_machine.hpp"
@@ -5,9 +6,11 @@
 
 namespace application::trace_types
 {
-StateMachine::StateMachine(std::uint64_t timestamp, const TaskObject& task,
+StateMachine::StateMachine(std::size_t line_number,        //
+                           const std::uint64_t timestamp,  //
+                           const TaskObject& task,         //
                            std::string state_name)
-    : TraceEntry{timestamp, TraceEntry::TraceType::STATE_MACHINE},
+    : TraceEntry{line_number, timestamp, TraceEntry::TraceType::STATE_MACHINE},
       task{task},
       state_name{state_name}
 {
