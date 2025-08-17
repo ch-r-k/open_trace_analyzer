@@ -4,14 +4,14 @@
 namespace application
 {
 App::App()
-    : qspy_import{task_objects},  //
+    : object_import{"test/input_files/qspy_ao.json"},          //
+      qspy_import{task_objects, "test/input_files/qpsy.txt"},  //
       puml_export{"test/export_file.puml"}
 {
 }
 
 void App::importData(void)
 {
-    object_import.setFile(std::string{"test/input_files/qspy_ao.json"});
     object_import.getTaskObject(task_objects);
 
     // ad default object
@@ -24,7 +24,6 @@ void App::importData(void)
         std::cout << element << "\n";
     }
 
-    qspy_import.setFile(std::string{"test/input_files/qpsy.txt"});
     qspy_import.get(event_messages);
 
     for (const auto& element : event_messages)

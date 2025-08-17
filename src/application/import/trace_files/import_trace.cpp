@@ -11,36 +11,33 @@
 
 namespace application::import
 {
-ImportTrace::ImportTrace(const std::list<TaskObject>& task_objects)
-    : task_objects{task_objects}
+ImportTrace::ImportTrace(const std::list<TaskObject>& task_objects,
+                         const std::string& filename)
+    : input_file(filename), task_objects{task_objects}
 {
-}
-
-void ImportTrace::setFile(std::string file_name)
-{
-    this->file_name = file_name;
+    if (!input_file.is_open())
+    {
+        throw std::runtime_error("Failed to open file: " + filename);
+    }
 }
 
 void ImportTrace::get(
-    [[maybe_unused]] std::list<TraceEntry>& event_message_list) const
+    [[maybe_unused]] std::list<TraceEntry>& event_message_list)
 {
-    assert(false && "not implemented");
+    throw std::runtime_error("Not Implemented");
 }
 
-void ImportTrace::get(std::list<TaskSwitch>& task_switch_list) const
+void ImportTrace::get(std::list<TaskSwitch>& task_switch_list)
 {
-    std::ifstream in(file_name);
-    if (!in.is_open())
-    {
-        throw std::runtime_error("Failed to open file: " + file_name);
-    }
+    input_file.clear();
+    input_file.seekg(0, std::ios::beg);
 
     std::string line;
     // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
     std::regex re(R"(^\s*(\d+)\s+(Sch-(Next|Idle))\s+Pri=(\d+)->(\d+))");
     std::size_t line_number{0};
 
-    while (std::getline(in, line))
+    while (std::getline(input_file, line))
     {
         std::smatch match;
         if (std::regex_search(line, match, re))
@@ -64,11 +61,8 @@ void ImportTrace::get(std::list<TaskSwitch>& task_switch_list) const
 
 void ImportTrace::get(std::list<EventMessage>& event_message_list)
 {
-    std::ifstream in(file_name);
-    if (!in.is_open())
-    {
-        throw std::runtime_error("Failed to open file: " + file_name);
-    }
+    input_file.clear();
+    input_file.seekg(0, std::ios::beg);
 
     std::string line;
     std::size_t line_number{0};
@@ -77,7 +71,7 @@ void ImportTrace::get(std::list<EventMessage>& event_message_list)
     std::regex re(
         R"(^\s*(\d+).*AO-Post.*Sdr=([^,]+),Obj=([^,]+).*Sig=([^,>]+))");
 
-    while (std::getline(in, line))
+    while (std::getline(input_file, line))
     {
         std::smatch match;
         if (std::regex_search(line, match, re))
@@ -98,13 +92,10 @@ void ImportTrace::get(std::list<EventMessage>& event_message_list)
     }
 }
 
-void ImportTrace::get(std::list<StateMachine>& state_list) const
+void ImportTrace::get(std::list<StateMachine>& state_list)
 {
-    std::ifstream in(file_name);
-    if (!in.is_open())
-    {
-        throw std::runtime_error("Failed to open file: " + file_name);
-    }
+    input_file.clear();
+    input_file.seekg(0, std::ios::beg);
 
     std::string line;
     std::size_t line_number{0};
@@ -113,7 +104,7 @@ void ImportTrace::get(std::list<StateMachine>& state_list) const
     std::regex re(
         R"(^\s*(\d+)\s+===\>Tran\s+Obj=([^,]+),.*State=[^>]+->([^,]+))");
 
-    while (std::getline(in, line))
+    while (std::getline(input_file, line))
     {
         std::smatch match;
         if (std::regex_search(line, match, re))

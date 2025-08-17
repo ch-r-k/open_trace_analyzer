@@ -2,6 +2,8 @@
 
 namespace application::export_data::seq_diagram
 {
+Puml::Puml(const std::string& filename) : output_file(filename) {}
+
 void Puml::addParticipant(std::list<task_types::TaskObject> task_objects)
 {
     for (const auto& task : task_objects)

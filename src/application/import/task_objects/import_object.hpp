@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <fstream>
 #include "i_import_object.hpp"
 //#include "3d_party/json/include/nlohmann/json.hpp"
 
@@ -11,14 +12,13 @@ using application::task_types::TaskObject;
 class ImportObject  //: public IImportObject
 {
    public:
-    ImportObject() = default;
+    ImportObject(const std::string& filename);
     ~ImportObject() = default;
 
     // void setConfig(FileConfig config) override;
-    void setFile(std::string file_name);
     void getTaskObject(std::list<TaskObject>& lst);
 
    private:
-    std::string file_name;
+    std::ifstream input_file;
 };
 }  // namespace application::import

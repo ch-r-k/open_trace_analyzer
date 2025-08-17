@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <string>
 #include <list>
+#include <fstream>
 
 #include "i_import_trace.hpp"
 #include "application/trace_entry/trace_entry.hpp"
@@ -23,7 +24,8 @@ using trace_types::TraceEntry;
 class ImportTrace
 {
    public:
-    ImportTrace(const std::list<TaskObject>& task_objects);
+    ImportTrace(const std::list<TaskObject>& task_objects,
+                const std::string& filename);
     ~ImportTrace() = default;
     enum class FileConfig : std::uint16_t
     {
@@ -32,13 +34,13 @@ class ImportTrace
 
     void setConfig(FileConfig config);
     void setFile(std::string file_name);
-    void get(std::list<TraceEntry>& lst) const;
-    void get(std::list<TaskSwitch>& lst) const;
+    void get(std::list<TraceEntry>& lst);
+    void get(std::list<TaskSwitch>& lst);
     void get(std::list<EventMessage>& lst);
-    void get(std::list<StateMachine>& lst) const;
+    void get(std::list<StateMachine>& lst);
 
    private:
-    std::string file_name;
+    std::ifstream input_file;
     const std::list<TaskObject>& task_objects;
 
     const TaskObject& findTask(const std::string& name) const;

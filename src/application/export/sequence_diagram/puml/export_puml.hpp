@@ -11,7 +11,7 @@ using task_types::TaskObject;
 class Puml
 {
    public:
-    Puml(const std::string& filename) : output_file(filename) {}
+    Puml(const std::string& filename);
     ~Puml() = default;
 
     void addParticipant(std::list<task_types::TaskObject> task_objects);

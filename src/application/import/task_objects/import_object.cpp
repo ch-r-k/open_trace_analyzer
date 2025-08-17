@@ -11,23 +11,21 @@ using application::task_types::TaskObject;
 
 namespace application::import
 {
-// void ImportObject::setConfig(FileConfig config) {}
-void ImportObject::setFile(std::string file_name)
+ImportObject::ImportObject(const std::string& filename) : input_file(filename)
 {
-    this->file_name = file_name;
+    if (!input_file.is_open())
+    {
+        throw std::runtime_error("Failed to open file: " + filename);
+    }
 }
 
 void ImportObject::getTaskObject(std::list<TaskObject>& lst)
 {
-    std::ifstream in(file_name);
-
-    if (!in.is_open())
-    {
-        throw std::runtime_error("Failed to open file: " + file_name);
-    }
+    input_file.clear();
+    input_file.seekg(0, std::ios::beg);
 
     Json json_data;
-    in >> json_data;
+    input_file >> json_data;
 
     for (const auto& item : json_data)
     {
