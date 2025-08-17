@@ -5,8 +5,13 @@
     "priority": 0
   },
   {
-    "name": "Blinky",
-    "id": "0x20001118",
+    "name": "blinky",
+    "id": "blinky",
+    "priority": 1
+  },
+  {
+    "name": "input_checker",
+    "id": "input_checker",
     "priority": 1
   }
 ]

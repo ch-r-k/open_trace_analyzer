@@ -113,10 +113,10 @@ void ImportTrace::get(std::list<StateMachine>& state_list)
         if (std::regex_search(line, match, re))
         {
             uint64_t timestamp = std::stoull(match[1].str());
-            std::string task_from_name = match[2].str();
+            std::string task_name = match[2].str();
             std::string state_name = match[3].str();
 
-            const TaskObject& task = findTask(task_from_name);
+            const TaskObject& task = findTask(task_name);
 
             state_list.emplace_back(line_number, timestamp, task, state_name);
         }

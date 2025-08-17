@@ -12,8 +12,8 @@ EventMessage::EventMessage(const size_t line_number,       //
                            const TaskObject& task_to,      //
                            std::string text)
     : TraceEntry{line_number, timestamp, TraceEntry::TraceType::EVENT_MESSAGE},
-      task_from{task_to},
-      task_to{task_from},
+      task_from{task_from},
+      task_to{task_to},
       text{text}
 {
 }
