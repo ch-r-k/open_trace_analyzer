@@ -11,15 +11,15 @@ using task_types::TaskObject;
 class TaskSwitch : public TraceEntry
 {
    public:
-    TaskSwitch(std::uint64_t timestamp, TaskObject& task_from,
-               TaskObject& task_to);
+    TaskSwitch(std::uint64_t timestamp, const TaskObject& task_from,
+               const TaskObject& task_to);
     ~TaskSwitch() = default;
 
     friend std::ostream& operator<<(std::ostream& os, const TaskSwitch& p);
 
    private:
-    TaskObject& task_from;
-    TaskObject& task_to;
+    TaskObject task_from;
+    TaskObject task_to;
 };
 
 }  // namespace application::trace_types

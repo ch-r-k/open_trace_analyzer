@@ -15,6 +15,7 @@ class TaskObject
 
     std::string getName() const;
     std::string getID() const;
+    std::uint32_t getPriority() const;
 
    private:
     std::uint32_t priority;

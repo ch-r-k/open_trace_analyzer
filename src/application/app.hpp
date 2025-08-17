@@ -6,6 +6,7 @@
 #include "application/import/task_objects/import_object.hpp"
 #include "application/import/trace_files/import_trace.hpp"
 #include "application/trace_entry/state_machine/state_machine.hpp"
+#include "application/trace_entry/task_switch/task_switch.hpp"
 
 namespace application
 {
@@ -23,5 +24,6 @@ class App
     std::list<task_types::TaskObject> task_objects{};
     std::list<trace_types::EventMessage> event_messages{};
     std::list<trace_types::StateMachine> state_machine{};
+    std::list<trace_types::TaskSwitch> task_switches{};
 };
 }  // namespace application

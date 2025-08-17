@@ -5,8 +5,8 @@
 
 namespace application::trace_types
 {
-TaskSwitch::TaskSwitch(std::uint64_t timestamp, TaskObject& task_from,
-                       TaskObject& task_to)
+TaskSwitch::TaskSwitch(std::uint64_t timestamp, const TaskObject& task_from,
+                       const TaskObject& task_to)
     : TraceEntry{timestamp, TraceEntry::TraceType::TASK_SWITCH},
       task_from{task_from},
       task_to{task_to}

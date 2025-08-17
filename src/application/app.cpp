@@ -30,7 +30,14 @@ void App::execute(void)
 
     qspy_import.get(state_machine);
 
-    for (const auto element : state_machine)
+    for (const auto &element : state_machine)
+    {
+        std::cout << element << "\n";
+    }
+
+    qspy_import.get(task_switches);
+
+    for (const auto &element : task_switches)
     {
         std::cout << element << "\n";
     }

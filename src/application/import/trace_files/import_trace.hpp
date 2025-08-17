@@ -1,5 +1,6 @@
 #pragma once
 
+#include <bits/stdint-uintn.h>
 #include <cstdint>
 #include <string>
 #include <list>
@@ -41,5 +42,6 @@ class ImportTrace
     const std::list<TaskObject>& task_objects;
 
     const TaskObject& findTask(const std::string& name) const;
+    const TaskObject& findTask(const std::uint32_t& priority) const;
 };
 }  // namespace application::import

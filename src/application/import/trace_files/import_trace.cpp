@@ -1,5 +1,6 @@
 
 #include <cassert>
+#include <cstdint>
 #include <fstream>
 #include <iostream>
 #include <regex>
@@ -19,14 +20,41 @@ void ImportTrace::setFile(std::string file_name)
     this->file_name = file_name;
 }
 
-void ImportTrace::get(std::list<TraceEntry>& event_message_list) const
+void ImportTrace::get(
+    [[maybe_unused]] std::list<TraceEntry>& event_message_list) const
 {
     assert(false && "not implemented");
 }
 
-void ImportTrace::get(std::list<TaskSwitch>& event_message_list) const
+void ImportTrace::get(std::list<TaskSwitch>& task_switch_list) const
 {
-    assert(false && "not implemented");
+    std::ifstream in(file_name);
+    if (!in.is_open())
+    {
+        throw std::runtime_error("Failed to open file: " + file_name);
+    }
+
+    std::string line;
+    // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
+    std::regex re(R"(^\s*(\d+)\s+(Sch-(Next|Idle))\s+Pri=(\d+)->(\d+))");
+
+    while (std::getline(in, line))
+    {
+        std::smatch match;
+        if (std::regex_search(line, match, re))
+        {
+            uint64_t timestamp = std::stoull(match[1].str());
+            std::uint32_t task_from_priority =
+                static_cast<std::uint32_t>(std::stoul(match[4].str()));
+            std::uint32_t task_to_priority =
+                static_cast<std::uint32_t>(std::stoul(match[5].str()));
+
+            const TaskObject& task_from = findTask(task_from_priority);
+            const TaskObject& task_to = findTask(task_to_priority);
+
+            task_switch_list.emplace_back(timestamp, task_from, task_to);
+        }
+    }
 }
 
 void ImportTrace::get(std::list<EventMessage>& event_message_list)
@@ -110,5 +138,26 @@ const TaskObject& ImportTrace::findTask(const std::string& name) const
     }
 
     throw std::runtime_error("TaskObject not found for name: " + name);
+}
+
+const TaskObject& ImportTrace::findTask(const std::uint32_t& priority) const
+{
+    for (const auto& task : task_objects)
+    {
+        if (task.getPriority() == priority)
+        {
+            return task;
+        }
+    }
+
+    for (const auto& task : task_objects)
+    {
+        if (task.getPriority() == 0)
+        {
+            return task;
+        }
+    }
+
+    throw std::runtime_error("TaskObject not found for priority: ");
 }
 }  // namespace application::import

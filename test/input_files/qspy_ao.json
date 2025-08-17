@@ -1,5 +1,10 @@
 [
   {
+    "name": "Idle",
+    "id": "Idle",
+    "priority": 0
+  },
+  {
     "name": "Blinky",
     "id": "0x20001118",
     "priority": 1
