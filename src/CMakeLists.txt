@@ -1,4 +1,5 @@
 set(SOURCE
+    application/manager.cpp
     application/app.cpp
 
     application/task_object/task_object.cpp

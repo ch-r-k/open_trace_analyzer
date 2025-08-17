@@ -1,12 +1,17 @@
 #include "app.hpp"
 #include <iostream>
+#include "application/import/task_objects/i_import_object.hpp"
+#include "application/import/trace_files/i_import_trace.hpp"
+#include "application/export/sequence_diagram/i_export_sequence.hpp"
 
 namespace application
 {
-App::App()
-    : object_import{"test/input_files/qspy_ao.json"},          //
-      qspy_import{task_objects, "test/input_files/qpsy.txt"},  //
-      puml_export{"test/export_file.puml"}
+App::App(IImportObject& object_import,  //
+         IImportTrace& trace_import,    //
+         ISeqDiagram& seq_export)
+    : object_import{object_import},  //
+      trace_import{trace_import},    //
+      seq_export{seq_export}
 {
 }
 
@@ -15,35 +20,13 @@ void App::importData(void)
     object_import.getTaskObject(task_objects);
 
     // ad default object
-    import::TaskObject task_object{100, "unknown", "unknown"};
-
+    TaskObject task_object{100, "unknown", "unknown"};
     task_objects.emplace_back(task_object);
 
-    for (const auto& element : task_objects)
-    {
-        std::cout << element << "\n";
-    }
-
-    qspy_import.get(event_messages);
-
-    for (const auto& element : event_messages)
-    {
-        std::cout << element << "\n";
-    }
-
-    qspy_import.get(state_machine);
-
-    for (const auto& element : state_machine)
-    {
-        std::cout << element << "\n";
-    }
-
-    qspy_import.get(task_switches);
-
-    for (const auto& element : task_switches)
-    {
-        std::cout << element << "\n";
-    }
+    trace_import.setTaskObjects(task_objects);
+    trace_import.get(event_messages);
+    trace_import.get(state_machine);
+    trace_import.get(task_switches);
 }
 
 void App::combineTraces(void)
@@ -60,44 +43,38 @@ void App::combineTraces(void)
     {
         trace_entries.push_back(&sm);
     }
-
-    for (const auto& element : trace_entries)
-    {
-        std::cout << element << "\n";
-    }
 }
 
 void App::exportData(void)
 {
-    puml_export.addParticipant(task_objects);
+    seq_export.addParticipant(task_objects);
 
-    trace_entries.sort(
-        [](const trace_types::TraceEntry* a, const trace_types::TraceEntry* b) {
-            return *a < *b;  // dereference to call operator<
-        });
+    trace_entries.sort([](const TraceEntry* a, const TraceEntry* b) {
+        return *a < *b;  // dereference to call operator<
+    });
 
     for (const auto& element : trace_entries)
     {
-        auto task_switch = dynamic_cast<trace_types::TaskSwitch*>(element);
+        auto task_switch = dynamic_cast<TaskSwitch*>(element);
         if (task_switch)
         {
-            puml_export.deactivate(task_switch->getFrom());
-            puml_export.activate(task_switch->getTo());
+            seq_export.deactivate(task_switch->getFrom());
+            seq_export.activate(task_switch->getTo());
         }
 
-        auto state_machine = dynamic_cast<trace_types::StateMachine*>(element);
+        auto state_machine = dynamic_cast<StateMachine*>(element);
         if (state_machine)
         {
-            puml_export.addNote(state_machine->getTask(),
-                                state_machine->getState());
+            seq_export.addNote(state_machine->getTask(),
+                               state_machine->getState());
         }
 
-        auto event_message = dynamic_cast<trace_types::EventMessage*>(element);
+        auto event_message = dynamic_cast<EventMessage*>(element);
         if (event_message)
         {
-            puml_export.addMessage(event_message->getText(),
-                                   event_message->getFrom(),
-                                   event_message->getTo());
+            seq_export.addMessage(event_message->getText(),
+                                  event_message->getFrom(),
+                                  event_message->getTo());
         }
     }
 }

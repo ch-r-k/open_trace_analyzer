@@ -1,42 +1,11 @@
 #include <iostream>
-#include "application/app.hpp"
+#include "application/manager.hpp"
 
-using application::App;
+using application::ApplicationManager;
 
 int main(void)
 {
-    static App app;
+    static ApplicationManager app_manager{};
 
-    try
-    {
-        app.importData();
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Exception caught in Import: " << e.what() << std::endl;
-        return 1;
-    }
-
-    try
-    {
-        app.combineTraces();
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Exception caught in Trace Combining: " << e.what()
-                  << std::endl;
-        return 1;
-    }
-
-    try
-    {
-        app.exportData();
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Exception caught in Exporting: " << e.what() << std::endl;
-        return 1;
-    }
-
-    return 0;
+    return app_manager.execute();
 }

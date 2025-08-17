@@ -3,19 +3,39 @@
 #include <list>
 #include "application/task_object/task_object.hpp"
 #include "application/trace_entry/event_message/event_message.hpp"
-#include "application/import/task_objects/import_object.hpp"
-#include "application/import/trace_files/import_trace.hpp"
 #include "application/trace_entry/state_machine/state_machine.hpp"
 #include "application/trace_entry/task_switch/task_switch.hpp"
 #include "application/trace_entry/trace_entry.hpp"
-#include "application/export/sequence_diagram/puml/export_puml.hpp"
+
+namespace application::import
+{
+class IImportObject;
+class IImportTrace;
+}  // namespace application::import
+
+namespace application::export_data::seq_diagram
+{
+class ISeqDiagram;
+}
 
 namespace application
 {
+using export_data::seq_diagram::ISeqDiagram;
+using import::IImportObject;
+using import::IImportTrace;
+
+using task_types::TaskObject;
+using trace_types::EventMessage;
+using trace_types::StateMachine;
+using trace_types::TaskSwitch;
+using trace_types::TraceEntry;
+
 class App
 {
    public:
-    App();
+    App(IImportObject& object_import,  //
+        IImportTrace& trace_import,    //
+        ISeqDiagram& seq_export);
     ~App() = default;
 
     void importData(void);
@@ -24,14 +44,14 @@ class App
     void execute(void);
 
    private:
-    import::ImportObject object_import;
-    import::ImportTrace qspy_import;
-    export_data::seq_diagram::Puml puml_export;
+    IImportObject& object_import;
+    IImportTrace& trace_import;
+    ISeqDiagram& seq_export;
 
-    std::list<task_types::TaskObject> task_objects{};
-    std::list<trace_types::EventMessage> event_messages{};
-    std::list<trace_types::StateMachine> state_machine{};
-    std::list<trace_types::TaskSwitch> task_switches{};
-    std::list<trace_types::TraceEntry*> trace_entries{};
+    std::list<TaskObject> task_objects{};
+    std::list<EventMessage> event_messages{};
+    std::list<StateMachine> state_machine{};
+    std::list<TaskSwitch> task_switches{};
+    std::list<TraceEntry*> trace_entries{};
 };
 }  // namespace application

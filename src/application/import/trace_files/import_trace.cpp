@@ -11,14 +11,17 @@
 
 namespace application::import
 {
-ImportTrace::ImportTrace(const std::list<TaskObject>& task_objects,
-                         const std::string& filename)
-    : input_file(filename), task_objects{task_objects}
+ImportTrace::ImportTrace(const std::string& filename) : input_file(filename)
 {
     if (!input_file.is_open())
     {
         throw std::runtime_error("Failed to open file: " + filename);
     }
+}
+
+void ImportTrace::setTaskObjects(const std::list<TaskObject>& task_objects)
+{
+    this->task_objects = &task_objects;
 }
 
 void ImportTrace::get(
@@ -124,7 +127,11 @@ void ImportTrace::get(std::list<StateMachine>& state_list)
 
 const TaskObject& ImportTrace::findTask(const std::string& name) const
 {
-    for (const auto& task : task_objects)
+    if (task_objects == nullptr)
+    {
+        throw std::runtime_error("Task Object not set");
+    }
+    for (const auto& task : *task_objects)
     {
         if (task.getID() == name)
         {
@@ -132,7 +139,7 @@ const TaskObject& ImportTrace::findTask(const std::string& name) const
         }
     }
 
-    for (const auto& task : task_objects)
+    for (const auto& task : *task_objects)
     {
         if (task.getName() == "unknown")
         {
@@ -145,7 +152,11 @@ const TaskObject& ImportTrace::findTask(const std::string& name) const
 
 const TaskObject& ImportTrace::findTask(const std::uint32_t& priority) const
 {
-    for (const auto& task : task_objects)
+    if (task_objects == nullptr)
+    {
+        throw std::runtime_error("Task Object not set");
+    }
+    for (const auto& task : *task_objects)
     {
         if (task.getPriority() == priority)
         {
@@ -153,7 +164,7 @@ const TaskObject& ImportTrace::findTask(const std::uint32_t& priority) const
         }
     }
 
-    for (const auto& task : task_objects)
+    for (const auto& task : *task_objects)
     {
         if (task.getPriority() == 0)
         {

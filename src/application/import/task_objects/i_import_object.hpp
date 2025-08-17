@@ -13,13 +13,6 @@ class IImportObject
 {
    public:
     ~IImportObject() = default;
-    enum class FileConfig : std::uint16_t
-    {
-        QSPY_TXT = 0,
-    };
-
-    virtual void setConfig(FileConfig config) = 0;
-    virtual void setFile(std::string file_name) = 0;
-    virtual void getTaskObject(const std::list<TaskObject>& lst) = 0;
+    virtual void getTaskObject(std::list<TaskObject>& lst) = 0;
 };
 }  // namespace application::import

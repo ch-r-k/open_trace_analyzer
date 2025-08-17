@@ -9,14 +9,14 @@ namespace application::import
 {
 using application::task_types::TaskObject;
 
-class ImportObject  //: public IImportObject
+class ImportObject : public IImportObject
 {
    public:
     ImportObject(const std::string& filename);
     ~ImportObject() = default;
 
     // void setConfig(FileConfig config) override;
-    void getTaskObject(std::list<TaskObject>& lst);
+    void getTaskObject(std::list<TaskObject>& lst) override;
 
    private:
     std::ifstream input_file;

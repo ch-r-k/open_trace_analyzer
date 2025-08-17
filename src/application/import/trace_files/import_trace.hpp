@@ -21,11 +21,10 @@ using trace_types::StateMachine;
 using trace_types::TaskSwitch;
 using trace_types::TraceEntry;
 
-class ImportTrace
+class ImportTrace : public IImportTrace
 {
    public:
-    ImportTrace(const std::list<TaskObject>& task_objects,
-                const std::string& filename);
+    ImportTrace(const std::string& filename);
     ~ImportTrace() = default;
     enum class FileConfig : std::uint16_t
     {
@@ -33,15 +32,15 @@ class ImportTrace
     };
 
     void setConfig(FileConfig config);
-    void setFile(std::string file_name);
-    void get(std::list<TraceEntry>& lst);
-    void get(std::list<TaskSwitch>& lst);
-    void get(std::list<EventMessage>& lst);
-    void get(std::list<StateMachine>& lst);
+    void setTaskObjects(const std::list<TaskObject>& task_objects) override;
+    void get(std::list<TraceEntry>& lst) override;
+    void get(std::list<TaskSwitch>& lst) override;
+    void get(std::list<EventMessage>& lst) override;
+    void get(std::list<StateMachine>& lst) override;
 
    private:
     std::ifstream input_file;
-    const std::list<TaskObject>& task_objects;
+    const std::list<TaskObject>* task_objects{nullptr};
 
     const TaskObject& findTask(const std::string& name) const;
     const TaskObject& findTask(const std::uint32_t& priority) const;
