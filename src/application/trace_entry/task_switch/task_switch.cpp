@@ -16,6 +16,9 @@ TaskSwitch::TaskSwitch(const std::size_t line_number,  //
 {
 }
 
+TaskObject TaskSwitch::getFrom() { return task_from; }
+TaskObject TaskSwitch::getTo() { return task_to; }
+
 std::ostream& operator<<(std::ostream& os, const TaskSwitch& p)
 {
     os << "Timestamp: " << p.timestamp  //

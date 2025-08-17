@@ -14,4 +14,6 @@ bool TraceEntry::operator<(const TraceEntry& other) const noexcept
     return line_number < other.line_number;
 }
 
+TraceEntry::TraceType TraceEntry::getType() const { return type; }
+
 }  // namespace application::trace_types

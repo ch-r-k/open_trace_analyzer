@@ -19,6 +19,8 @@ class StateMachine : public TraceEntry
                  std::string state_name);
     ~StateMachine() = default;
 
+    TaskObject getTask();
+    std::string getState();
     friend std::ostream& operator<<(std::ostream& os, const StateMachine& p);
 
    private:

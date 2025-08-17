@@ -18,9 +18,10 @@ class TraceEntry
 
     TraceEntry(std::size_t line_number, std::uint64_t timestamp,
                TraceType type);
-    ~TraceEntry() = default;
+    virtual ~TraceEntry() = default;
 
     bool operator<(const TraceEntry& other) const noexcept;
+    TraceType getType() const;
 
    protected:
     std::size_t line_number;

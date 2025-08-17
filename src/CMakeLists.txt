@@ -9,6 +9,8 @@ set(SOURCE
 
     application/import/task_objects/import_object.cpp
     application/import/trace_files/import_trace.cpp
+
+    application/export/sequence_diagram/puml/export_puml.cpp
 )
 
 target_sources(${PROJECT} PRIVATE ${SOURCE})

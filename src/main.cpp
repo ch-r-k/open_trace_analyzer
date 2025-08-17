@@ -28,5 +28,15 @@ int main(void)
         return 1;
     }
 
+    try
+    {
+        app.exportData();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception caught in Exporting: " << e.what() << std::endl;
+        return 1;
+    }
+
     return 0;
 }

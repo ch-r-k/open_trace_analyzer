@@ -8,6 +8,7 @@
 #include "application/trace_entry/state_machine/state_machine.hpp"
 #include "application/trace_entry/task_switch/task_switch.hpp"
 #include "application/trace_entry/trace_entry.hpp"
+#include "application/export/sequence_diagram/puml/export_puml.hpp"
 
 namespace application
 {
@@ -23,8 +24,10 @@ class App
     void execute(void);
 
    private:
-    import::ImportObject qsp_import;
+    import::ImportObject object_import;
     import::ImportTrace qspy_import;
+    export_data::seq_diagram::Puml puml_export;
+
     std::list<task_types::TaskObject> task_objects{};
     std::list<trace_types::EventMessage> event_messages{};
     std::list<trace_types::StateMachine> state_machine{};

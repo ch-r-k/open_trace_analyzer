@@ -20,6 +20,10 @@ class EventMessage : public TraceEntry
                  std::string text);
     ~EventMessage() = default;
 
+    TaskObject getFrom();
+    TaskObject getTo();
+    std::string getText();
+
     friend std::ostream& operator<<(std::ostream& os, const EventMessage& p);
 
    private:

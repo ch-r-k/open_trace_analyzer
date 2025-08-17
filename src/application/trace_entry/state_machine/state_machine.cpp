@@ -16,6 +16,10 @@ StateMachine::StateMachine(std::size_t line_number,        //
 {
 }
 
+TaskObject StateMachine::getTask() { return task; }
+
+std::string StateMachine::getState() { return state_name; }
+
 std::ostream& operator<<(std::ostream& os, const StateMachine& p)
 {
     os << "Timestamp: " << p.timestamp  //

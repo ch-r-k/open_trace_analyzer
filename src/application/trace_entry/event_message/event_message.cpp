@@ -18,6 +18,10 @@ EventMessage::EventMessage(const size_t line_number,       //
 {
 }
 
+TaskObject EventMessage::getFrom() { return task_from; };
+TaskObject EventMessage::getTo() { return task_to; };
+std::string EventMessage::getText() { return text; };
+
 std::ostream& operator<<(std::ostream& os, const EventMessage& p)
 {
     os << "Timestamp: " << p.timestamp  //
