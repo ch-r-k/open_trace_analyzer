@@ -6,17 +6,23 @@
 
 namespace application
 {
-ApplicationManager::ApplicationManager()
-    : object_import("test/input_files/qspy_ao.json"),
-      qspy_import("test/input_files/qpsy.txt"),
-      puml_export("test/export_file.puml"),
-      application(object_import, qspy_import, puml_export)
+ApplicationManager::ApplicationManager(int argc, char* argv[])
+    : cmd{argc, argv},
+      object_import{"test/input_files/qspy_ao.json"},
+      qspy_import{"test/input_files/qpsy.txt"},
+      puml_export{"test/export_file.puml"},
+      application{object_import, qspy_import, puml_export}
 
 {
 }
 
 int ApplicationManager::execute(void)
 {
+    if (cmd.hasFlag("--help"))
+    {
+        std::cout << "Help requested!\n";
+    }
+
     try
     {
         application.importData();

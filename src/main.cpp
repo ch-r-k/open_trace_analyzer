@@ -3,9 +3,9 @@
 
 using application::ApplicationManager;
 
-int main(void)
+int main(int argc, char* argv[])
 {
-    static ApplicationManager app_manager{};
+    static ApplicationManager app_manager{argc, argv};
 
     return app_manager.execute();
 }
