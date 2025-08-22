@@ -21,7 +21,7 @@ using trace_types::TraceEntry;
 class IImportTrace
 {
    public:
-    ~IImportTrace() = default;
+    virtual ~IImportTrace() = default;
 
     virtual void setTaskObjects(const std::list<TaskObject>& task_objects) = 0;
     virtual void get(std::list<TraceEntry>& lst) = 0;

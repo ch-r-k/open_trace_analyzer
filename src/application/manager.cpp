@@ -3,17 +3,24 @@
 #include "application/app.hpp"
 #include "application/export/sequence_diagram/puml/export_puml.hpp"
 #include "application/import/trace_files/import_trace.hpp"
+#include "application/import/task_objects/import_object.hpp"
+#include "application/import/trace_files/import_trace.hpp"
+#include "application/export/sequence_diagram/puml/export_puml.hpp"
 
 namespace application
 {
-ApplicationManager::ApplicationManager(int argc, char* argv[])
-    : cmd{argc, argv},
-      object_import{"test/input_files/qspy_ao.json"},
-      qspy_import{"test/input_files/qpsy.txt"},
-      puml_export{"test/export_file.puml"},
-      application{object_import, qspy_import, puml_export}
+ApplicationManager::ApplicationManager(int argc, char* argv[]) : cmd{argc, argv}
 
 {
+}
+
+ApplicationManager::~ApplicationManager()
+{
+    delete application;
+
+    delete object_import;
+    delete qspy_import;
+    delete puml_export;
 }
 
 int ApplicationManager::execute(void)
@@ -23,9 +30,15 @@ int ApplicationManager::execute(void)
         std::cout << "Help requested!\n";
     }
 
+    object_import = new ImportObject{"test/input_files/qspy_ao.json"};
+    qspy_import = new ImportTrace{"test/input_files/qpsy.txt"};
+    puml_export = new Puml{"test/export_file.puml"};
+
+    application = new App{*object_import, *qspy_import, *puml_export};
+
     try
     {
-        application.importData();
+        application->importData();
     }
     catch (const std::exception& e)
     {
@@ -35,7 +48,7 @@ int ApplicationManager::execute(void)
 
     try
     {
-        application.combineTraces();
+        application->combineTraces();
     }
     catch (const std::exception& e)
     {
@@ -46,7 +59,7 @@ int ApplicationManager::execute(void)
 
     try
     {
-        application.exportData();
+        application->exportData();
     }
     catch (const std::exception& e)
     {

@@ -12,7 +12,7 @@ using task_types::TaskObject;
 class ISeqDiagram
 {
    public:
-    ~ISeqDiagram() = default;
+    virtual ~ISeqDiagram() = default;
 
     virtual void addParticipant(
         std::list<task_types::TaskObject> task_objects) = 0;
