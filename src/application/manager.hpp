@@ -1,6 +1,7 @@
 #pragma once
 
 #include "application/user_control/command_line_arg.hpp"
+#include "application/user_control/user_input_handler.hpp"
 
 namespace application
 {
@@ -28,7 +29,7 @@ class ApplicationManager
     int execute(void);
 
    private:
-    user_control::CommandLineArgs cmd;
+    user_control::UserInputHandler user_input;
     ImportObject* object_import;
     ImportTrace* qspy_import;
     Puml* puml_export;

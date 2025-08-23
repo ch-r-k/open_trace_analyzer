@@ -9,7 +9,8 @@
 
 namespace application
 {
-ApplicationManager::ApplicationManager(int argc, char* argv[]) : cmd{argc, argv}
+ApplicationManager::ApplicationManager(int argc, char* argv[])
+    : user_input{argc, argv}
 
 {
 }
@@ -25,14 +26,9 @@ ApplicationManager::~ApplicationManager()
 
 int ApplicationManager::execute(void)
 {
-    if (cmd.hasFlag("--help"))
-    {
-        std::cout << "Help requested!\n";
-    }
-
-    object_import = new ImportObject{"test/input_files/qspy_ao.json"};
-    qspy_import = new ImportTrace{"test/input_files/qpsy.txt"};
-    puml_export = new Puml{"test/export_file.puml"};
+    object_import = new ImportObject{user_input.getTaskObjectFileName()};
+    qspy_import = new ImportTrace{user_input.getTraceFileName()};
+    puml_export = new Puml{user_input.getOutputFileName()};
 
     application = new App{*object_import, *qspy_import, *puml_export};
 
