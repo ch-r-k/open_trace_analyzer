@@ -3,7 +3,7 @@
 
 namespace application::user_control
 {
-UserInputHandler::UserInputHandler(int argc, char* argv[])
+UserInputHandler::UserInputHandler(int argc, const char* argv[])
     : cmd_args{argc, argv}
 {
     help = cmd_args.hasFlag("--help");

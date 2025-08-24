@@ -2,7 +2,7 @@
 
 namespace application::user_control
 {
-CommandLineArgs::CommandLineArgs(int argc, char* argv[])
+CommandLineArgs::CommandLineArgs(int argc, const char* argv[])
 {
     for (int i = 0; i < argc; i++)
     {

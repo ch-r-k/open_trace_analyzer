@@ -12,7 +12,7 @@ namespace application::user_control
 class UserInputHandler
 {
    public:
-    UserInputHandler(int argc, char* argv[]);
+    UserInputHandler(int argc, const char* argv[]);
 
     std::string getTaskObjectFileName() const;
     std::string getTraceFileName() const;

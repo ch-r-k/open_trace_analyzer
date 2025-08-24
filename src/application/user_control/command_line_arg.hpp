@@ -10,7 +10,7 @@ namespace application::user_control
 class CommandLineArgs
 {
    public:
-    CommandLineArgs(int argc, char* argv[]);
+    CommandLineArgs(int argc, const char* argv[]);
 
     const std::vector<std::string>& getAll() const;
 

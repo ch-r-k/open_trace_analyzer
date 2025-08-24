@@ -16,4 +16,4 @@ set(SOURCE
     application/export/sequence_diagram/puml/export_puml.cpp
 )
 
-target_sources(${PROJECT} PRIVATE ${SOURCE})
+target_sources(${PROJECT}_lib PRIVATE ${SOURCE})

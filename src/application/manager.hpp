@@ -24,7 +24,7 @@ using import::ImportTrace;
 class ApplicationManager
 {
    public:
-    ApplicationManager(int argc, char* argv[]);
+    ApplicationManager(int argc, const char* argv[]);
     ~ApplicationManager();
     int execute(void);
 

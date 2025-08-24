@@ -9,7 +9,7 @@
 
 namespace application
 {
-ApplicationManager::ApplicationManager(int argc, char* argv[])
+ApplicationManager::ApplicationManager(int argc, const char* argv[])
     : user_input{argc, argv}
 
 {
