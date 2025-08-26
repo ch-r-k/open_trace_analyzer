@@ -75,6 +75,7 @@ add_subdirectory(src EXCLUDE_FROM_ALL)
 # # Test executable
 set(TEST_SRCS
     src/test/sys_test.cpp
+    src/application/task_object/test.cpp
     # add more test files here
 )
 
