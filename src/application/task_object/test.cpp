@@ -19,7 +19,7 @@ class TaskObjectParamTest : public ::testing::TestWithParam<TaskParams>
 };
 
 // The actual test
-TEST_P(TaskObjectParamTest, Import)
+TEST_P(TaskObjectParamTest, Create)
 {
     const auto& p = GetParam();
 
