@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <list>
 #include <string>
 
@@ -21,5 +22,6 @@ class ISeqDiagram
     virtual void addNote(TaskObject task, std::string note) = 0;
     virtual void activate(task_types::TaskObject task_object) = 0;
     virtual void deactivate(task_types::TaskObject task_object) = 0;
+    virtual void addTimestamp(std::uint64_t) = 0;
 };
 }  // namespace application::export_data::seq_diagram

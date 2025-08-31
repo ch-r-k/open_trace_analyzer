@@ -15,9 +15,11 @@ class ImportTrace;
 namespace export_data::seq_diagram
 {
 class Puml;
-}
+class PumlTiming;
+class ISeqDiagram;
+}  // namespace export_data::seq_diagram
 
-using export_data::seq_diagram::Puml;
+using export_data::seq_diagram::ISeqDiagram;
 using import::ImportObject;
 using import::ImportTrace;
 
@@ -32,7 +34,7 @@ class ApplicationManager
     user_control::UserInputHandler user_input;
     ImportObject* object_import;
     ImportTrace* qspy_import;
-    Puml* puml_export;
+    ISeqDiagram* seq_export;
     App* application;
 };
 }  // namespace application

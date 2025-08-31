@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <list>
 #include <string>
 #include <fstream>
@@ -9,11 +10,11 @@
 namespace application::export_data::seq_diagram
 {
 using task_types::TaskObject;
-class Puml : public ISeqDiagram
+class PumlTiming : public ISeqDiagram
 {
    public:
-    Puml(const std::string& filename);
-    ~Puml() = default;
+    PumlTiming(const std::string& filename);
+    ~PumlTiming() = default;
 
     void addParticipant(
         std::list<task_types::TaskObject> task_objects) override;
@@ -25,6 +26,9 @@ class Puml : public ISeqDiagram
 
    private:
     std::ofstream output_file;
+    const std::string STATE_PREFIX{"_state"};
+    const std::string ACTIVE_PREFIX{"_active"};
+
     void addTimestamp(std::uint64_t timestamp) override;
 };
 }  // namespace application::export_data::seq_diagram

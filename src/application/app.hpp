@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <list>
 #include "application/task_object/task_object.hpp"
 #include "application/trace_entry/event_message/event_message.hpp"

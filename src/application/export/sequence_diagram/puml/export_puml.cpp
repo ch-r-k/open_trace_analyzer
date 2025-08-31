@@ -36,11 +36,17 @@ void Puml::activate(TaskObject task_object)
                 << task_object.getName()  //
                 << "\n";
 }
+
 void Puml::deactivate(TaskObject task_object)
 {
     output_file << "deactivate "          //
                 << task_object.getName()  //
                 << "\n";
+}
+
+void Puml::addTimestamp(std::uint64_t timestamp)
+{
+    // empty
 }
 
 }  // namespace application::export_data::seq_diagram

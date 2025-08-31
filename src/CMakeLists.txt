@@ -14,6 +14,7 @@ set(SOURCE
     application/import/trace_files/import_trace.cpp
 
     application/export/sequence_diagram/puml/export_puml.cpp
+    application/export/sequence_diagram/puml/export_puml_timing.cpp
 )
 
 target_sources(${PROJECT}_lib PRIVATE ${SOURCE})

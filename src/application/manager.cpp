@@ -6,9 +6,12 @@
 #include "application/import/task_objects/import_object.hpp"
 #include "application/import/trace_files/import_trace.hpp"
 #include "application/export/sequence_diagram/puml/export_puml.hpp"
+#include "application/export/sequence_diagram/puml/export_puml_timing.hpp"
 
 namespace application
 {
+using export_data::seq_diagram::PumlTiming;
+
 ApplicationManager::ApplicationManager(int argc, const char* argv[])
     : user_input{argc, argv}
 
@@ -21,16 +24,17 @@ ApplicationManager::~ApplicationManager()
 
     delete object_import;
     delete qspy_import;
-    delete puml_export;
+    delete seq_export;
 }
 
 int ApplicationManager::execute(void)
 {
     object_import = new ImportObject{user_input.getTaskObjectFileName()};
     qspy_import = new ImportTrace{user_input.getTraceFileName()};
-    puml_export = new Puml{user_input.getOutputFileName()};
+    // puml_export = new Puml{user_input.getOutputFileName()};
+    seq_export = new PumlTiming{user_input.getOutputFileName()};
 
-    application = new App{*object_import, *qspy_import, *puml_export};
+    application = new App{*object_import, *qspy_import, *seq_export};
 
     try
     {

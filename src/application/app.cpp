@@ -55,6 +55,16 @@ void App::exportData(void)
 
     for (const auto& element : trace_entries)
     {
+        seq_export.addTimestamp(element->getTimestamp() -
+                                trace_entries.front()->getTimestamp());
+
+        auto task_switch = dynamic_cast<TaskSwitch*>(element);
+        if (task_switch)
+        {
+            seq_export.deactivate(task_switch->getFrom());
+            seq_export.activate(task_switch->getTo());
+        }
+
         auto state_machine = dynamic_cast<StateMachine*>(element);
         if (state_machine)
         {
