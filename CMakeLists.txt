@@ -68,7 +68,7 @@ target_link_libraries(${PROJECT} PRIVATE ${PROJECT}_lib)
 
 ###########################################################################
 # Link third-party folder (if needed)
-add_subdirectory(src/3d_party)
+add_subdirectory(3d_party)
 add_subdirectory(src EXCLUDE_FROM_ALL)
 
 ###########################################################################
