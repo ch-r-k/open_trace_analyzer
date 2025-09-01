@@ -2,6 +2,7 @@
 
 #include "application/user_control/command_line_arg.hpp"
 #include "application/user_control/user_input_handler.hpp"
+#include "application/configuration/config_handler.hpp"
 
 namespace application
 {
@@ -31,7 +32,9 @@ class ApplicationManager
     int execute(void);
 
    private:
+    void build(void);
     user_control::UserInputHandler user_input;
+    config::ConfigHandler* config_handler;
     ImportObject* object_import;
     ImportTrace* qspy_import;
     ISeqDiagram* seq_export;

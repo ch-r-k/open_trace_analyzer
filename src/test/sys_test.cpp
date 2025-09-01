@@ -23,10 +23,10 @@ class UserInputHandlerTest : public ::testing::Test
 // Test a method (example)
 TEST_F(UserInputHandlerTest, GetTaskObjectFileName)
 {
-    const char* argv[] = {"program",                                    //
-                          "--in",     "src/test/input_files/qspy.txt",  //
-                          "--out",    "src/test/output.puml",           //
-                          "--config", "src/test/config.json",           //
+    const char* argv[] = {"program",                                       //
+                          "--in",     "src/test/input_files/qspy.txt",     //
+                          "--out",    "src/test/output.puml",              //
+                          "--config", "src/test/input_files/config.json",  //
                           "--tasks",  "src/test/input_files/qspy_ao.json"};
     int argc = sizeof(argv) / sizeof(argv[0]);
 

@@ -106,4 +106,9 @@ std::string UserInputHandler::getOutputFileName() const
     return output_file_name;
 };
 
+std::string UserInputHandler::getConfigFileName() const
+{
+    return config_file_name;
+};
+
 }  // namespace application::user_control

@@ -1,8 +1,11 @@
 #include "manager.hpp"
 #include <iostream>
+#include <stdexcept>
 #include "application/app.hpp"
 #include "application/export/sequence_diagram/puml/export_puml.hpp"
 #include "application/import/trace_files/import_trace.hpp"
+#include "application/configuration/config_handler.hpp"
+#include "application/configuration/config_types.hpp"
 #include "application/import/task_objects/import_object.hpp"
 #include "application/import/trace_files/import_trace.hpp"
 #include "application/export/sequence_diagram/puml/export_puml.hpp"
@@ -10,6 +13,7 @@
 
 namespace application
 {
+using export_data::seq_diagram::Puml;
 using export_data::seq_diagram::PumlTiming;
 
 ApplicationManager::ApplicationManager(int argc, const char* argv[])
@@ -20,6 +24,7 @@ ApplicationManager::ApplicationManager(int argc, const char* argv[])
 
 ApplicationManager::~ApplicationManager()
 {
+    delete config_handler;
     delete application;
 
     delete object_import;
@@ -29,10 +34,18 @@ ApplicationManager::~ApplicationManager()
 
 int ApplicationManager::execute(void)
 {
-    object_import = new ImportObject{user_input.getTaskObjectFileName()};
-    qspy_import = new ImportTrace{user_input.getTraceFileName()};
-    // puml_export = new Puml{user_input.getOutputFileName()};
-    seq_export = new PumlTiming{user_input.getOutputFileName()};
+    config_handler = new config::ConfigHandler{user_input.getConfigFileName()};
+
+    try
+    {
+        build();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception caught at Application building: " << e.what()
+                  << std::endl;
+        return 1;
+    }
 
     application = new App{*object_import, *qspy_import, *seq_export};
 
@@ -68,5 +81,37 @@ int ApplicationManager::execute(void)
     }
 
     return 0;
+}
+
+void ApplicationManager::build(void)
+{
+    switch (config_handler->getInputFormat())
+    {
+        case config::InputType::TXT:
+        {
+            object_import =
+                new ImportObject{config_handler->getTaskObjectFileName()};
+            qspy_import = new ImportTrace{config_handler->getTraceFileName()};
+            break;
+        }
+        case config::InputType::BIN:
+        {
+            throw std::runtime_error("not implemented");
+        }
+    }
+
+    switch (config_handler->getOutputFormat())
+    {
+        case config::OutputType::PUML_SEQ:
+        {
+            seq_export = new Puml{user_input.getOutputFileName()};
+            break;
+        }
+        case config::OutputType::PUML_TIMING:
+        {
+            seq_export = new PumlTiming{user_input.getOutputFileName()};
+            break;
+        }
+    }
 }
 }  // namespace application

@@ -3,6 +3,7 @@ set(SOURCE
     application/app.cpp
     application/user_control/command_line_arg.cpp
     application/user_control/user_input_handler.cpp
+    application/configuration/config_handler.cpp
 
     application/task_object/task_object.cpp
     application/trace_entry/event_message/event_message.cpp

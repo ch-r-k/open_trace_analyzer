@@ -17,6 +17,7 @@ class UserInputHandler
     std::string getTaskObjectFileName() const;
     std::string getTraceFileName() const;
     std::string getOutputFileName() const;
+    std::string getConfigFileName() const;
 
    private:
     void handleConfigFile();
