@@ -6,8 +6,6 @@
 
 namespace application::config
 {
-using Json = nlohmann::json;
-
 ConfigHandler::ConfigHandler(const std::string& filename)
 {
     std::ifstream file(filename);
@@ -16,7 +14,6 @@ ConfigHandler::ConfigHandler(const std::string& filename)
         throw ConfigurationException("Could not open config file: " + filename);
     }
 
-    Json json;
     file >> json;
 
     // Required fields
@@ -25,6 +22,30 @@ ConfigHandler::ConfigHandler(const std::string& filename)
         throw ConfigurationException("Config file missing required fields");
     }
 
+    loadInputType();
+
+    loadOutputType();
+
+    loadFilePaths();
+
+    loadTxtConfig();
+}
+
+std::string ConfigHandler::getTaskObjectFileName() const
+{
+    return task_object_file;
+}
+
+std::string ConfigHandler::getTraceFileName() const { return input_file; }
+
+std::string ConfigHandler::getOutputFileName() const { return output_file; }
+
+OutputType ConfigHandler::getOutputFormat() const { return output_type; }
+
+InputType ConfigHandler::getInputFormat() const { return input_type; }
+
+void ConfigHandler::loadInputType()
+{
     // Parse input type
     std::string input_type_str = json["input_file_type"].get<std::string>();
     if (input_type_str == "txt")
@@ -40,7 +61,9 @@ ConfigHandler::ConfigHandler(const std::string& filename)
         throw ConfigurationException("Invalid input_file_type: " +
                                      input_type_str);
     }
-
+}
+void ConfigHandler::loadOutputType()
+{
     // Parse output type
     std::string output_type_str = json["output_file_type"].get<std::string>();
     if (output_type_str == "puml_sequence")
@@ -56,7 +79,10 @@ ConfigHandler::ConfigHandler(const std::string& filename)
         throw ConfigurationException("Invalid output_file_type: " +
                                      output_type_str);
     }
+}
 
+void ConfigHandler::loadFilePaths()
+{
     // files
     if (json.contains("input_file"))
     {
@@ -74,17 +100,21 @@ ConfigHandler::ConfigHandler(const std::string& filename)
     }
 }
 
-std::string ConfigHandler::getTaskObjectFileName() const
+void ConfigHandler::loadTxtConfig()
 {
-    return task_object_file;
+    if (json.contains("txt_config"))
+    {
+        const auto& txt_cfg = json["txt_config"];
+
+        task_switch_config =
+            std::make_unique<TaskSwitch>(txt_cfg["task_switch"]);
+
+        state_machine_config =
+            std::make_unique<StateMachine>(txt_cfg["state_machine"]);
+
+        event_message_config =
+            std::make_unique<EventMessage>(txt_cfg["event_message"]);
+    }
 }
-
-std::string ConfigHandler::getTraceFileName() const { return input_file; }
-
-std::string ConfigHandler::getOutputFileName() const { return output_file; }
-
-OutputType ConfigHandler::getOutputFormat() const { return output_type; }
-
-InputType ConfigHandler::getInputFormat() const { return input_type; }
 
 }  // namespace application::config
