@@ -26,10 +26,6 @@ ApplicationManager::~ApplicationManager()
 {
     delete config_handler;
     delete application;
-
-    delete object_import;
-    delete qspy_import;
-    delete seq_export;
 }
 
 int ApplicationManager::execute(void)
@@ -89,9 +85,12 @@ void ApplicationManager::build(void)
     {
         case config::InputType::TXT:
         {
-            object_import =
-                new ImportObject{config_handler->getTaskObjectFileName()};
-            qspy_import = new ImportTrace{config_handler->getTraceFileName()};
+            object_import = std::make_unique<ImportObject>(
+                config_handler->getTaskObjectFileName());
+
+            qspy_import = std::make_unique<ImportTrace>(
+                config_handler->getTraceFileName());
+
             break;
         }
         case config::InputType::BIN:
@@ -104,12 +103,13 @@ void ApplicationManager::build(void)
     {
         case config::OutputType::PUML_SEQ:
         {
-            seq_export = new Puml{user_input.getOutputFileName()};
+            seq_export = std::make_unique<Puml>(user_input.getOutputFileName());
             break;
         }
         case config::OutputType::PUML_TIMING:
         {
-            seq_export = new PumlTiming{user_input.getOutputFileName()};
+            seq_export =
+                std::make_unique<PumlTiming>(user_input.getOutputFileName());
             break;
         }
     }

@@ -35,9 +35,11 @@ class ApplicationManager
     void build(void);
     user_control::UserInputHandler user_input;
     config::ConfigHandler* config_handler;
-    ImportObject* object_import;
-    ImportTrace* qspy_import;
-    ISeqDiagram* seq_export;
+
+    std::unique_ptr<ImportObject> object_import;
+    std::unique_ptr<ImportTrace> qspy_import;
+    std::unique_ptr<ISeqDiagram> seq_export;
+
     App* application;
 };
 }  // namespace application
