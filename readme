@@ -1,0 +1,40 @@
+# Open Trace Analyzer
+
+A tool to analyze tracing data of embedded systems based on human readable txt or log files.
+The first idea to develop this project was to give a better option of inspecting the QSPY output of the QPC and QPCPP framework.
+
+## Features
+- Analyzes log based txt files for Trace analyzing
+- Outputs the trace as:
+    - plant uml timing diagram
+    - plant uml sequence diagram
+
+## Requirements
+- C++20 or later
+- CMake 3.17+
+- GCC Compiler
+
+## Git Clone
+
+
+## Setup
+
+
+## Build
+
+
+## Run
+
+```bash
+./build/open_trace_analyzer --config src/test/input_files/config.json
+```
+
+
+## Debug
+
+``` bash
+valgrind ./build/open_trace_analyzer --config src/test/input_files/config.json
+```
+
+
+## Documentation

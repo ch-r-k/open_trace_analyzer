@@ -11,7 +11,8 @@
     "dictionaryDefinitions": [],
     "dictionaries": [],
     "words": [
-        "QSPY"
+        "QSPY",
+        "valgrind"
     ],
     "ignoreWords": [],
     "import": []
