@@ -5,7 +5,7 @@
 using application::ApplicationManager;
 
 // A simple test fixture (optional, useful if you want setup/teardown)
-class UserInputHandlerTest : public ::testing::Test
+class SystemTest : public ::testing::Test
 {
    protected:
     // You can initialize some common objects here
@@ -21,13 +21,27 @@ class UserInputHandlerTest : public ::testing::Test
 };
 
 // Test a method (example)
-TEST_F(UserInputHandlerTest, GetTaskObjectFileName)
+TEST_F(SystemTest, analyze_test_file)
 {
-    const char* argv[] = {"program",                                       //
-                          "--in",     "src/test/input_files/qspy.txt",     //
-                          "--out",    "src/test/output.puml",              //
-                          "--config", "src/test/input_files/config.json",  //
-                          "--tasks",  "src/test/input_files/qspy_ao.json"};
+    const char* argv[] = {"program",  //
+                          "--config", "src/test/input_files/config.json"};
+    int argc = sizeof(argv) / sizeof(argv[0]);
+
+    ApplicationManager app_manager{argc, argv};
+
+    app_manager.execute();
+}
+
+// Test a method (example)
+TEST_F(SystemTest, generate_puml_sequence)
+{
+    const char* argv[] = {"program",  //
+                          "--in",
+                          "src/test/input_files/qspy_01.txt",  //
+                          "--out",
+                          "src/test/output_files/puml_01.txt",  //
+                          "--config",
+                          "src/test/input_files/config.json"};
     int argc = sizeof(argv) / sizeof(argv[0]);
 
     ApplicationManager app_manager{argc, argv};
