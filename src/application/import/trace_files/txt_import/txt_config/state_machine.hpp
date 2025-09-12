@@ -9,7 +9,7 @@ namespace application::import::txt_config
 {
 using Json = nlohmann::json;
 
-struct StateMachine : public TxtConfig
+class StateMachine : public TxtConfig
 {
    public:
     StateMachine(const std::string& regex,    //

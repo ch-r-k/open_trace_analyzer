@@ -11,7 +11,14 @@
 
 namespace application::import
 {
-ImportTrace::ImportTrace(const std::string& filename) : input_file(filename)
+ImportTrace::ImportTrace(const std::string& filename,
+                         const EventMessageConfig event_message_config,
+                         const StateMachineConfig state_machine_config,
+                         const TaskSwitchConfig task_switch_config)
+    : input_file{filename},                        //
+      event_message_config{event_message_config},  //
+      state_machine_config{state_machine_config},  //
+      task_switch_config{task_switch_config}
 {
     if (!input_file.is_open())
     {

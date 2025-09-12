@@ -86,7 +86,10 @@ void ApplicationManager::build(void)
                 config_handler->getTaskObjectFileName());
 
             qspy_import = std::make_unique<ImportTrace>(
-                config_handler->getTraceFileName());
+                config_handler->getTraceFileName(),
+                *config_handler->getEventMessageConfig(),
+                *config_handler->getStateMachineConfig(),
+                *config_handler->getTaskSwitchConfig());
 
             break;
         }

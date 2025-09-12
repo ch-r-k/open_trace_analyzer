@@ -12,6 +12,9 @@
 #include "application/trace_entry/event_message/event_message.hpp"
 #include "application/trace_entry/state_machine/state_machine.hpp"
 #include "application/task_object/task_object.hpp"
+#include "txt_config/state_machine.hpp"
+#include "txt_config/task_switch.hpp"
+#include "txt_config/event_message.hpp"
 
 namespace application::import
 {
@@ -21,10 +24,18 @@ using trace_types::StateMachine;
 using trace_types::TaskSwitch;
 using trace_types::TraceEntry;
 
+using StateMachineConfig = txt_config::StateMachine;
+using TaskSwitchConfig = txt_config::TaskSwitch;
+using EventMessageConfig = txt_config::EventMessage;
+
 class ImportTrace : public IImportTrace
 {
    public:
-    ImportTrace(const std::string& filename);
+    ImportTrace(const std::string& filename,
+                const EventMessageConfig event_message_config,
+                const StateMachineConfig state_machine_config,
+                const TaskSwitchConfig task_switch_config);
+
     ~ImportTrace() = default;
     enum class FileConfig : std::uint16_t
     {
@@ -44,5 +55,9 @@ class ImportTrace : public IImportTrace
 
     const TaskObject& findTask(const std::string& name) const;
     const TaskObject& findTask(const std::uint32_t& priority) const;
+
+    EventMessageConfig event_message_config;
+    StateMachineConfig state_machine_config;
+    TaskSwitchConfig task_switch_config;
 };
 }  // namespace application::import

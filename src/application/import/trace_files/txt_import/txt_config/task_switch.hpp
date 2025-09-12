@@ -9,7 +9,7 @@ namespace application::import::txt_config
 {
 using Json = nlohmann::json;
 
-struct TaskSwitch : public TxtConfig
+class TaskSwitch : public TxtConfig
 {
    public:
     TaskSwitch(const std::string& regex, std::uint8_t pos_timestamp,
