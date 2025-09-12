@@ -34,12 +34,12 @@ class ApplicationManager
    private:
     void build(void);
     user_control::UserInputHandler user_input;
-    config::ConfigHandler* config_handler;
+    std::unique_ptr<config::ConfigHandler> config_handler;
 
     std::unique_ptr<ImportObject> object_import;
     std::unique_ptr<ImportTrace> qspy_import;
     std::unique_ptr<ISeqDiagram> seq_export;
 
-    App* application;
+    std::unique_ptr<App> application;
 };
 }  // namespace application

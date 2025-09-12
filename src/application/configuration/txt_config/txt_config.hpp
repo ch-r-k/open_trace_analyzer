@@ -23,6 +23,12 @@ class TxtConfig
         pos_timestamp = extractGroupIndex(j, "timestamp");
     }
 
+    // Equality operator
+    bool operator==(const TxtConfig& other) const
+    {
+        return regex == other.regex && pos_timestamp == other.pos_timestamp;
+    }
+
    protected:
     std::string regex{};
     std::uint8_t pos_timestamp{0};

@@ -47,6 +47,30 @@ TEST(ConfigHandlerTest, LoadsValidConfigWithAllFields)
     EXPECT_EQ(handler.getTraceFileName(), "trace.txt");
     EXPECT_EQ(handler.getOutputFileName(), "out.puml");
     EXPECT_EQ(handler.getTaskObjectFileName(), "tasks.json");
+
+    TaskSwitch task_switch{
+        "^\\s*(\\d+)\\s+(Sch-(Next|Idle))\\s+Pri=(\\d+)->(\\d+)",  //
+        1,                                                         //
+        4,                                                         //
+        5};                                                        //
+    EXPECT_EQ(*handler.getTaskSwitchConfig(), task_switch);
+
+    StateMachine state_machine{
+        "^\\s*(\\d+)\\s+===\\>Tran\\s+Obj=([^,]+),.*State=[^>]+->([^,]+)",  //
+        1,                                                                  //
+        2,                                                                  //
+        3};                                                                 //
+
+    EXPECT_EQ(*handler.getStateMachineConfig(), state_machine);
+
+    EventMessage event_message{
+        "^\\s*(\\d+).*AO-Post.*Sdr=([^,]+),Obj=([^,]+).*Sig=([^,>]+)",  //
+        1,                                                              //
+        2,                                                              //
+        3,                                                              //
+        4                                                               //
+    };
+    EXPECT_EQ(*handler.getEventMessageConfig(), event_message);
 }
 
 TEST(ConfigHandlerTest, MissingOptionalFieldsDefaultsToEmptyStrings)

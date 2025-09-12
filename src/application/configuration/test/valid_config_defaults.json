@@ -1,7 +1,7 @@
 {
     "input_file_type": "txt",
     "output_file_type": "puml_sequence",
-    "txt": {
+    "txt_config": {
         "task_switch": {
             "regex": "^\\s*(\\d+)\\s+(Sch-(Next|Idle))\\s+Pri=(\\d+)->(\\d+)",
             "groups": [

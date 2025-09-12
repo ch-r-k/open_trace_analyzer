@@ -27,6 +27,10 @@ class ConfigHandler
     OutputType getOutputFormat() const;
     InputType getInputFormat() const;
 
+    EventMessage* getEventMessageConfig() const;
+    StateMachine* getStateMachineConfig() const;
+    TaskSwitch* getTaskSwitchConfig() const;
+
    private:
     Json json;
     std::string input_file{};

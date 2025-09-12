@@ -26,6 +26,15 @@ struct TaskSwitch : public TxtConfig
     {
     }
 
+    bool operator==(const TaskSwitch& other) const
+    {
+        // Compare base TxtConfig first
+        if (!TxtConfig::operator==(other)) return false;
+
+        // Compare EventMessage-specific members
+        return pos_from == other.pos_from && pos_to == other.pos_to;
+    }
+
    private:
     std::uint8_t pos_from{0};
     std::uint8_t pos_to{0};

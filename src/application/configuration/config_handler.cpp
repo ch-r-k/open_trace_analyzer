@@ -44,6 +44,21 @@ OutputType ConfigHandler::getOutputFormat() const { return output_type; }
 
 InputType ConfigHandler::getInputFormat() const { return input_type; }
 
+EventMessage* ConfigHandler::getEventMessageConfig() const
+{
+    return event_message_config.get();
+}
+
+StateMachine* ConfigHandler::getStateMachineConfig() const
+{
+    return state_machine_config.get();
+}
+
+TaskSwitch* ConfigHandler::getTaskSwitchConfig() const
+{
+    return task_switch_config.get();
+}
+
 void ConfigHandler::loadInputType()
 {
     // Parse input type
@@ -102,7 +117,7 @@ void ConfigHandler::loadFilePaths()
 
 void ConfigHandler::loadTxtConfig()
 {
-    if (json.contains("txt_config"))
+    if ((json.contains("txt_config")) && (input_type == InputType::TXT))
     {
         const auto& txt_cfg = json["txt_config"];
 
@@ -114,6 +129,10 @@ void ConfigHandler::loadTxtConfig()
 
         event_message_config =
             std::make_unique<EventMessage>(txt_cfg["event_message"]);
+    }
+    else
+    {
+        throw ConfigurationException("Missing TXT config");
     }
 }
 

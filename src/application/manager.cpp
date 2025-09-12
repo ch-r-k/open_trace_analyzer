@@ -22,15 +22,12 @@ ApplicationManager::ApplicationManager(int argc, const char* argv[])
 {
 }
 
-ApplicationManager::~ApplicationManager()
-{
-    delete config_handler;
-    delete application;
-}
+ApplicationManager::~ApplicationManager() {}
 
 int ApplicationManager::execute(void)
 {
-    config_handler = new config::ConfigHandler{user_input.getConfigFileName()};
+    config_handler =
+        std::make_unique<config::ConfigHandler>(user_input.getConfigFileName());
 
     try
     {
@@ -43,7 +40,8 @@ int ApplicationManager::execute(void)
         return 1;
     }
 
-    application = new App{*object_import, *qspy_import, *seq_export};
+    application =
+        std::make_unique<App>(*object_import, *qspy_import, *seq_export);
 
     try
     {

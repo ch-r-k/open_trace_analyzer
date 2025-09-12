@@ -4,5 +4,5 @@
     "output_file": "src/test/input_files/output.puml",
     "output_file_type": "no_type",
     "task_object_file": "src/test/input_files/qspy_ao.json",
-    "txt": {}
+    "txt_config": {}
 }
