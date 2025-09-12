@@ -35,6 +35,9 @@ class TaskSwitch : public TxtConfig
         return pos_from == other.pos_from && pos_to == other.pos_to;
     }
 
+    std::uint8_t getFromPos() { return pos_from; };
+    std::uint8_t getToPos() { return pos_to; };
+
    private:
     std::uint8_t pos_from{0};
     std::uint8_t pos_to{0};

@@ -41,6 +41,10 @@ class EventMessage : public TxtConfig
                pos_text == other.pos_text;
     }
 
+    std::uint8_t getFromPos() { return pos_from; };
+    std::uint8_t getToPos() { return pos_to; };
+    std::uint8_t getTextPos() { return pos_text; };
+
    private:
     std::uint8_t pos_from{0};
     std::uint8_t pos_to{0};

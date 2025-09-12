@@ -29,6 +29,9 @@ class TxtConfig
         return regex == other.regex && pos_timestamp == other.pos_timestamp;
     }
 
+    std::string getRegex() { return regex; };
+    std::uint8_t getTimestampPos() { return pos_timestamp; };
+
    protected:
     std::string regex{};
     std::uint8_t pos_timestamp{0};

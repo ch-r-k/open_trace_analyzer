@@ -43,20 +43,23 @@ void ImportTrace::get(std::list<TaskSwitch>& task_switch_list)
     input_file.seekg(0, std::ios::beg);
 
     std::string line;
-    // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
-    std::regex re(R"(^\s*(\d+)\s+(Sch-(Next|Idle))\s+Pri=(\d+)->(\d+))");
+
+    std::regex reg_ex{task_switch_config.getRegex()};
     std::size_t line_number{0};
 
     while (std::getline(input_file, line))
     {
         std::smatch match;
-        if (std::regex_search(line, match, re))
+        if (std::regex_search(line, match, reg_ex))
         {
-            uint64_t timestamp = std::stoull(match[1].str());
-            std::uint32_t task_from_priority =
-                static_cast<std::uint32_t>(std::stoul(match[4].str()));
-            std::uint32_t task_to_priority =
-                static_cast<std::uint32_t>(std::stoul(match[5].str()));
+            uint64_t timestamp =
+                std::stoull(match[task_switch_config.getTimestampPos()].str());
+
+            std::uint32_t task_from_priority = static_cast<std::uint32_t>(
+                std::stoul(match[task_switch_config.getFromPos()].str()));
+
+            std::uint32_t task_to_priority = static_cast<std::uint32_t>(
+                std::stoul(match[task_switch_config.getToPos()].str()));
 
             const TaskObject& task_from = findTask(task_from_priority);
             const TaskObject& task_to = findTask(task_to_priority);
@@ -78,18 +81,20 @@ void ImportTrace::get(std::list<EventMessage>& event_message_list)
     std::size_t line_number{0};
 
     // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
-    std::regex re(
-        R"(^\s*(\d+).*AO-Post.*Sdr=([^,]+),Obj=([^,]+).*Sig=([^,>]+))");
+    std::regex reg_ex{event_message_config.getRegex()};
 
     while (std::getline(input_file, line))
     {
         std::smatch match;
-        if (std::regex_search(line, match, re))
+        if (std::regex_search(line, match, reg_ex))
         {
-            uint64_t timestamp = std::stoull(match[1].str());
-            std::string task_from_name = match[2].str();
-            std::string task_to_name = match[3].str();
-            std::string text = match[4].str();
+            uint64_t timestamp = std::stoull(
+                match[event_message_config.getTimestampPos()].str());
+            std::string task_from_name =
+                match[event_message_config.getFromPos()].str();
+            std::string task_to_name =
+                match[event_message_config.getToPos()].str();
+            std::string text = match[event_message_config.getTextPos()].str();
 
             const TaskObject& task_from = findTask(task_from_name);
             const TaskObject& task_to = findTask(task_to_name);
@@ -111,17 +116,19 @@ void ImportTrace::get(std::list<StateMachine>& state_list)
     std::size_t line_number{0};
     // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
 
-    std::regex re(
-        R"(^\s*(\d+)\s+===\>Tran\s+Obj=([^,]+),.*State=[^>]+->([^,]+))");
+    std::regex reg_ex{state_machine_config.getRegex()};
 
     while (std::getline(input_file, line))
     {
         std::smatch match;
-        if (std::regex_search(line, match, re))
+        if (std::regex_search(line, match, reg_ex))
         {
-            uint64_t timestamp = std::stoull(match[1].str());
-            std::string task_name = match[2].str();
-            std::string state_name = match[3].str();
+            uint64_t timestamp = std::stoull(
+                match[state_machine_config.getTimestampPos()].str());
+            std::string task_name =
+                match[state_machine_config.getTaskPos()].str();
+            std::string state_name =
+                match[state_machine_config.getStatePos()].str();
 
             const TaskObject& task = findTask(task_name);
 

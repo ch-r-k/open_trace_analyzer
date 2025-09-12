@@ -39,6 +39,9 @@ class StateMachine : public TxtConfig
         return pos_state == other.pos_state && pos_task == other.pos_task;
     }
 
+    std::uint8_t getTaskPos() { return pos_task; };
+    std::uint8_t getStatePos() { return pos_state; };
+
    private:
     std::uint8_t pos_task{0};
     std::uint8_t pos_state{0};
