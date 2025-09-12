@@ -1,0 +1,16 @@
+participant Idle
+participant blinky
+participant input_checker
+participant unknown
+unknown -> blinky : TIMEOUT_BLINKY_SIG
+deactivate Idle
+activate blinky
+hnote over blinky : on
+deactivate blinky
+activate Idle
+unknown -> blinky : TIMEOUT_BLINKY_SIG
+deactivate Idle
+activate blinky
+hnote over blinky : off
+deactivate blinky
+activate Idle
