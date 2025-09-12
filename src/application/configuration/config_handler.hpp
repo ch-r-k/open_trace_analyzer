@@ -3,15 +3,16 @@
 #include <string>
 #include <memory>
 #include "config_types.hpp"
-#include "txt_config/task_switch.hpp"
-#include "txt_config/event_message.hpp"
-#include "txt_config/state_machine.hpp"
+#include "application/import/trace_files/txt_import/import_trace.hpp"
+#include "application/import/trace_files/txt_import/txt_config/task_switch.hpp"
+#include "application/import/trace_files/txt_import/txt_config/event_message.hpp"
+#include "application/import/trace_files/txt_import/txt_config/state_machine.hpp"
 
 namespace application::config
 {
-using txt::EventMessage;
-using txt::StateMachine;
-using txt::TaskSwitch;
+using application::import::txt_config::EventMessage;
+using application::import::txt_config::StateMachine;
+using application::import::txt_config::TaskSwitch;
 using Json = nlohmann::json;
 
 class ConfigHandler

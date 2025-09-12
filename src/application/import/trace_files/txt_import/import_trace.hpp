@@ -6,7 +6,7 @@
 #include <list>
 #include <fstream>
 
-#include "i_import_trace.hpp"
+#include "../i_import_trace.hpp"
 #include "application/trace_entry/trace_entry.hpp"
 #include "application/trace_entry/task_switch/task_switch.hpp"
 #include "application/trace_entry/event_message/event_message.hpp"

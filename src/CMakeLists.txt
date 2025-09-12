@@ -12,7 +12,7 @@ set(SOURCE
     application/trace_entry/trace_entry.cpp
 
     application/import/task_objects/import_object.cpp
-    application/import/trace_files/import_trace.cpp
+    application/import/trace_files/txt_import/import_trace.cpp
 
     application/export/sequence_diagram/puml/export_puml.cpp
     application/export/sequence_diagram/puml/export_puml_timing.cpp
