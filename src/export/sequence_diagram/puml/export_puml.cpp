@@ -1,10 +1,12 @@
 #include "export_puml.hpp"
 
-namespace application::export_data::seq_diagram
+namespace export_data::seq_diagram
 {
+using application::task_types::TaskObject;
+
 Puml::Puml(const std::string& filename) : output_file(filename) {}
 
-void Puml::addParticipant(std::list<task_types::TaskObject> task_objects)
+void Puml::addParticipant(std::list<TaskObject> task_objects)
 {
     for (const auto& task : task_objects)
     {
@@ -49,4 +51,4 @@ void Puml::addTimestamp(std::uint64_t timestamp)
     // empty
 }
 
-}  // namespace application::export_data::seq_diagram
+}  // namespace export_data::seq_diagram

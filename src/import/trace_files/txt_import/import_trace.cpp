@@ -9,7 +9,7 @@
 #include "application/trace_entry/event_message/event_message.hpp"
 #include "import_trace.hpp"
 
-namespace application::import
+namespace import
 {
 ImportTrace::ImportTrace(const std::string& filename,
                          const EventMessageConfig event_message_config,
@@ -188,4 +188,4 @@ const TaskObject& ImportTrace::findTask(const std::uint32_t& priority) const
 
     throw std::runtime_error("TaskObject not found for priority: ");
 }
-}  // namespace application::import
+}  // namespace import

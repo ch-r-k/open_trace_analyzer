@@ -3,8 +3,8 @@
 #include <nlohmann/json.hpp>
 #include "import_object.hpp"
 
-using application::import::ImportObject;
 using application::task_types::TaskObject;
+using import::ImportObject;
 
 class ImportObjectFileTest : public ::testing::Test
 {
@@ -57,6 +57,5 @@ TEST_F(ImportObjectFileTest, ThrowsOnMalformedJson)
 
 TEST(ImportObjectTest, ThrowsIfFileDoesNotExist)
 {
-    EXPECT_THROW(application::import::ImportObject("nonexistent.json"),
-                 std::runtime_error);
+    EXPECT_THROW(import::ImportObject("nonexistent.json"), std::runtime_error);
 }

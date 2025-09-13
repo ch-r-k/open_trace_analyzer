@@ -5,7 +5,7 @@
 #include "i_import_object.hpp"
 //#include "3d_party/json/include/nlohmann/json.hpp"
 
-namespace application::import
+namespace import
 {
 using application::task_types::TaskObject;
 
@@ -21,4 +21,4 @@ class ImportObject : public IImportObject
    private:
     std::ifstream input_file;
 };
-}  // namespace application::import
+}  // namespace import

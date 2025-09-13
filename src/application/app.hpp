@@ -8,13 +8,13 @@
 #include "application/trace_entry/task_switch/task_switch.hpp"
 #include "application/trace_entry/trace_entry.hpp"
 
-namespace application::import
+namespace import
 {
 class IImportObject;
 class IImportTrace;
-}  // namespace application::import
+}  // namespace import
 
-namespace application::export_data::seq_diagram
+namespace export_data::seq_diagram
 {
 class ISeqDiagram;
 }

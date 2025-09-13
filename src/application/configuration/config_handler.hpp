@@ -10,9 +10,9 @@
 
 namespace application::config
 {
-using application::import::txt_config::EventMessage;
-using application::import::txt_config::StateMachine;
-using application::import::txt_config::TaskSwitch;
+using import::txt_config::EventMessage;
+using import::txt_config::StateMachine;
+using import::txt_config::TaskSwitch;
 using Json = nlohmann::json;
 
 class ConfigHandler

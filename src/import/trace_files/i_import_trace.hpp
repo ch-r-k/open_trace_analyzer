@@ -10,13 +10,13 @@
 #include "application/trace_entry/event_message/event_message.hpp"
 #include "application/trace_entry/state_machine/state_machine.hpp"
 
-namespace application::import
+namespace import
 {
-using task_types::TaskObject;
-using trace_types::EventMessage;
-using trace_types::StateMachine;
-using trace_types::TaskSwitch;
-using trace_types::TraceEntry;
+using application::task_types::TaskObject;
+using application::trace_types::EventMessage;
+using application::trace_types::StateMachine;
+using application::trace_types::TaskSwitch;
+using application::trace_types::TraceEntry;
 
 class IImportTrace
 {
@@ -29,4 +29,4 @@ class IImportTrace
     virtual void get(std::list<EventMessage>& lst) = 0;
     virtual void get(std::list<StateMachine>& lst) = 0;
 };
-}  // namespace application::import
+}  // namespace import

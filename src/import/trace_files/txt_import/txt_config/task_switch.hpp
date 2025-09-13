@@ -5,7 +5,7 @@
 #include <nlohmann/json.hpp>
 #include "txt_config.hpp"
 
-namespace application::import::txt_config
+namespace import::txt_config
 {
 using Json = nlohmann::json;
 
@@ -43,4 +43,4 @@ class TaskSwitch : public TxtConfig
     std::uint8_t pos_to{0};
 };
 
-}  // namespace application::import::txt_config
+}  // namespace import::txt_config

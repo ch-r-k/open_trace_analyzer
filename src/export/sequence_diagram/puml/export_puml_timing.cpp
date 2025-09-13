@@ -1,10 +1,13 @@
 #include "export_puml_timing.hpp"
+#include "application/task_object/task_object.hpp"
 
-namespace application::export_data::seq_diagram
+namespace export_data::seq_diagram
 {
+using application::task_types::TaskObject;
+
 PumlTiming::PumlTiming(const std::string& filename) : output_file(filename) {}
 
-void PumlTiming::addParticipant(std::list<task_types::TaskObject> task_objects)
+void PumlTiming::addParticipant(std::list<TaskObject> task_objects)
 {
     for (const auto& task : task_objects)
     {
@@ -61,4 +64,4 @@ void PumlTiming::addTimestamp(std::uint64_t timestamp)
                 << "\n";
 }
 
-}  // namespace application::export_data::seq_diagram
+}  // namespace export_data::seq_diagram

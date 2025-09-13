@@ -5,7 +5,7 @@
 #include <nlohmann/json.hpp>
 #include "txt_config.hpp"
 
-namespace application::import::txt_config
+namespace import::txt_config
 {
 using Json = nlohmann::json;
 
@@ -47,4 +47,4 @@ class StateMachine : public TxtConfig
     std::uint8_t pos_state{0};
 };
 
-}  // namespace application::import::txt_config
+}  // namespace import::txt_config

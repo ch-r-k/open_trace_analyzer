@@ -4,9 +4,6 @@
 #include "application/user_control/user_input_handler.hpp"
 #include "application/configuration/config_handler.hpp"
 
-namespace application
-{
-class App;
 namespace import
 {
 class ImportObject;
@@ -20,16 +17,19 @@ class PumlTiming;
 class ISeqDiagram;
 }  // namespace export_data::seq_diagram
 
+namespace application
+{
+class App;
 }  // namespace application
+
 namespace manager
 {
-
 using application::App;
 using application::config::ConfigHandler;
-using application::export_data::seq_diagram::ISeqDiagram;
-using application::import::ImportObject;
-using application::import::ImportTrace;
 using application::user_control::UserInputHandler;
+using export_data::seq_diagram::ISeqDiagram;
+using import::ImportObject;
+using import::ImportTrace;
 
 class ApplicationManager
 {

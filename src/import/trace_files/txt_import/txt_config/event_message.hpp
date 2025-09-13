@@ -5,7 +5,7 @@
 #include <nlohmann/json.hpp>
 #include "txt_config.hpp"
 
-namespace application::import::txt_config
+namespace import::txt_config
 {
 using Json = nlohmann::json;
 
@@ -51,4 +51,4 @@ class EventMessage : public TxtConfig
     std::uint8_t pos_text{0};
 };
 
-}  // namespace application::import::txt_config
+}  // namespace import::txt_config

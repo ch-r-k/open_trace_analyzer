@@ -4,7 +4,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-namespace application::import::txt_config
+namespace import::txt_config
 {
 using Json = nlohmann::json;
 
@@ -51,4 +51,4 @@ class TxtConfig
     }
 };
 
-}  // namespace application::import::txt_config
+}  // namespace import::txt_config

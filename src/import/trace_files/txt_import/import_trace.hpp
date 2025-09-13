@@ -16,13 +16,13 @@
 #include "txt_config/task_switch.hpp"
 #include "txt_config/event_message.hpp"
 
-namespace application::import
+namespace import
 {
-using task_types::TaskObject;
-using trace_types::EventMessage;
-using trace_types::StateMachine;
-using trace_types::TaskSwitch;
-using trace_types::TraceEntry;
+using application::task_types::TaskObject;
+using application::trace_types::EventMessage;
+using application::trace_types::StateMachine;
+using application::trace_types::TaskSwitch;
+using application::trace_types::TraceEntry;
 
 using StateMachineConfig = txt_config::StateMachine;
 using TaskSwitchConfig = txt_config::TaskSwitch;
@@ -60,4 +60,4 @@ class ImportTrace : public IImportTrace
     StateMachineConfig state_machine_config;
     TaskSwitchConfig task_switch_config;
 };
-}  // namespace application::import
+}  // namespace import

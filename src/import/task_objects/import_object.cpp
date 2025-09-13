@@ -9,7 +9,7 @@
 using Json = nlohmann::json;
 using application::task_types::TaskObject;
 
-namespace application::import
+namespace import
 {
 ImportObject::ImportObject(const std::string& filename) : input_file(filename)
 {
@@ -37,4 +37,4 @@ void ImportObject::getTaskObject(std::list<TaskObject>& lst)
     }
 }
 
-}  // namespace application::import
+}  // namespace import

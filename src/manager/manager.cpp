@@ -14,8 +14,8 @@ namespace manager
 {
 using application::config::InputType;
 using application::config::OutputType;
-using application::export_data::seq_diagram::Puml;
-using application::export_data::seq_diagram::PumlTiming;
+using export_data::seq_diagram::Puml;
+using export_data::seq_diagram::PumlTiming;
 
 ApplicationManager::ApplicationManager(int argc, const char* argv[])
     : user_input{argc, argv}
