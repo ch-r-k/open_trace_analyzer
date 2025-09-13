@@ -1,7 +1,7 @@
 #include "trace_entry.hpp"
 #include <bits/c++config.h>
 
-namespace application::trace_types
+namespace types::trace
 {
 TraceEntry::TraceEntry(std::size_t line_number, std::uint64_t timestamp,
                        TraceType type)
@@ -18,4 +18,4 @@ std::uint64_t TraceEntry::getTimestamp() { return timestamp; }
 
 TraceEntry::TraceType TraceEntry::getType() const { return type; }
 
-}  // namespace application::trace_types
+}  // namespace types::trace

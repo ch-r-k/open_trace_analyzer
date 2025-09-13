@@ -2,7 +2,7 @@
 
 namespace export_data::seq_diagram
 {
-using application::task_types::TaskObject;
+using types::task::TaskObject;
 
 Puml::Puml(const std::string& filename) : output_file(filename) {}
 

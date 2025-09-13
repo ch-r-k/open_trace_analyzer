@@ -2,9 +2,9 @@
 #include <cstdint>
 #include <iostream>
 #include "event_message.hpp"
-#include "application/trace_entry/trace_entry.hpp"
+#include "../trace_entry.hpp"
 
-namespace application::trace_types
+namespace types::trace
 {
 EventMessage::EventMessage(const size_t line_number,       //
                            const std::uint64_t timestamp,  //
@@ -31,4 +31,4 @@ std::ostream& operator<<(std::ostream& os, const EventMessage& p)
     return os;
 }
 
-}  // namespace application::trace_types
+}  // namespace types::trace

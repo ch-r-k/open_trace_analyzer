@@ -3,8 +3,8 @@
 #include <nlohmann/json.hpp>
 #include "import_object.hpp"
 
-using application::task_types::TaskObject;
 using import::ImportObject;
+using types::task::TaskObject;
 
 class ImportObjectFileTest : public ::testing::Test
 {

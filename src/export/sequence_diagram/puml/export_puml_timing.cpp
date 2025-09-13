@@ -1,9 +1,9 @@
 #include "export_puml_timing.hpp"
-#include "application/task_object/task_object.hpp"
+#include "types/task_object/task_object.hpp"
 
 namespace export_data::seq_diagram
 {
-using application::task_types::TaskObject;
+using types::task::TaskObject;
 
 PumlTiming::PumlTiming(const std::string& filename) : output_file(filename) {}
 

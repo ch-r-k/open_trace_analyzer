@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-namespace application::task_types
+namespace types::task
 {
 TaskObject::TaskObject(std::uint32_t priority, std::string id, std::string name)
     : priority{priority}, id{id}, name{name}
@@ -20,4 +20,4 @@ std::ostream& operator<<(std::ostream& os, const TaskObject& p)
     return os;
 }
 
-}  // namespace application::task_types
+}  // namespace types::task

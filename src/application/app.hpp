@@ -2,11 +2,11 @@
 
 #include <cstdint>
 #include <list>
-#include "application/task_object/task_object.hpp"
-#include "application/trace_entry/event_message/event_message.hpp"
-#include "application/trace_entry/state_machine/state_machine.hpp"
-#include "application/trace_entry/task_switch/task_switch.hpp"
-#include "application/trace_entry/trace_entry.hpp"
+#include "types/task_object/task_object.hpp"
+#include "types/trace_entry/event_message/event_message.hpp"
+#include "types/trace_entry/state_machine/state_machine.hpp"
+#include "types/trace_entry/task_switch/task_switch.hpp"
+#include "types/trace_entry/trace_entry.hpp"
 
 namespace import
 {
@@ -25,11 +25,11 @@ using export_data::seq_diagram::ISeqDiagram;
 using import::IImportObject;
 using import::IImportTrace;
 
-using task_types::TaskObject;
-using trace_types::EventMessage;
-using trace_types::StateMachine;
-using trace_types::TaskSwitch;
-using trace_types::TraceEntry;
+using types::task::TaskObject;
+using types::trace::EventMessage;
+using types::trace::StateMachine;
+using types::trace::TaskSwitch;
+using types::trace::TraceEntry;
 
 class App
 {

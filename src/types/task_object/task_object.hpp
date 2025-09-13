@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace application::task_types
+namespace types::task
 {
 class TaskObject
 {
@@ -23,4 +23,4 @@ class TaskObject
     std::string name;
 };
 
-}  // namespace application::task_types
+}  // namespace types::task

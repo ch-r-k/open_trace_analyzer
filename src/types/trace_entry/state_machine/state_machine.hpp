@@ -4,11 +4,11 @@
 #include <cstdint>
 #include <string>
 #include "../trace_entry.hpp"
-#include "application/task_object/task_object.hpp"
+#include "types/task_object/task_object.hpp"
 
-namespace application::trace_types
+namespace types::trace
 {
-using task_types::TaskObject;
+using types::task::TaskObject;
 
 class StateMachine : public TraceEntry
 {
@@ -28,4 +28,4 @@ class StateMachine : public TraceEntry
     std::string state_name;
 };
 
-}  // namespace application::trace_types
+}  // namespace types::trace

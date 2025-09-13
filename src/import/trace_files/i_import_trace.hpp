@@ -5,18 +5,19 @@
 #include <list>
 
 #include "import/task_objects/i_import_object.hpp"
-#include "application/trace_entry/trace_entry.hpp"
-#include "application/trace_entry/task_switch/task_switch.hpp"
-#include "application/trace_entry/event_message/event_message.hpp"
-#include "application/trace_entry/state_machine/state_machine.hpp"
+#include "types/trace_entry/trace_entry.hpp"
+#include "types/trace_entry/task_switch/task_switch.hpp"
+#include "types/trace_entry/event_message/event_message.hpp"
+#include "types/trace_entry/state_machine/state_machine.hpp"
+#include "types/task_object/task_object.hpp"
 
 namespace import
 {
-using application::task_types::TaskObject;
-using application::trace_types::EventMessage;
-using application::trace_types::StateMachine;
-using application::trace_types::TaskSwitch;
-using application::trace_types::TraceEntry;
+using types::task::TaskObject;
+using types::trace::EventMessage;
+using types::trace::StateMachine;
+using types::trace::TaskSwitch;
+using types::trace::TraceEntry;
 
 class IImportTrace
 {

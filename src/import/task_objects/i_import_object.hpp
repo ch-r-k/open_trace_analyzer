@@ -3,11 +3,11 @@
 #include <cstdint>
 #include <list>
 #include <string>
-#include "application/task_object/task_object.hpp"
+#include "types/task_object/task_object.hpp"
 
 namespace import
 {
-using application::task_types::TaskObject;
+using types::task::TaskObject;
 
 class IImportObject
 {

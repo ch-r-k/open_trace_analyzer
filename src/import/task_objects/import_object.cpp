@@ -3,11 +3,11 @@
 #include <nlohmann/json.hpp>
 #include <iostream>
 
-#include "application/task_object/task_object.hpp"
+#include "types/task_object/task_object.hpp"
 #include "import_object.hpp"
 
 using Json = nlohmann::json;
-using application::task_types::TaskObject;
+using types::task::TaskObject;
 
 namespace import
 {

@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-using application::task_types::TaskObject;
+using types::task::TaskObject;
 
 // Define a parameter struct
 struct TaskParams

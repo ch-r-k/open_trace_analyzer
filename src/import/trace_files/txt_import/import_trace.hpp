@@ -7,22 +7,22 @@
 #include <fstream>
 
 #include "../i_import_trace.hpp"
-#include "application/trace_entry/trace_entry.hpp"
-#include "application/trace_entry/task_switch/task_switch.hpp"
-#include "application/trace_entry/event_message/event_message.hpp"
-#include "application/trace_entry/state_machine/state_machine.hpp"
-#include "application/task_object/task_object.hpp"
+#include "types/trace_entry/trace_entry.hpp"
+#include "types/trace_entry/task_switch/task_switch.hpp"
+#include "types/trace_entry/event_message/event_message.hpp"
+#include "types/trace_entry/state_machine/state_machine.hpp"
+#include "types/task_object/task_object.hpp"
 #include "txt_config/state_machine.hpp"
 #include "txt_config/task_switch.hpp"
 #include "txt_config/event_message.hpp"
 
 namespace import
 {
-using application::task_types::TaskObject;
-using application::trace_types::EventMessage;
-using application::trace_types::StateMachine;
-using application::trace_types::TaskSwitch;
-using application::trace_types::TraceEntry;
+using types::task::TaskObject;
+using types::trace::EventMessage;
+using types::trace::StateMachine;
+using types::trace::TaskSwitch;
+using types::trace::TraceEntry;
 
 using StateMachineConfig = txt_config::StateMachine;
 using TaskSwitchConfig = txt_config::TaskSwitch;

@@ -4,12 +4,12 @@
 #include <list>
 #include <string>
 #include <fstream>
-#include "application/task_object/task_object.hpp"
+#include "types/task_object/task_object.hpp"
 #include "../i_export_sequence.hpp"
 
 namespace export_data::seq_diagram
 {
-using application::task_types::TaskObject;
+using types::task::TaskObject;
 class PumlTiming : public ISeqDiagram
 {
    public:

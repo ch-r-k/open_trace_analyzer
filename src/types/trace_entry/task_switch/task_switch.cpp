@@ -2,9 +2,9 @@
 #include <bits/c++config.h>
 #include <cstdint>
 #include <iostream>
-#include "application/trace_entry/trace_entry.hpp"
+#include "types/trace_entry/trace_entry.hpp"
 
-namespace application::trace_types
+namespace types::trace
 {
 TaskSwitch::TaskSwitch(const std::size_t line_number,  //
                        const std::uint64_t timestamp,  //
@@ -27,4 +27,4 @@ std::ostream& operator<<(std::ostream& os, const TaskSwitch& p)
     return os;
 }
 
-}  // namespace application::trace_types
+}  // namespace types::trace

@@ -2,7 +2,7 @@
 
 #include <bits/c++config.h>
 #include <cstdint>
-namespace application::trace_types
+namespace types::trace
 {
 class TraceEntry
 {
@@ -30,4 +30,4 @@ class TraceEntry
     TraceType type;
 };
 
-}  // namespace application::trace_types
+}  // namespace types::trace

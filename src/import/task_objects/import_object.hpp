@@ -7,7 +7,7 @@
 
 namespace import
 {
-using application::task_types::TaskObject;
+using types::task::TaskObject;
 
 class ImportObject : public IImportObject
 {

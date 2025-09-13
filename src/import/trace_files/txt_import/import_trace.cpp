@@ -6,7 +6,7 @@
 #include <iostream>
 #include <regex>
 
-#include "application/trace_entry/event_message/event_message.hpp"
+#include "types/trace_entry/event_message/event_message.hpp"
 #include "import_trace.hpp"
 
 namespace import
