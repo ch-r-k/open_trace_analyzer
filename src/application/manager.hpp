@@ -20,9 +20,16 @@ class PumlTiming;
 class ISeqDiagram;
 }  // namespace export_data::seq_diagram
 
-using export_data::seq_diagram::ISeqDiagram;
-using import::ImportObject;
-using import::ImportTrace;
+}  // namespace application
+namespace manager
+{
+
+using application::App;
+using application::config::ConfigHandler;
+using application::export_data::seq_diagram::ISeqDiagram;
+using application::import::ImportObject;
+using application::import::ImportTrace;
+using application::user_control::UserInputHandler;
 
 class ApplicationManager
 {
@@ -33,8 +40,8 @@ class ApplicationManager
 
    private:
     void build(void);
-    user_control::UserInputHandler user_input;
-    std::unique_ptr<config::ConfigHandler> config_handler;
+    UserInputHandler user_input;
+    std::unique_ptr<ConfigHandler> config_handler;
 
     std::unique_ptr<ImportObject> object_import;
     std::unique_ptr<ImportTrace> qspy_import;
@@ -42,4 +49,4 @@ class ApplicationManager
 
     std::unique_ptr<App> application;
 };
-}  // namespace application
+}  // namespace manager

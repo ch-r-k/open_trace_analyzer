@@ -1,7 +1,7 @@
 #include <iostream>
 #include "application/manager.hpp"
 
-using application::ApplicationManager;
+using manager::ApplicationManager;
 
 int main(int argc, const char* argv[])
 {

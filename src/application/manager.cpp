@@ -10,10 +10,12 @@
 #include "application/export/sequence_diagram/puml/export_puml.hpp"
 #include "application/export/sequence_diagram/puml/export_puml_timing.hpp"
 
-namespace application
+namespace manager
 {
-using export_data::seq_diagram::Puml;
-using export_data::seq_diagram::PumlTiming;
+using application::config::InputType;
+using application::config::OutputType;
+using application::export_data::seq_diagram::Puml;
+using application::export_data::seq_diagram::PumlTiming;
 
 ApplicationManager::ApplicationManager(int argc, const char* argv[])
     : user_input{argc, argv}
@@ -26,7 +28,7 @@ ApplicationManager::~ApplicationManager() {}
 int ApplicationManager::execute(void)
 {
     config_handler =
-        std::make_unique<config::ConfigHandler>(user_input.getConfigFileName());
+        std::make_unique<ConfigHandler>(user_input.getConfigFileName());
 
     try
     {
@@ -80,7 +82,7 @@ void ApplicationManager::build(void)
 {
     switch (config_handler->getInputFormat())
     {
-        case config::InputType::TXT:
+        case InputType::TXT:
         {
             object_import = std::make_unique<ImportObject>(
                 config_handler->getTaskObjectFileName());
@@ -93,7 +95,7 @@ void ApplicationManager::build(void)
 
             break;
         }
-        case config::InputType::BIN:
+        case InputType::BIN:
         {
             throw std::runtime_error("not implemented");
         }
@@ -101,12 +103,12 @@ void ApplicationManager::build(void)
 
     switch (config_handler->getOutputFormat())
     {
-        case config::OutputType::PUML_SEQ:
+        case OutputType::PUML_SEQ:
         {
             seq_export = std::make_unique<Puml>(user_input.getOutputFileName());
             break;
         }
-        case config::OutputType::PUML_TIMING:
+        case OutputType::PUML_TIMING:
         {
             seq_export =
                 std::make_unique<PumlTiming>(user_input.getOutputFileName());
@@ -114,4 +116,4 @@ void ApplicationManager::build(void)
         }
     }
 }
-}  // namespace application
+}  // namespace manager

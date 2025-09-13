@@ -2,7 +2,7 @@
 #include "application/manager.hpp"
 #include <stdexcept>
 
-using application::ApplicationManager;
+using manager::ApplicationManager;
 
 // A simple test fixture (optional, useful if you want setup/teardown)
 class SystemTest : public ::testing::Test
