@@ -3,10 +3,10 @@
 #include <string>
 #include <memory>
 #include "config_types.hpp"
-#include "application/import/trace_files/txt_import/import_trace.hpp"
-#include "application/import/trace_files/txt_import/txt_config/task_switch.hpp"
-#include "application/import/trace_files/txt_import/txt_config/event_message.hpp"
-#include "application/import/trace_files/txt_import/txt_config/state_machine.hpp"
+#include "import/trace_files/txt_import/import_trace.hpp"
+#include "import/trace_files/txt_import/txt_config/task_switch.hpp"
+#include "import/trace_files/txt_import/txt_config/event_message.hpp"
+#include "import/trace_files/txt_import/txt_config/state_machine.hpp"
 
 namespace application::config
 {

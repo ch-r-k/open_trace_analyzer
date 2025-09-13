@@ -1,8 +1,8 @@
 #include "app.hpp"
 #include <iostream>
-#include "application/import/task_objects/i_import_object.hpp"
-#include "application/import/trace_files/i_import_trace.hpp"
-#include "application/export/sequence_diagram/i_export_sequence.hpp"
+#include "import/task_objects/i_import_object.hpp"
+#include "import/trace_files/i_import_trace.hpp"
+#include "export/sequence_diagram/i_export_sequence.hpp"
 
 namespace application
 {
@@ -49,9 +49,11 @@ void App::exportData(void)
 {
     seq_export.addParticipant(task_objects);
 
-    trace_entries.sort([](const TraceEntry* a, const TraceEntry* b) {
-        return *a < *b;  // dereference to call operator<
-    });
+    trace_entries.sort(
+        [](const TraceEntry* a, const TraceEntry* b)
+        {
+            return *a < *b;  // dereference to call operator<
+        });
 
     for (const auto& element : trace_entries)
     {

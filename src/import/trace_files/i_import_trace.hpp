@@ -4,7 +4,7 @@
 #include <string>
 #include <list>
 
-#include "application/import/task_objects/i_import_object.hpp"
+#include "import/task_objects/i_import_object.hpp"
 #include "application/trace_entry/trace_entry.hpp"
 #include "application/trace_entry/task_switch/task_switch.hpp"
 #include "application/trace_entry/event_message/event_message.hpp"

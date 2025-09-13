@@ -76,8 +76,8 @@ add_subdirectory(src EXCLUDE_FROM_ALL)
 set(TEST_SRCS
     src/test/sys_test.cpp
     src/application/task_object/test.cpp
-    src/application/import/task_objects/test.cpp
-    src/application/import/trace_files/txt_import/import_trace.cpp
+    src/import/task_objects/test.cpp
+    src/import/trace_files/txt_import/import_trace.cpp
     src/application/configuration/test/uint_test.cpp
     # add more test files here
 )

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "application/manager.hpp"
+#include "manager/manager.hpp"
 #include <stdexcept>
 
 using manager::ApplicationManager;

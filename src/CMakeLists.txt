@@ -1,5 +1,6 @@
 set(SOURCE
-    application/manager.cpp
+    manager/manager.cpp
+
     application/app.cpp
     application/user_control/command_line_arg.cpp
     application/user_control/user_input_handler.cpp
@@ -11,11 +12,11 @@ set(SOURCE
     application/trace_entry/task_switch/task_switch.cpp
     application/trace_entry/trace_entry.cpp
 
-    application/import/task_objects/import_object.cpp
-    application/import/trace_files/txt_import/import_trace.cpp
+    import/task_objects/import_object.cpp
+    import/trace_files/txt_import/import_trace.cpp
 
-    application/export/sequence_diagram/puml/export_puml.cpp
-    application/export/sequence_diagram/puml/export_puml_timing.cpp
+    export/sequence_diagram/puml/export_puml.cpp
+    export/sequence_diagram/puml/export_puml_timing.cpp
 )
 
 target_sources(${PROJECT}_lib PRIVATE ${SOURCE})

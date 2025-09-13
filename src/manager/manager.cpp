@@ -2,13 +2,13 @@
 #include <iostream>
 #include <stdexcept>
 #include "application/app.hpp"
-#include "application/export/sequence_diagram/puml/export_puml.hpp"
+#include "export/sequence_diagram/puml/export_puml.hpp"
 #include "application/configuration/config_handler.hpp"
 #include "application/configuration/config_types.hpp"
-#include "application/import/task_objects/import_object.hpp"
-#include "application/import/trace_files/txt_import/import_trace.hpp"
-#include "application/export/sequence_diagram/puml/export_puml.hpp"
-#include "application/export/sequence_diagram/puml/export_puml_timing.hpp"
+#include "import/task_objects/import_object.hpp"
+#include "import/trace_files/txt_import/import_trace.hpp"
+#include "export/sequence_diagram/puml/export_puml.hpp"
+#include "export/sequence_diagram/puml/export_puml_timing.hpp"
 
 namespace manager
 {
