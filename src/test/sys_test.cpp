@@ -2,6 +2,9 @@
 #include "manager/manager.hpp"
 #include <stdexcept>
 
+namespace test
+{
+
 using manager::ApplicationManager;
 
 // A simple test fixture (optional, useful if you want setup/teardown)
@@ -48,3 +51,5 @@ TEST_F(SystemTest, generate_puml_sequence)
 
     app_manager.execute();
 }
+
+}  // namespace test

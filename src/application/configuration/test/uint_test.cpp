@@ -4,6 +4,9 @@
 #include <nlohmann/json.hpp>
 #include "../config_handler.hpp"
 
+namespace test
+{
+
 using namespace application::config;
 using Json = nlohmann::json;
 
@@ -84,3 +87,5 @@ TEST(ConfigHandlerTest, MissingOptionalFieldsDefaultsToEmptyStrings)
     EXPECT_EQ(handler.getOutputFileName(), "");
     EXPECT_EQ(handler.getTaskObjectFileName(), "");
 }
+
+}  // namespace test

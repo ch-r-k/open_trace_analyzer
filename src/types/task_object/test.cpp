@@ -3,6 +3,9 @@
 #include <cstdint>
 #include <string>
 
+namespace test
+{
+
 using types::task::TaskObject;
 
 // Define a parameter struct
@@ -36,3 +39,5 @@ INSTANTIATE_TEST_SUITE_P(TaskObjectTests, TaskObjectParamTest,
                              TaskParams{0, "ID", "ID"},
                              TaskParams{5, "T123", "MyTask"},
                              TaskParams{10, "JobX", "ProcessingJob"}));
+
+}  // namespace test

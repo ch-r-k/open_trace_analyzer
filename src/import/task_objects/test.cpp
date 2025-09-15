@@ -3,6 +3,9 @@
 #include <nlohmann/json.hpp>
 #include "import_object.hpp"
 
+namespace test
+{
+
 using import::ImportObject;
 using types::task::TaskObject;
 
@@ -17,7 +20,7 @@ class ImportObjectFileTest : public ::testing::Test
         out << R"([
             {"priority": 1, "id": "T1", "name": "Task One"},
             {"priority": 2, "id": "T2", "name": "Task Two"}
-        ])";
+            ])";
     }
 
     void TearDown() override { std::remove(test_filename.c_str()); }
@@ -59,3 +62,5 @@ TEST(ImportObjectTest, ThrowsIfFileDoesNotExist)
 {
     EXPECT_THROW(import::ImportObject("nonexistent.json"), std::runtime_error);
 }
+
+}  // namespace test
