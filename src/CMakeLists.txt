@@ -1,11 +1,11 @@
 set(SOURCE
     manager/manager.cpp
+    manager/user_control/command_line_arg.cpp
+    manager/user_control/user_input_handler.cpp
+    manager/configuration/config_handler.cpp
 
     application/app.cpp
-    application/user_control/command_line_arg.cpp
-    application/user_control/user_input_handler.cpp
-    application/configuration/config_handler.cpp
-
+    
     types/task_object/task_object.cpp
     types/trace_entry/event_message/event_message.cpp
     types/trace_entry/state_machine/state_machine.cpp

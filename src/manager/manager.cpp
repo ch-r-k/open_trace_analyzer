@@ -3,8 +3,8 @@
 #include <stdexcept>
 #include "application/app.hpp"
 #include "export/sequence_diagram/puml/export_puml.hpp"
-#include "application/configuration/config_handler.hpp"
-#include "application/configuration/config_types.hpp"
+#include "configuration/config_handler.hpp"
+#include "configuration/config_types.hpp"
 #include "import/task_objects/import_object.hpp"
 #include "import/trace_files/txt_import/import_trace.hpp"
 #include "export/sequence_diagram/puml/export_puml.hpp"

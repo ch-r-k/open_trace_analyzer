@@ -2,7 +2,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <nlohmann/json.hpp>
-#include "application/configuration/config_types.hpp"
+#include "config_types.hpp"
 
 namespace application::config
 {

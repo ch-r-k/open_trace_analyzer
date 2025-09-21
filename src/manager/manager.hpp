@@ -1,8 +1,8 @@
 #pragma once
 
-#include "application/user_control/command_line_arg.hpp"
-#include "application/user_control/user_input_handler.hpp"
-#include "application/configuration/config_handler.hpp"
+#include "user_control/command_line_arg.hpp"
+#include "user_control/user_input_handler.hpp"
+#include "configuration/config_handler.hpp"
 
 namespace import
 {
