@@ -1,0 +1,80 @@
+compilation_database_dir: build
+output_directory: diagrams
+
+diagrams:
+  application:
+    type: class
+    generate_packages: true
+    generate_method_arguments: abbreviated
+    exclude:
+      namespaces:
+        - std
+        - nlohmann
+        - types
+        - manager
+        - application::user_control
+        - application::config
+        - test
+        - testing
+    glob:
+      - src/**/*.cpp
+
+
+  package_diagram:
+    type: package
+    generate_packages: true
+    exclude:
+      namespaces:
+        - std
+        - nlohmann
+        - types
+        - test
+        - testing
+        - __cxxabiv1
+        - __gnu_debug
+        - __gnu_cxx
+        - proto2
+        - __gnu_cx
+        - __pstl
+    glob:
+      - src/**/*.cpp
+
+  application_types:
+    type: class
+    title: test
+    generate_packages: true
+    generate_method_arguments: abbreviated
+    include:
+      namespaces:
+        - application
+        - types
+    glob:
+      - src/**/*.cpp
+    comment_parser: clang
+
+  import:
+    type: class
+    title: test
+    generate_packages: true
+    generate_method_arguments: abbreviated
+    include:
+      namespaces:
+        - import
+        - types
+    glob:
+      - src/**/*.cpp
+    comment_parser: clang
+
+
+  export:
+    type: class
+    title: test
+    generate_packages: true
+    generate_method_arguments: abbreviated
+    include:
+      namespaces:
+        - export_data
+        - types
+    glob:
+      - src/**/*.cpp
+    comment_parser: clang
