@@ -5,7 +5,7 @@
 #include <vector>
 #include <optional>
 
-namespace application::user_control
+namespace manager::user_control
 {
 class CommandLineArgs
 {
@@ -24,4 +24,4 @@ class CommandLineArgs
     std::vector<std::string> args;
 };
 
-}  // namespace application::user_control
+}  // namespace manager::user_control

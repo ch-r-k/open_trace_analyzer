@@ -1,6 +1,6 @@
 #include "command_line_arg.hpp"
 
-namespace application::user_control
+namespace manager::user_control
 {
 CommandLineArgs::CommandLineArgs(int argc, const char* argv[])
 {
@@ -44,4 +44,4 @@ std::optional<std::string> CommandLineArgs::getOption(
     return std::nullopt;
 }
 
-}  // namespace application::user_control
+}  // namespace manager::user_control

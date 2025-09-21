@@ -4,7 +4,7 @@
 #include <nlohmann/json.hpp>
 #include "config_types.hpp"
 
-namespace application::config
+namespace manager::config
 {
 ConfigHandler::ConfigHandler(const std::string& filename)
 {
@@ -136,4 +136,4 @@ void ConfigHandler::loadTxtConfig()
     }
 }
 
-}  // namespace application::config
+}  // namespace manager::config

@@ -12,10 +12,10 @@
 
 namespace manager
 {
-using application::config::InputType;
-using application::config::OutputType;
 using export_data::seq_diagram::Puml;
 using export_data::seq_diagram::PumlTiming;
+using manager::config::InputType;
+using manager::config::OutputType;
 
 ApplicationManager::ApplicationManager(int argc, const char* argv[])
     : user_input{argc, argv}

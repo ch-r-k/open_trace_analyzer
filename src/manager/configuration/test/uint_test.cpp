@@ -7,7 +7,7 @@
 namespace test
 {
 
-using namespace application::config;
+using namespace manager::config;
 using Json = nlohmann::json;
 
 TEST(ConfigHandlerTest, ThrowsIfFileMissing)
@@ -40,8 +40,7 @@ TEST(ConfigHandlerTest, ThrowsOnInvalidOutputType)
 
 TEST(ConfigHandlerTest, LoadsValidConfigWithAllFields)
 {
-    std::string filename =
-        "src/application/configuration/test/valid_config.json";
+    std::string filename = "src/manager/configuration/test/valid_config.json";
 
     ConfigHandler handler(filename);
 
@@ -79,7 +78,7 @@ TEST(ConfigHandlerTest, LoadsValidConfigWithAllFields)
 TEST(ConfigHandlerTest, MissingOptionalFieldsDefaultsToEmptyStrings)
 {
     std::string filename =
-        "src/application/configuration/test/valid_config_defaults.json";
+        "src/manager/configuration/test/valid_config_defaults.json";
 
     ConfigHandler handler(filename);
 

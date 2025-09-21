@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace application::config
+namespace manager::config
 {
 enum class InputType
 {
@@ -27,4 +27,4 @@ class TextDecoder
     std::uint8_t pos_timestamp{0};
 };
 
-}  // namespace application::config
+}  // namespace manager::config

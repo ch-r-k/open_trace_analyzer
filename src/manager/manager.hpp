@@ -25,11 +25,11 @@ class App;
 namespace manager
 {
 using application::App;
-using application::config::ConfigHandler;
-using application::user_control::UserInputHandler;
 using export_data::seq_diagram::ISeqDiagram;
 using import::ImportObject;
 using import::ImportTrace;
+using manager::config::ConfigHandler;
+using manager::user_control::UserInputHandler;
 
 class ApplicationManager
 {

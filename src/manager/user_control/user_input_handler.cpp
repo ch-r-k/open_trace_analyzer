@@ -1,7 +1,7 @@
 #include "user_input_handler.hpp"
 #include <iostream>
 
-namespace application::user_control
+namespace manager::user_control
 {
 UserInputHandler::UserInputHandler(int argc, const char* argv[])
     : cmd_args{argc, argv}
@@ -111,4 +111,4 @@ std::string UserInputHandler::getConfigFileName() const
     return config_file_name;
 };
 
-}  // namespace application::user_control
+}  // namespace manager::user_control

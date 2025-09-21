@@ -8,7 +8,7 @@
 #include "import/trace_files/txt_import/txt_config/event_message.hpp"
 #include "import/trace_files/txt_import/txt_config/state_machine.hpp"
 
-namespace application::config
+namespace manager::config
 {
 using import::txt_config::EventMessage;
 using import::txt_config::StateMachine;
@@ -61,4 +61,4 @@ class ConfigurationException : public std::exception
     std::string message;
 };
 
-}  // namespace application::config
+}  // namespace manager::config

@@ -7,7 +7,7 @@
 
 #include "command_line_arg.hpp"
 
-namespace application::user_control
+namespace manager::user_control
 {
 class UserInputHandler
 {
@@ -49,4 +49,4 @@ class UserInputException : public std::exception
     std::string message;
 };
 
-}  // namespace application::user_control
+}  // namespace manager::user_control
