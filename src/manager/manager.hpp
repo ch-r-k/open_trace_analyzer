@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "user_control/command_line_arg.hpp"
 #include "user_control/user_input_handler.hpp"
 #include "configuration/config_handler.hpp"
@@ -40,6 +41,8 @@ class ApplicationManager
 
    private:
     void build(void);
+    void selectFiles(void);
+
     UserInputHandler user_input;
     std::unique_ptr<ConfigHandler> config_handler;
 
@@ -48,5 +51,9 @@ class ApplicationManager
     std::unique_ptr<ISeqDiagram> seq_export;
 
     std::unique_ptr<App> application;
+
+    std::string trace_file_name = {""};
+    std::string task_object_file_name = {""};
+    std::string output_file_name = {""};
 };
 }  // namespace manager

@@ -4,7 +4,17 @@ namespace export_data::seq_diagram
 {
 using types::task::TaskObject;
 
-Puml::Puml(const std::string& filename) : output_file(filename) {}
+Puml::Puml(const std::string& filename) : output_file(filename)
+{
+    output_file << "@startuml \n";
+}
+
+Puml::~Puml()
+{
+    output_file << "@enduml \n";
+    output_file.flush();
+    output_file.close();
+}
 
 void Puml::addParticipant(std::list<TaskObject> task_objects)
 {

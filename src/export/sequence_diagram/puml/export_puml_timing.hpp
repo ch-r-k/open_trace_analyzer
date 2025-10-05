@@ -14,7 +14,7 @@ class PumlTiming : public ISeqDiagram
 {
    public:
     PumlTiming(const std::string& filename);
-    ~PumlTiming() = default;
+    ~PumlTiming();
 
     void addParticipant(std::list<TaskObject> task_objects) override;
     void addMessage(std::string message, TaskObject from,

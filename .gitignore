@@ -39,6 +39,7 @@ build
 
 # generated
 *.puml
+src/test/output_files/*
 
 # setup
 jlink_ip.cmake

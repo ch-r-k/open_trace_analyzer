@@ -5,7 +5,17 @@ namespace export_data::seq_diagram
 {
 using types::task::TaskObject;
 
-PumlTiming::PumlTiming(const std::string& filename) : output_file(filename) {}
+PumlTiming::PumlTiming(const std::string& filename) : output_file(filename)
+{
+    output_file << "@startuml \n";
+}
+
+PumlTiming::~PumlTiming()
+{
+    output_file << "@enduml \n";
+    output_file.flush();
+    output_file.close();
+}
 
 void PumlTiming::addParticipant(std::list<TaskObject> task_objects)
 {

@@ -1,0 +1,28 @@
+@startuml 
+robust "Idle" as Idle_state
+binary "Idle" as Idle_active
+robust "blinky" as blinky_state
+binary "blinky" as blinky_active
+robust "input_checker" as input_checker_state
+binary "input_checker" as input_checker_active
+robust "unknown" as unknown_state
+binary "unknown" as unknown_active
+@0
+unknown_state -> blinky_state : TIMEOUT_BLINKY_SIG
+@1
+Idle_active is  low 
+blinky_active is  high 
+@4
+blinky_state is on
+@5
+blinky_active is  low 
+Idle_active is  high 
+@6
+Idle_active is  low 
+blinky_active is  high 
+@9
+blinky_state is off
+@10
+blinky_active is  low 
+Idle_active is  high 
+@enduml 

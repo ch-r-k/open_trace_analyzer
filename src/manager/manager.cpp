@@ -32,6 +32,17 @@ int ApplicationManager::execute(void)
 
     try
     {
+        selectFiles();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception caught at file selection: " << e.what()
+                  << std::endl;
+        return 1;
+    }
+
+    try
+    {
         build();
     }
     catch (const std::exception& e)
@@ -77,6 +88,27 @@ int ApplicationManager::execute(void)
 
     return 0;
 }
+void ApplicationManager::selectFiles(void)
+{
+    task_object_file_name = config_handler->getTaskObjectFileName();
+    trace_file_name = config_handler->getTraceFileName();
+    output_file_name = config_handler->getOutputFileName();
+
+    if (user_input.getTaskObjectFileName() != "")
+    {
+        task_object_file_name = user_input.getTaskObjectFileName();
+    }
+
+    if (user_input.getTraceFileName() != "")
+    {
+        trace_file_name = user_input.getTraceFileName();
+    }
+
+    if (user_input.getOutputFileName() != "")
+    {
+        output_file_name = user_input.getOutputFileName();
+    }
+}
 
 void ApplicationManager::build(void)
 {
@@ -84,11 +116,11 @@ void ApplicationManager::build(void)
     {
         case InputType::TXT:
         {
-            object_import = std::make_unique<ImportObject>(
-                config_handler->getTaskObjectFileName());
+            object_import =
+                std::make_unique<ImportObject>(task_object_file_name);
 
             qspy_import = std::make_unique<ImportTrace>(
-                config_handler->getTraceFileName(),
+                trace_file_name,  //
                 *config_handler->getEventMessageConfig(),
                 *config_handler->getStateMachineConfig(),
                 *config_handler->getTaskSwitchConfig());
@@ -105,13 +137,12 @@ void ApplicationManager::build(void)
     {
         case OutputType::PUML_SEQ:
         {
-            seq_export = std::make_unique<Puml>(user_input.getOutputFileName());
+            seq_export = std::make_unique<Puml>(output_file_name);
             break;
         }
         case OutputType::PUML_TIMING:
         {
-            seq_export =
-                std::make_unique<PumlTiming>(user_input.getOutputFileName());
+            seq_export = std::make_unique<PumlTiming>(output_file_name);
             break;
         }
     }

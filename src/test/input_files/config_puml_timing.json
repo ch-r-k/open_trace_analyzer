@@ -1,0 +1,84 @@
+{
+    "input_file": "src/test/input_files/qspy.txt",
+    "input_file_type": "txt",
+    "output_file": "src/test/output_files/output.puml",
+    "output_file_type": "puml_timing",
+    "task_object_file": "src/test/input_files/qspy_ao.json",
+    "txt_config": {
+        "task_switch": {
+            "regex": "^\\s*(\\d+)\\s+(Sch-(Next|Idle))\\s+Pri=(\\d+)->(\\d+)",
+            "groups": [
+                {
+                    "index": 1,
+                    "name": "timestamp",
+                    "description": "timestamp"
+                },
+                {
+                    "index": 2,
+                    "name": "schedule_status",
+                    "description": "Full schedule status, e.g., 'Sch-Next' or 'Sch-Idle'"
+                },
+                {
+                    "index": 3,
+                    "name": "status_type",
+                    "description": "The type of schedule status (Next or Idle)"
+                },
+                {
+                    "index": 4,
+                    "name": "task_from",
+                    "description": "Priority of task switched from"
+                },
+                {
+                    "index": 5,
+                    "name": "task_to",
+                    "description": "Priority of task switched to"
+                }
+            ]
+        },
+        "state_machine": {
+            "regex": "^\\s*(\\d+)\\s+===\\>Tran\\s+Obj=([^,]+),.*State=[^>]+->([^,]+)",
+            "groups": [
+                {
+                    "index": 1,
+                    "name": "timestamp",
+                    "description": "Timestamp"
+                },
+                {
+                    "index": 2,
+                    "name": "task",
+                    "description": "Task to switch state"
+                },
+                {
+                    "index": 3,
+                    "name": "state_name",
+                    "description": "State name of new state"
+                }
+            ]
+        },
+        "event_message": {
+            "regex": "^\\s*(\\d+).*AO-Post.*Sdr=([^,]+),Obj=([^,]+).*Sig=([^,>]+)",
+            "groups": [
+                {
+                    "index": 1,
+                    "name": "timestamp",
+                    "description": "timestamp"
+                },
+                {
+                    "index": 2,
+                    "name": "task_from",
+                    "description": "Task which sends the message"
+                },
+                {
+                    "index": 3,
+                    "name": "task_to",
+                    "description": "Task which receives the message"
+                },
+                {
+                    "index": 4,
+                    "name": "message_text",
+                    "description": "Message Name"
+                }
+            ]
+        }
+    }
+}

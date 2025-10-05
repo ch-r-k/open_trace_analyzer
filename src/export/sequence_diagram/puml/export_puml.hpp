@@ -13,7 +13,7 @@ class Puml : public ISeqDiagram
 {
    public:
     Puml(const std::string& filename);
-    ~Puml() = default;
+    ~Puml();
 
     void addParticipant(std::list<TaskObject> task_objects) override;
     void addMessage(std::string message, TaskObject from,

@@ -1,7 +1,7 @@
 {
     "input_file": "src/test/input_files/qspy.txt",
     "input_file_type": "txt",
-    "output_file": "src/test/input_files/output.puml",
+    "output_file": "src/test/output_files/output.puml",
     "output_file_type": "puml_sequence",
     "task_object_file": "src/test/input_files/qspy_ao.json",
     "txt_config": {
