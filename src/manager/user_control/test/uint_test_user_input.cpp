@@ -62,13 +62,13 @@ TEST_F(UserInputHandlerTest, HelpFlagPrintsHelpMessage)
 
     // Redirect std::cout to a stringstream
     std::stringstream buffer;
-    std::streambuf* oldCout = std::cout.rdbuf(buffer.rdbuf());
+    std::streambuf* old_cout = std::cout.rdbuf(buffer.rdbuf());
 
     // Run the handler
     UserInputHandler handler(argc, argv);
 
     // Restore std::cout
-    std::cout.rdbuf(oldCout);
+    std::cout.rdbuf(old_cout);
 
     // Check that the buffer contains the help message
     std::string output = buffer.str();
