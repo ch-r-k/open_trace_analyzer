@@ -79,6 +79,8 @@ set(TEST_SRCS
     src/import/task_objects/test.cpp
     src/import/trace_files/txt_import/import_trace.cpp
     src/manager/configuration/test/uint_test.cpp
+    src/manager/user_control/test/uint_test_user_input.cpp
+    src/manager/user_control/test/uint_test_command_line_arg.cpp
     # add more test files here
 )
 
