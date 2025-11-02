@@ -89,6 +89,10 @@ void ConfigHandler::loadOutputType()
     {
         output_type = OutputType::PUML_TIMING;
     }
+    else if (output_type_str == "open_trace_viewer")
+    {
+        output_type = OutputType::OPEN_TRACE_VIEWER;
+    }
     else
     {
         throw ConfigurationException("Invalid output_file_type: " +

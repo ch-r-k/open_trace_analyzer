@@ -9,9 +9,11 @@
 #include "import/trace_files/txt_import/import_trace.hpp"
 #include "export/sequence_diagram/puml/export_puml.hpp"
 #include "export/sequence_diagram/puml/export_puml_timing.hpp"
+#include "export/sequence_diagram/open_trace_viewer/open_trace_viewer.hpp"
 
 namespace manager
 {
+using export_data::seq_diagram::OpenTraceViewer;
 using export_data::seq_diagram::Puml;
 using export_data::seq_diagram::PumlTiming;
 using manager::config::InputType;
@@ -143,6 +145,11 @@ void ApplicationManager::build(void)
         case OutputType::PUML_TIMING:
         {
             seq_export = std::make_unique<PumlTiming>(output_file_name);
+            break;
+        }
+        case OutputType::OPEN_TRACE_VIEWER:
+        {
+            seq_export = std::make_unique<OpenTraceViewer>(output_file_name);
             break;
         }
     }

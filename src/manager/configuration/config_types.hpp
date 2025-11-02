@@ -14,7 +14,8 @@ enum class InputType
 enum class OutputType
 {
     PUML_SEQ = 0,
-    PUML_TIMING
+    PUML_TIMING,
+    OPEN_TRACE_VIEWER
 };
 
 class TextDecoder

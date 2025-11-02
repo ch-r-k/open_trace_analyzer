@@ -15,8 +15,10 @@ set(SOURCE
     import/task_objects/import_object.cpp
     import/trace_files/txt_import/import_trace.cpp
 
+
     export/sequence_diagram/puml/export_puml.cpp
     export/sequence_diagram/puml/export_puml_timing.cpp
+    export/sequence_diagram/open_trace_viewer/open_trace_viewer.cpp
 )
 
 target_sources(${PROJECT}_lib PRIVATE ${SOURCE})

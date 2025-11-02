@@ -102,7 +102,7 @@ class SystemTest : public ::testing::Test
 TEST_F(SystemTest, analyze_test_file)
 {
     // Only config is relevant in this test
-    config_file = "src/test/input_files/config_puml_sequence.json";
+    config_file = "src/test/input_files/config_open_trace_viewer.json";
 
     // You can leave input/output/expected empty if not needed
     input_file.clear();
@@ -139,6 +139,22 @@ TEST_F(SystemTest, generate_puml_timing)
     output_file = "src/test/output_files/puml_02.txt";
     expected_file = "src/test/expected_outputs/puml_02.txt";
     config_file = "src/test/input_files/config_puml_timing.json";
+
+    auto argv_vec = makeArgv();
+    int argc = static_cast<int>(argv_vec.size());
+
+    {
+        ApplicationManager app_manager{argc, argv_vec.data()};
+        app_manager.execute();
+    }
+}
+
+TEST_F(SystemTest, generate_open_trace_viewer)
+{
+    input_file = "src/test/input_files/qspy_01.txt";
+    output_file = "src/test/output_files/open_trace_viewer.json";
+    expected_file = "src/test/expected_outputs/open_trace_viewer.json";
+    config_file = "src/test/input_files/config_open_trace_viewer.json";
 
     auto argv_vec = makeArgv();
     int argc = static_cast<int>(argv_vec.size());
