@@ -32,8 +32,9 @@ class OpenTraceViewer : public ISeqDiagram
    private:
     std::ofstream output_file;
 
-    std::unordered_map<std::string, uint64_t> activeTasks{};
-    std::vector<Json> json_output{};
+    std::unordered_map<std::string, uint64_t> tasks{};
+    std::vector<Json> completed_tasks{};
+    std::vector<Json> messages{};
     std::uint64_t last_timestamp{0};
 };
 }  // namespace export_data::seq_diagram

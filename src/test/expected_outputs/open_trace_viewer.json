@@ -1,5 +1,13 @@
 {
-    "CompletedTasks": [
+    "Messages": [
+        {
+            "From": "unknown",
+            "Text": "TIMEOUT_BLINKY_SIG",
+            "Timestamp": 0,
+            "To": "blinky"
+        }
+    ],
+    "Tasks": [
         {
             "Finish": 5,
             "Start": 1,
