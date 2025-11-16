@@ -27,14 +27,18 @@ class OpenTraceViewer : public ISeqDiagram
     void addTimestamp(std::uint64_t timestamp) override;
 
     std::size_t getActiveTasks(void) const;
-    std::vector<Json>& getJson(void);
+    std::vector<Json>& getMessages();
+    const std::vector<std::vector<Json>>& getStates() const;
+    std::vector<Json>& getTasks(void);
 
    private:
     std::ofstream output_file;
 
-    std::unordered_map<std::string, uint64_t> tasks{};
-    std::vector<Json> completed_tasks{};
-    std::vector<Json> messages{};
+    std::unordered_map<std::string, uint64_t> activeTasks{};
+    std::unordered_map<std::string, std::size_t> taskIndexMap{};
+    std::vector<Json> json_tasks{};
+    std::vector<Json> json_messages{};
+    std::vector<std::vector<Json>> json_states{};
     std::uint64_t last_timestamp{0};
 };
 }  // namespace export_data::seq_diagram
