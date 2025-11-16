@@ -1,5 +1,5 @@
 {
-    "Messages": [
+    "messages": [
         {
             "From": "unknown",
             "Text": "TIMEOUT_BLINKY_SIG",
@@ -7,7 +7,24 @@
             "To": "blinky"
         }
     ],
-    "Tasks": [
+    "states": [
+        [],
+        [
+            {
+                "State": "on",
+                "Task": "blinky",
+                "time": 4
+            },
+            {
+                "State": "off",
+                "Task": "blinky",
+                "time": 9
+            }
+        ],
+        [],
+        []
+    ],
+    "tasks": [
         {
             "Finish": 5,
             "Start": 1,
