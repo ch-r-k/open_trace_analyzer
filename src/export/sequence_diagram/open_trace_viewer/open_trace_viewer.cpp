@@ -47,7 +47,7 @@ void OpenTraceViewer::addMessage(std::string message, TaskObject from,
     json_messages.push_back(entry);
 }
 
-void OpenTraceViewer::addNote(TaskObject task, std::string note)
+void OpenTraceViewer::addState(TaskObject task, std::string note)
 {
     auto it = taskIndexMap.find(task.getName());
     if (it == taskIndexMap.end())

@@ -33,7 +33,7 @@ void Puml::addMessage(std::string message, TaskObject from, TaskObject to)
                 << "\n";
 }
 
-void Puml::addNote(TaskObject task, std::string note)
+void Puml::addState(TaskObject task, std::string note)
 {
     output_file << "hnote over "   //
                 << task.getName()  //

@@ -21,7 +21,8 @@ class OpenTraceViewer : public ISeqDiagram
     void addParticipant(std::list<TaskObject> task_objects) override;
     void addMessage(std::string message, TaskObject from,
                     TaskObject to) override;
-    void addNote(TaskObject task, std::string note) override;
+    void addState(TaskObject task, std::string note) override;
+
     void activate(TaskObject task_object) override;
     void deactivate(TaskObject task_object) override;
     void addTimestamp(std::uint64_t timestamp) override;

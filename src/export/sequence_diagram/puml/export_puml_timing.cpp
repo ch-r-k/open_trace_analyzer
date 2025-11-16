@@ -44,7 +44,7 @@ void PumlTiming::addMessage(std::string message, TaskObject from, TaskObject to)
                 << "\n";
 }
 
-void PumlTiming::addNote(TaskObject task, std::string note)
+void PumlTiming::addState(TaskObject task, std::string note)
 {
     output_file << task.getName() << STATE_PREFIX  //
                 << " is "                          //

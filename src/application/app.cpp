@@ -70,8 +70,8 @@ void App::exportData(void)
         auto state_machine = dynamic_cast<StateMachine*>(element);
         if (state_machine)
         {
-            seq_export.addNote(state_machine->getTask(),
-                               state_machine->getState());
+            seq_export.addState(state_machine->getTask(),
+                                state_machine->getState());
         }
 
         auto event_message = dynamic_cast<EventMessage*>(element);

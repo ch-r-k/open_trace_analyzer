@@ -44,12 +44,12 @@ TEST_F(OpenTraceViewerTest, DeactivateNonexistentTaskDoesNothing)
     EXPECT_TRUE(viewer->getTasks().empty());
 }
 
-TEST_F(OpenTraceViewerTest, AddNoteCreatesStateEntry)
+TEST_F(OpenTraceViewerTest, AddStateCreatesStateEntry)
 {
     TaskObject task{1, "worker", "worker"};
 
     viewer->addTimestamp(123);
-    viewer->addNote(task, "Initialized");
+    viewer->addState(task, "Initialized");
 
     auto &states = viewer->getStates();
     ASSERT_EQ(states.size(), 1);  // one participant/state list
