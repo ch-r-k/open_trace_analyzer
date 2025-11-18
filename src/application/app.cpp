@@ -27,6 +27,7 @@ void App::importData(void)
     trace_import.get(event_messages);
     trace_import.get(state_machine);
     trace_import.get(task_switches);
+    trace_import.get(notes);
 }
 
 void App::combineTraces(void)
@@ -42,6 +43,10 @@ void App::combineTraces(void)
     for (auto& sm : state_machine)
     {
         trace_entries.push_back(&sm);
+    }
+    for (auto& nt : notes)
+    {
+        trace_entries.push_back(&nt);
     }
 }
 
@@ -80,6 +85,12 @@ void App::exportData(void)
             seq_export.addMessage(event_message->getText(),
                                   event_message->getFrom(),
                                   event_message->getTo());
+        }
+
+        auto note = dynamic_cast<Note*>(element);
+        if (note)
+        {
+            seq_export.addNote(note->getText());
         }
     }
 }

@@ -22,6 +22,7 @@ class OpenTraceViewer : public ISeqDiagram
     void addMessage(std::string message, TaskObject from,
                     TaskObject to) override;
     void addState(TaskObject task, std::string note) override;
+    void addNote(std::string note) override;
 
     void activate(TaskObject task_object) override;
     void deactivate(TaskObject task_object) override;
@@ -39,6 +40,7 @@ class OpenTraceViewer : public ISeqDiagram
     std::unordered_map<std::string, std::size_t> taskIndexMap{};
     std::vector<Json> json_tasks{};
     std::vector<Json> json_messages{};
+    std::vector<Json> json_note{};
     std::vector<std::vector<Json>> json_states{};
     std::uint64_t last_timestamp{0};
 };

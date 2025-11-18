@@ -76,6 +76,21 @@
                     "description": "Message Name"
                 }
             ]
+        },
+        "note": {
+            "regex": "^(\\d{10})\\s+(.*)$",
+            "groups": [
+                {
+                    "index": 1,
+                    "name": "timestamp",
+                    "description": "timestamp"
+                },
+                {
+                    "index": 2,
+                    "name": "text",
+                    "description": "Note Text"
+                }
+            ]
         }
     }
 }

@@ -19,6 +19,7 @@ class ISeqDiagram
     virtual void addMessage(std::string message, TaskObject from,
                             TaskObject to) = 0;
     virtual void addState(TaskObject task, std::string note) = 0;
+    virtual void addNote(std::string note) = 0;
     virtual void activate(TaskObject task_object) = 0;
     virtual void deactivate(TaskObject task_object) = 0;
     virtual void addTimestamp(std::uint64_t) = 0;

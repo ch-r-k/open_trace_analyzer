@@ -16,6 +16,7 @@ OpenTraceViewer::~OpenTraceViewer()
         output_json["tasks"] = json_tasks;
         output_json["states"] = json_states;
         output_json["messages"] = json_messages;
+        output_json["notes"] = json_note;
 
         // Pretty-print with indentation for readability
         output_file << output_json.dump(4);
@@ -62,6 +63,14 @@ void OpenTraceViewer::addState(TaskObject task, std::string note)
         {"Task", task.getName()}, {"time", last_timestamp}, {"State", note}};
 
     json_states[index].push_back(state_entry);
+}
+
+void OpenTraceViewer::addNote(std::string note)
+{
+    Json entry = {{"Timestamp", last_timestamp},  //
+                  {"Text", note}};
+
+    json_note.push_back(entry);
 }
 
 void OpenTraceViewer::activate(TaskObject task_object)

@@ -19,6 +19,7 @@ class Puml : public ISeqDiagram
     void addMessage(std::string message, TaskObject from,
                     TaskObject to) override;
     void addState(TaskObject task, std::string note) override;
+    void addNote(std::string note) override;
     void activate(TaskObject task_object) override;
     void deactivate(TaskObject task_object) override;
 

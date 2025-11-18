@@ -15,6 +15,7 @@
 #include "txt_config/state_machine.hpp"
 #include "txt_config/task_switch.hpp"
 #include "txt_config/event_message.hpp"
+#include "txt_config/note.hpp"
 
 namespace import
 {
@@ -27,6 +28,7 @@ using types::trace::TraceEntry;
 using StateMachineConfig = txt_config::StateMachine;
 using TaskSwitchConfig = txt_config::TaskSwitch;
 using EventMessageConfig = txt_config::EventMessage;
+using NoteConfig = txt_config::Note;
 
 class ImportTrace : public IImportTrace
 {
@@ -34,7 +36,8 @@ class ImportTrace : public IImportTrace
     ImportTrace(const std::string& filename,
                 const EventMessageConfig event_message_config,
                 const StateMachineConfig state_machine_config,
-                const TaskSwitchConfig task_switch_config);
+                const TaskSwitchConfig task_switch_config,
+                const NoteConfig note_config);
 
     ~ImportTrace() = default;
     enum class FileConfig : std::uint16_t
@@ -48,6 +51,7 @@ class ImportTrace : public IImportTrace
     void get(std::list<TaskSwitch>& lst) override;
     void get(std::list<EventMessage>& lst) override;
     void get(std::list<StateMachine>& lst) override;
+    void get(std::list<Note>& lst) override;
 
    private:
     std::ifstream input_file;
@@ -59,5 +63,6 @@ class ImportTrace : public IImportTrace
     EventMessageConfig event_message_config;
     StateMachineConfig state_machine_config;
     TaskSwitchConfig task_switch_config;
+    NoteConfig note_config;
 };
 }  // namespace import

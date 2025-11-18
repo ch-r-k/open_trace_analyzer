@@ -125,7 +125,8 @@ void ApplicationManager::build(void)
                 trace_file_name,  //
                 *config_handler->getEventMessageConfig(),
                 *config_handler->getStateMachineConfig(),
-                *config_handler->getTaskSwitchConfig());
+                *config_handler->getTaskSwitchConfig(),
+                *config_handler->getNoteConfig());
 
             break;
         }

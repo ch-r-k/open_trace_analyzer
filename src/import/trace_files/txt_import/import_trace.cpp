@@ -6,6 +6,7 @@
 #include <iostream>
 #include <regex>
 
+#include "import/trace_files/txt_import/txt_config/note.hpp"
 #include "types/trace_entry/event_message/event_message.hpp"
 #include "import_trace.hpp"
 
@@ -14,11 +15,13 @@ namespace import
 ImportTrace::ImportTrace(const std::string& filename,
                          const EventMessageConfig event_message_config,
                          const StateMachineConfig state_machine_config,
-                         const TaskSwitchConfig task_switch_config)
+                         const TaskSwitchConfig task_switch_config,
+                         const NoteConfig note_config)
     : input_file{filename},                        //
       event_message_config{event_message_config},  //
       state_machine_config{state_machine_config},  //
-      task_switch_config{task_switch_config}
+      task_switch_config{task_switch_config},      //
+      note_config{note_config}
 {
     if (!input_file.is_open())
     {
@@ -133,6 +136,33 @@ void ImportTrace::get(std::list<StateMachine>& state_list)
             const TaskObject& task = findTask(task_name);
 
             state_list.emplace_back(line_number, timestamp, task, state_name);
+        }
+
+        line_number++;
+    }
+}
+
+void ImportTrace::get(std::list<Note>& note_list)
+{
+    input_file.clear();
+    input_file.seekg(0, std::ios::beg);
+
+    std::string line;
+    std::size_t line_number{0};
+    // Regex to match: timestamp AO-Post Sdr=...,Obj=...,Evt<Sig=...>
+
+    std::regex reg_ex{note_config.getRegex()};
+
+    while (std::getline(input_file, line))
+    {
+        std::smatch match;
+        if (std::regex_search(line, match, reg_ex))
+        {
+            uint64_t timestamp =
+                std::stoull(match[note_config.getTimestampPos()].str());
+            std::string text = match[note_config.getTextPos()].str();
+
+            note_list.emplace_back(line_number, timestamp, text);
         }
 
         line_number++;

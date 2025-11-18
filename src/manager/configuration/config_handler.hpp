@@ -11,6 +11,7 @@
 namespace manager::config
 {
 using import::txt_config::EventMessage;
+using import::txt_config::Note;
 using import::txt_config::StateMachine;
 using import::txt_config::TaskSwitch;
 using Json = nlohmann::json;
@@ -31,6 +32,7 @@ class ConfigHandler
     EventMessage* getEventMessageConfig() const;
     StateMachine* getStateMachineConfig() const;
     TaskSwitch* getTaskSwitchConfig() const;
+    Note* getNoteConfig() const;
 
    private:
     Json json;
@@ -43,6 +45,7 @@ class ConfigHandler
     std::unique_ptr<EventMessage> event_message_config;
     std::unique_ptr<StateMachine> state_machine_config;
     std::unique_ptr<TaskSwitch> task_switch_config;
+    std::unique_ptr<Note> note_config;
 
     void loadInputType();
     void loadOutputType();

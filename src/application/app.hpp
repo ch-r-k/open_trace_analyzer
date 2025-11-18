@@ -4,6 +4,7 @@
 #include <list>
 #include "types/task_object/task_object.hpp"
 #include "types/trace_entry/event_message/event_message.hpp"
+#include "types/trace_entry/notes/note.hpp"
 #include "types/trace_entry/state_machine/state_machine.hpp"
 #include "types/trace_entry/task_switch/task_switch.hpp"
 #include "types/trace_entry/trace_entry.hpp"
@@ -27,6 +28,7 @@ using import::IImportTrace;
 
 using types::task::TaskObject;
 using types::trace::EventMessage;
+using types::trace::Note;
 using types::trace::StateMachine;
 using types::trace::TaskSwitch;
 using types::trace::TraceEntry;
@@ -53,6 +55,7 @@ class App
     std::list<EventMessage> event_messages{};
     std::list<StateMachine> state_machine{};
     std::list<TaskSwitch> task_switches{};
+    std::list<Note> notes{};
     std::list<TraceEntry*> trace_entries{};
 };
 }  // namespace application

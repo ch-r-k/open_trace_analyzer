@@ -11,6 +11,7 @@ set(SOURCE
     types/trace_entry/state_machine/state_machine.cpp
     types/trace_entry/task_switch/task_switch.cpp
     types/trace_entry/trace_entry.cpp
+    types/trace_entry/notes/note.cpp
 
     import/task_objects/import_object.cpp
     import/trace_files/txt_import/import_trace.cpp

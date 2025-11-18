@@ -22,6 +22,7 @@ class PumlTiming : public ISeqDiagram
     void addState(TaskObject task, std::string note) override;
     void activate(TaskObject task_object) override;
     void deactivate(TaskObject task_object) override;
+    void addNote(std::string note) override;
 
    private:
     std::ofstream output_file;

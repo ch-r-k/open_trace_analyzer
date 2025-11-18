@@ -1,8 +1,10 @@
 #include "config_handler.hpp"
 #include <fstream>
+#include <memory>
 #include <stdexcept>
 #include <nlohmann/json.hpp>
 #include "config_types.hpp"
+#include "import/trace_files/txt_import/txt_config/note.hpp"
 
 namespace manager::config
 {
@@ -58,6 +60,8 @@ TaskSwitch* ConfigHandler::getTaskSwitchConfig() const
 {
     return task_switch_config.get();
 }
+
+Note* ConfigHandler::getNoteConfig() const { return note_config.get(); }
 
 void ConfigHandler::loadInputType()
 {
@@ -133,6 +137,8 @@ void ConfigHandler::loadTxtConfig()
 
         event_message_config =
             std::make_unique<EventMessage>(txt_cfg["event_message"]);
+
+        note_config = std::make_unique<Note>(txt_cfg["note"]);
     }
     else
     {

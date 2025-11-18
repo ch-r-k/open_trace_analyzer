@@ -61,4 +61,9 @@ void Puml::addTimestamp(std::uint64_t timestamp)
     // empty
 }
 
+void Puml::addNote(std::string note)
+{
+    // intentional left empty
+}
+
 }  // namespace export_data::seq_diagram

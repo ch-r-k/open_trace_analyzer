@@ -12,8 +12,10 @@ using Json = nlohmann::json;
 class EventMessage : public TxtConfig
 {
    public:
-    EventMessage(const std::string& regex, std::uint8_t pos_timestamp,
-                 std::uint8_t pos_from, std::uint8_t pos_to,
+    EventMessage(const std::string& regex,    //
+                 std::uint8_t pos_timestamp,  //
+                 std::uint8_t pos_from,       //
+                 std::uint8_t pos_to,         //
                  std::uint8_t pos_text)
         : TxtConfig(regex, pos_timestamp),
           pos_from(pos_from),
