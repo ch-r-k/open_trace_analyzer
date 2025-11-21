@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 #include <fstream>
+#include <unordered_map>
 #include "types/task_object/task_object.hpp"
 #include "../i_export_sequence.hpp"
 
@@ -24,6 +25,8 @@ class Puml : public ISeqDiagram
     void deactivate(TaskObject task_object) override;
 
    private:
+    const TaskObject* task_from = nullptr;
+    const TaskObject* task_to = nullptr;
     std::ofstream output_file;
     void addTimestamp(std::uint64_t timestamp) override;
 };

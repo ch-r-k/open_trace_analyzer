@@ -44,6 +44,10 @@ void Puml::addState(TaskObject task, std::string note)
 
 void Puml::activate(TaskObject task_object)
 {
+    output_file << "Idle -[hidden]-> "    //
+                << task_object.getName()  //
+                << "\n";
+
     output_file << "activate "            //
                 << task_object.getName()  //
                 << "\n";
@@ -51,6 +55,10 @@ void Puml::activate(TaskObject task_object)
 
 void Puml::deactivate(TaskObject task_object)
 {
+    output_file << task_object.getName()  //
+                << " -[hidden]-> Idle"    //
+                << "\n";
+
     output_file << "deactivate "          //
                 << task_object.getName()  //
                 << "\n";

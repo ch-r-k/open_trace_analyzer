@@ -3,15 +3,42 @@ participant Idle
 participant blinky
 participant input_checker
 participant unknown
-unknown -> blinky : TIMEOUT_BLINKY_SIG
-deactivate Idle
-activate blinky
-hnote over blinky : on
-deactivate blinky
+input_checker -[hidden]-> Idle
+deactivate input_checker
+Idle -[hidden]-> Idle
 activate Idle
+unknown -> input_checker : TIMEOUT_BUTTON_PRESS_SIG
+Idle -[hidden]-> Idle
 deactivate Idle
+Idle -[hidden]-> input_checker
+activate input_checker
+input_checker -> blinky : BUTTON_PRESS_SIG
+hnote over input_checker : button_pressed
+input_checker -[hidden]-> Idle
+deactivate input_checker
+Idle -[hidden]-> blinky
 activate blinky
-hnote over blinky : off
+hnote over blinky : idle
+blinky -[hidden]-> Idle
 deactivate blinky
+Idle -[hidden]-> Idle
+activate Idle
+unknown -> input_checker : TIMEOUT_BUTTON_PRESS_SIG
+Idle -[hidden]-> Idle
+deactivate Idle
+Idle -[hidden]-> input_checker
+activate input_checker
+input_checker -[hidden]-> Idle
+deactivate input_checker
+Idle -[hidden]-> Idle
+activate Idle
+unknown -> blinky : TIMEOUT_BLINKY_SIG
+Idle -[hidden]-> Idle
+deactivate Idle
+Idle -[hidden]-> blinky
+activate blinky
+blinky -[hidden]-> Idle
+deactivate blinky
+Idle -[hidden]-> Idle
 activate Idle
 @enduml 

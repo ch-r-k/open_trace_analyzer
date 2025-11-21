@@ -2,42 +2,191 @@
     "messages": [
         {
             "From": "unknown",
-            "Text": "TIMEOUT_BLINKY_SIG",
-            "Timestamp": 0,
+            "Text": "TIMEOUT_BUTTON_PRESS_SIG",
+            "Timestamp": 4,
+            "To": "input_checker"
+        },
+        {
+            "From": "input_checker",
+            "Text": "BUTTON_PRESS_SIG",
+            "Timestamp": 8,
             "To": "blinky"
+        },
+        {
+            "From": "unknown",
+            "Text": "TIMEOUT_BUTTON_PRESS_SIG",
+            "Timestamp": 15,
+            "To": "input_checker"
+        },
+        {
+            "From": "unknown",
+            "Text": "TIMEOUT_BLINKY_SIG",
+            "Timestamp": 21,
+            "To": "blinky"
+        }
+    ],
+    "notes": [
+        {
+            "Text": "AO-GetL  Obj=input_checker,Evt<Sig=TIMEOUT_BUTTON_PRESS_SIG,Pool=0,Ref=128>",
+            "Timestamp": 0
+        },
+        {
+            "Text": "Disp===> Obj=input_checker,Sig=TIMEOUT_BUTTON_PRESS_SIG,State=button_released",
+            "Timestamp": 1
+        },
+        {
+            "Text": "=>Intern Obj=input_checker,Sig=TIMEOUT_BUTTON_PRESS_SIG,State=button_released",
+            "Timestamp": 2
+        },
+        {
+            "Text": "Sch-Idle Pri=2->0",
+            "Timestamp": 3
+        },
+        {
+            "Text": "AO-Post  Sdr=NULL,Obj=input_checker,Evt<Sig=TIMEOUT_BUTTON_PRESS_SIG,Pool=0,Ref=128>,Que<Free=10,Min=10>",
+            "Timestamp": 4
+        },
+        {
+            "Text": "Sch-Next Pri=0->2",
+            "Timestamp": 5
+        },
+        {
+            "Text": "AO-GetL  Obj=input_checker,Evt<Sig=TIMEOUT_BUTTON_PRESS_SIG,Pool=0,Ref=128>",
+            "Timestamp": 6
+        },
+        {
+            "Text": "Disp===> Obj=input_checker,Sig=TIMEOUT_BUTTON_PRESS_SIG,State=button_released",
+            "Timestamp": 7
+        },
+        {
+            "Text": "AO-Post  Sdr=input_checker,Obj=blinky,Evt<Sig=BUTTON_PRESS_SIG,Pool=0,Ref=0>,Que<Free=10,Min=10>",
+            "Timestamp": 8
+        },
+        {
+            "Text": "===>Tran Obj=input_checker,Sig=TIMEOUT_BUTTON_PRESS_SIG,State=button_released->button_pressed",
+            "Timestamp": 9
+        },
+        {
+            "Text": "Sch-Next Pri=2->1",
+            "Timestamp": 10
+        },
+        {
+            "Text": "AO-GetL  Obj=blinky,Evt<Sig=BUTTON_PRESS_SIG,Pool=0,Ref=0>",
+            "Timestamp": 11
+        },
+        {
+            "Text": "Disp===> Obj=blinky,Sig=BUTTON_PRESS_SIG,State=off",
+            "Timestamp": 12
+        },
+        {
+            "Text": "===>Tran Obj=blinky,Sig=BUTTON_PRESS_SIG,State=off->idle",
+            "Timestamp": 13
+        },
+        {
+            "Text": "Sch-Idle Pri=1->0",
+            "Timestamp": 14
+        },
+        {
+            "Text": "AO-Post  Sdr=NULL,Obj=input_checker,Evt<Sig=TIMEOUT_BUTTON_PRESS_SIG,Pool=0,Ref=128>,Que<Free=10,Min=10>",
+            "Timestamp": 15
+        },
+        {
+            "Text": "Sch-Next Pri=0->2",
+            "Timestamp": 16
+        },
+        {
+            "Text": "AO-GetL  Obj=input_checker,Evt<Sig=TIMEOUT_BUTTON_PRESS_SIG,Pool=0,Ref=128>",
+            "Timestamp": 17
+        },
+        {
+            "Text": "Disp===> Obj=input_checker,Sig=TIMEOUT_BUTTON_PRESS_SIG,State=button_pressed",
+            "Timestamp": 18
+        },
+        {
+            "Text": "=>Intern Obj=input_checker,Sig=TIMEOUT_BUTTON_PRESS_SIG,State=button_pressed",
+            "Timestamp": 19
+        },
+        {
+            "Text": "Sch-Idle Pri=2->0",
+            "Timestamp": 20
+        },
+        {
+            "Text": "AO-Post  Sdr=NULL,Obj=blinky,Evt<Sig=TIMEOUT_BLINKY_SIG,Pool=0,Ref=128>,Que<Free=10,Min=10>",
+            "Timestamp": 21
+        },
+        {
+            "Text": "Sch-Next Pri=0->1",
+            "Timestamp": 22
+        },
+        {
+            "Text": "AO-GetL  Obj=blinky,Evt<Sig=TIMEOUT_BLINKY_SIG,Pool=0,Ref=128>",
+            "Timestamp": 23
+        },
+        {
+            "Text": "Disp===> Obj=blinky,Sig=TIMEOUT_BLINKY_SIG,State=idle",
+            "Timestamp": 24
+        },
+        {
+            "Text": "=>Ignore Obj=blinky,Sig=TIMEOUT_BLINKY_SIG,State=idle",
+            "Timestamp": 25
+        },
+        {
+            "Text": "Sch-Idle Pri=1->0",
+            "Timestamp": 26
         }
     ],
     "states": [
         [],
         [
             {
-                "State": "on",
+                "State": "idle",
                 "Task": "blinky",
-                "time": 4
-            },
+                "time": 13
+            }
+        ],
+        [
             {
-                "State": "off",
-                "Task": "blinky",
+                "State": "button_pressed",
+                "Task": "input_checker",
                 "time": 9
             }
         ],
-        [],
         []
     ],
     "tasks": [
         {
             "Finish": 5,
-            "Start": 1,
-            "Task": "blinky"
-        },
-        {
-            "Finish": 6,
-            "Start": 5,
+            "Start": 3,
             "Task": "Idle"
         },
         {
             "Finish": 10,
-            "Start": 6,
+            "Start": 5,
+            "Task": "input_checker"
+        },
+        {
+            "Finish": 14,
+            "Start": 10,
+            "Task": "blinky"
+        },
+        {
+            "Finish": 16,
+            "Start": 14,
+            "Task": "Idle"
+        },
+        {
+            "Finish": 20,
+            "Start": 16,
+            "Task": "input_checker"
+        },
+        {
+            "Finish": 22,
+            "Start": 20,
+            "Task": "Idle"
+        },
+        {
+            "Finish": 26,
+            "Start": 22,
             "Task": "blinky"
         }
     ]

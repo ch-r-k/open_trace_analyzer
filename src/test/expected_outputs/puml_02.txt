@@ -8,21 +8,66 @@ binary "input_checker" as input_checker_active
 robust "unknown" as unknown_state
 binary "unknown" as unknown_active
 @0
-unknown_state -> blinky_state : TIMEOUT_BLINKY_SIG
 @1
-Idle_active is  low 
-blinky_active is  high 
+@2
+@3
+input_checker_active is  low 
+Idle_active is  high 
+@3
 @4
-blinky_state is on
+unknown_state -> input_checker_state : TIMEOUT_BUTTON_PRESS_SIG
+@4
 @5
+Idle_active is  low 
+input_checker_active is  high 
+@5
+@6
+@7
+@8
+input_checker_state -> blinky_state : BUTTON_PRESS_SIG
+@8
+@9
+input_checker_state is button_pressed
+@9
+@10
+input_checker_active is  low 
+blinky_active is  high 
+@10
+@11
+@12
+@13
+blinky_state is idle
+@13
+@14
 blinky_active is  low 
 Idle_active is  high 
-@6
+@14
+@15
+unknown_state -> input_checker_state : TIMEOUT_BUTTON_PRESS_SIG
+@15
+@16
+Idle_active is  low 
+input_checker_active is  high 
+@16
+@17
+@18
+@19
+@20
+input_checker_active is  low 
+Idle_active is  high 
+@20
+@21
+unknown_state -> blinky_state : TIMEOUT_BLINKY_SIG
+@21
+@22
 Idle_active is  low 
 blinky_active is  high 
-@9
-blinky_state is off
-@10
+@22
+@23
+@24
+@25
+@26
 blinky_active is  low 
 Idle_active is  high 
+@26
 @enduml 
