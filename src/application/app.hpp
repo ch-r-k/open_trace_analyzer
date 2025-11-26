@@ -43,6 +43,7 @@ class App
 
     void importData(void);
     void combineTraces(void);
+    void process(void);
     void exportData(void);
     void execute(void);
 

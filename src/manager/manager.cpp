@@ -80,6 +80,17 @@ int ApplicationManager::execute(void)
 
     try
     {
+        application->process();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception caught in Trace Processing: " << e.what()
+                  << std::endl;
+        return 1;
+    }
+
+    try
+    {
         application->exportData();
     }
     catch (const std::exception& e)

@@ -22,7 +22,7 @@ class TraceEntry
 
     bool operator<(const TraceEntry& other) const noexcept;
     TraceType getType() const;
-    std::uint64_t getTimestamp();
+    std::uint64_t getTimestamp() const;
 
    protected:
     std::size_t line_number;

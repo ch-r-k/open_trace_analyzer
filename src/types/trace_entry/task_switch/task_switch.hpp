@@ -20,8 +20,8 @@ class TaskSwitch : public TraceEntry
 
     friend std::ostream& operator<<(std::ostream& os, const TaskSwitch& p);
 
-    TaskObject getFrom();
-    TaskObject getTo();
+    TaskObject getFrom() const;
+    TaskObject getTo() const;
 
    private:
     TaskObject task_from;

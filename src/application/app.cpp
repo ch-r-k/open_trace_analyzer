@@ -3,9 +3,13 @@
 #include "import/task_objects/i_import_object.hpp"
 #include "import/trace_files/i_import_trace.hpp"
 #include "export/sequence_diagram/i_export_sequence.hpp"
+#include "task_timing/task_timing_calc.hpp"
 
 namespace application
 {
+
+using calculation::TaskTimingCalculator;
+
 App::App(IImportObject& object_import,  //
          IImportTrace& trace_import,    //
          ISeqDiagram& seq_export)
@@ -47,6 +51,28 @@ void App::combineTraces(void)
     for (auto& nt : notes)
     {
         trace_entries.push_back(&nt);
+    }
+}
+
+void App::process(void)
+{
+    TaskTimingCalculator timing_calc{task_switches};
+
+    const std::uint64_t start_time = task_switches.front().getTimestamp();
+    const std::uint64_t end_time = task_switches.back().getTimestamp();
+    timing_calc.process(start_time, end_time);
+
+    const double execute_time = end_time - start_time;
+    std::cout << "Execution Time: " << execute_time << "\n";
+
+    for (const auto element : task_objects)
+    {
+        const auto timing =
+            static_cast<double>(timing_calc.get(element.getName()));
+
+        std::cout << "Execution Time " <<  //
+            element.getName() << ": " <<   //
+            (timing * 100 / execute_time) << "\n";
     }
 }
 

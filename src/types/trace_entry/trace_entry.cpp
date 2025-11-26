@@ -14,7 +14,7 @@ bool TraceEntry::operator<(const TraceEntry& other) const noexcept
     return line_number < other.line_number;
 }
 
-std::uint64_t TraceEntry::getTimestamp() { return timestamp; }
+std::uint64_t TraceEntry::getTimestamp() const { return timestamp; }
 
 TraceEntry::TraceType TraceEntry::getType() const { return type; }
 
