@@ -1,6 +1,9 @@
 #include "../user_input_handler.hpp"
 #include <gtest/gtest.h>
 
+namespace test
+{
+
 using namespace manager::user_control;
 
 class UserInputHandlerTest : public ::testing::Test
@@ -95,3 +98,5 @@ TEST_F(UserInputHandlerTest, PartialOptions)
     EXPECT_EQ(handler.getOutputFileName(), "");
     EXPECT_EQ(handler.getConfigFileName(), "cfg.json");
 }
+
+}  // namespace test

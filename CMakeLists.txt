@@ -78,6 +78,7 @@ set(TEST_SRCS
     src/types/task_object/test.cpp
     src/import/task_objects/test.cpp
     src/import/trace_files/txt_import/import_trace.cpp
+    src/import/trace_files/txt_import/txt_config/test.cpp
     src/export/sequence_diagram/open_trace_viewer/test/uint_test.cpp
     src/manager/configuration/test/uint_test.cpp
     src/manager/user_control/test/uint_test_user_input.cpp

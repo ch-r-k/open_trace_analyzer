@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <string>
 #include <nlohmann/json.hpp>
+#include "txt_config_exception.hpp"  // TxtImportException
 
 namespace import::txt_config
 {
@@ -17,10 +18,50 @@ class TxtConfig
     }
 
     // Construct from JSON object
-    TxtConfig(const Json& j)
+    TxtConfig(const Json& json)
+    try
     {
-        regex = j.at("regex").get<std::string>();
-        pos_timestamp = extractGroupIndex(j, "timestamp");
+        // --- Validate required JSON members ---
+        if (!json.contains("regex"))
+        {
+            throw TxtImportException(
+                "TxtConfig: missing required field 'regex'");
+        }
+
+        if (!json.contains("groups"))
+        {
+            throw TxtImportException(
+                "TxtConfig: missing required field 'groups'");
+        }
+
+        if (!json.at("groups").is_array())
+        {
+            throw TxtImportException("TxtConfig: 'groups' must be an array");
+        }
+
+        // Extract regex
+        try
+        {
+            regex = json.at("regex").get<std::string>();
+        }
+        catch (const std::exception& e)
+        {
+            throw TxtImportException(
+                std::string("TxtConfig: invalid 'regex' field: ") + e.what());
+        }
+
+        // Extract timestamp (validated inside extractGroupIndex)
+        pos_timestamp = extractGroupIndex(json, "timestamp");
+    }
+    catch (const TxtImportException&)
+    {
+        throw;  // rethrow without modification
+    }
+    catch (const std::exception& e)
+    {
+        throw TxtImportException(
+            std::string("TxtConfig: failed to construct from JSON: ") +
+            e.what());
     }
 
     // Equality operator
@@ -29,8 +70,8 @@ class TxtConfig
         return regex == other.regex && pos_timestamp == other.pos_timestamp;
     }
 
-    std::string getRegex() { return regex; };
-    std::uint8_t getTimestampPos() { return pos_timestamp; };
+    std::string getRegex() const { return regex; }
+    std::uint8_t getTimestampPos() const { return pos_timestamp; }
 
    protected:
     std::string regex{};
@@ -40,14 +81,44 @@ class TxtConfig
     static std::uint8_t extractGroupIndex(const Json& json,
                                           const std::string& name)
     {
-        for (auto& group : json.at("groups"))
+        if (!json.contains("groups"))
         {
-            if (group.at("name") == name)
+            throw TxtImportException("TxtConfig: missing 'groups' array");
+        }
+
+        for (const auto& group : json.at("groups"))
+        {
+            if (!group.contains("name") || !group.contains("index"))
             {
-                return static_cast<std::uint8_t>(group.at("index").get<int>());
+                throw TxtImportException(
+                    "TxtConfig: group entry missing 'name' or 'index'");
+            }
+
+            if (!group.at("name").is_string())
+            {
+                throw TxtImportException(
+                    "TxtConfig: group 'name' must be a string");
+            }
+
+            if (!group.at("index").is_number_integer())
+            {
+                throw TxtImportException(
+                    "TxtConfig: group 'index' must be an integer");
+            }
+
+            if (group.at("name").get<std::string>() == name)
+            {
+                int idx = group.at("index").get<int>();
+                if (idx < 0 || idx > 255)
+                    throw TxtImportException(
+                        "TxtConfig: group index out of uint8_t range");
+
+                return static_cast<std::uint8_t>(idx);
             }
         }
-        return 0;
+
+        throw TxtImportException("TxtConfig: could not find required group '" +
+                                 name + "'");
     }
 };
 

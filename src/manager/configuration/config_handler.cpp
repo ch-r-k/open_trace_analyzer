@@ -125,25 +125,113 @@ void ConfigHandler::loadFilePaths()
 
 void ConfigHandler::loadTxtConfig()
 {
-    if ((json.contains("txt_config")) && (input_type == InputType::TXT))
+    if (input_type != InputType::TXT)
     {
-        const auto& txt_cfg = json["txt_config"];
-
-        task_switch_config =
-            std::make_unique<TaskSwitch>(txt_cfg["task_switch"]);
-
-        state_machine_config =
-            std::make_unique<StateMachine>(txt_cfg["state_machine"]);
-
-        event_message_config =
-            std::make_unique<EventMessage>(txt_cfg["event_message"]);
-
-        note_config = std::make_unique<Note>(txt_cfg["note"]);
+        loadDefaultTxtConfig();
+        return;
     }
-    else
+
+    if (!json.contains("txt_config"))
     {
-        throw ConfigurationException("Missing TXT config");
+        loadDefaultTxtConfig();
+        return;
     }
+
+    const auto& txt_cfg = json["txt_config"];
+
+    try
+    {
+        // task_switch
+        if (txt_cfg.contains("task_switch"))
+        {
+            task_switch_config =
+                std::make_unique<TaskSwitch>(txt_cfg["task_switch"]);
+        }
+        else
+        {
+            task_switch_config = loadDefaultTaskSwitch();
+        }
+
+        // state_machine
+        if (txt_cfg.contains("state_machine"))
+        {
+            state_machine_config =
+                std::make_unique<StateMachine>(txt_cfg["state_machine"]);
+        }
+        else
+        {
+            state_machine_config = loadDefaultStateMachine();
+        }
+
+        // event_message
+        if (txt_cfg.contains("event_message"))
+        {
+            event_message_config =
+                std::make_unique<EventMessage>(txt_cfg["event_message"]);
+        }
+        else
+        {
+            event_message_config = loadDefaultEventMessage();
+        }
+
+        // note
+        if (txt_cfg.contains("note"))
+        {
+            note_config = std::make_unique<Note>(txt_cfg["note"]);
+        }
+        else
+        {
+            note_config = loadDefaultNote();
+        }
+    }
+    catch (const std::exception& e)
+    {
+        throw ConfigurationException(std::string("Invalid txt config: ") +
+                                     e.what());
+    }
+}
+
+void ConfigHandler::loadDefaultTxtConfig()
+{
+    task_switch_config = loadDefaultTaskSwitch();
+    state_machine_config = loadDefaultStateMachine();
+    event_message_config = loadDefaultEventMessage();
+    note_config = loadDefaultNote();
+}
+
+std::unique_ptr<TaskSwitch> ConfigHandler::loadDefaultTaskSwitch()
+{
+    return std::make_unique<TaskSwitch>(
+        "^\\s*(\\d+)\\s+(Sch-(Next|Idle))\\s+Pri=(\\d+)->(\\d+)",  //
+        1,                                                         //
+        4,                                                         //
+        5);                                                        //
+}
+
+std::unique_ptr<StateMachine> ConfigHandler::loadDefaultStateMachine()
+{
+    return std::make_unique<StateMachine>(
+        "^\\s*(\\d+)\\s+===\\>Tran\\s+Obj=([^,]+),.*State=[^>]+->([^,]+)",  //
+        1,                                                                  //
+        2,                                                                  //
+        3);
+}
+
+std::unique_ptr<EventMessage> ConfigHandler::loadDefaultEventMessage()
+{
+    return std::make_unique<EventMessage>(
+        "^\\s*(\\d+).*AO-Post.*Sdr=([^,]+),Obj=([^,]+).*Sig=([^,>]+)",  //
+        1,                                                              //
+        2,                                                              //
+        3,                                                              //
+        4);                                                             //
+}
+
+std::unique_ptr<Note> ConfigHandler::loadDefaultNote()
+{
+    return std::make_unique<Note>("^(\\d{10})\\s+(.*)$",  //
+                                  1,                      //
+                                  2);                     //
 }
 
 }  // namespace manager::config

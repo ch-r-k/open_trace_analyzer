@@ -1,6 +1,9 @@
 #include "../command_line_arg.hpp"
 #include <gtest/gtest.h>
 
+namespace test
+{
+
 using namespace manager::user_control;
 
 class CommandLineArgsTest : public ::testing::Test
@@ -108,3 +111,5 @@ TEST_F(CommandLineArgsTest, GetOptionReturnsFirstMatching)
     ASSERT_TRUE(val.has_value());
     EXPECT_EQ(val.value(), "a.txt");  // first occurrence
 }
+
+}  // namespace test

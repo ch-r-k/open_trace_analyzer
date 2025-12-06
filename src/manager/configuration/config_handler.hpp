@@ -51,6 +51,11 @@ class ConfigHandler
     void loadOutputType();
     void loadFilePaths();
     void loadTxtConfig();
+    void loadDefaultTxtConfig();
+    std::unique_ptr<TaskSwitch> loadDefaultTaskSwitch();
+    std::unique_ptr<StateMachine> loadDefaultStateMachine();
+    std::unique_ptr<EventMessage> loadDefaultEventMessage();
+    std::unique_ptr<Note> loadDefaultNote();
 };
 
 class ConfigurationException : public std::exception

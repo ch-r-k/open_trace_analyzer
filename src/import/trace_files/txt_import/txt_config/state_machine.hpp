@@ -4,6 +4,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 #include "txt_config.hpp"
+#include "txt_config_exception.hpp"
 
 namespace import::txt_config
 {
@@ -15,7 +16,7 @@ class StateMachine : public TxtConfig
     StateMachine(const std::string& regex,    //
                  std::uint8_t pos_timestamp,  //
                  std::uint8_t pos_task,       //
-                 std::uint8_t pos_state)      //
+                 std::uint8_t pos_state)
         : TxtConfig(regex, pos_timestamp),
           pos_task(pos_task),
           pos_state(pos_state)
@@ -24,23 +25,30 @@ class StateMachine : public TxtConfig
 
     // Construct from JSON
     StateMachine(const Json& json)
-        : TxtConfig(json),
-          pos_task(extractGroupIndex(json, "task")),
-          pos_state(extractGroupIndex(json, "state_name"))
+    try : TxtConfig(json)  // Validates: regex, timestamp, groups
     {
+        pos_task = extractGroupIndex(json, "task");
+        pos_state = extractGroupIndex(json, "state_name");
+    }
+    catch (const TxtImportException&)
+    {
+        throw;  // pass through unchanged
+    }
+    catch (const std::exception& e)
+    {
+        throw TxtImportException(
+            std::string("Failed to construct StateMachine: ") + e.what());
     }
 
     bool operator==(const StateMachine& other) const
     {
-        // Compare base TxtConfig first
         if (!TxtConfig::operator==(other)) return false;
 
-        // Compare EventMessage-specific members
         return pos_state == other.pos_state && pos_task == other.pos_task;
     }
 
-    std::uint8_t getTaskPos() { return pos_task; };
-    std::uint8_t getStatePos() { return pos_state; };
+    std::uint8_t getTaskPos() const { return pos_task; }
+    std::uint8_t getStatePos() const { return pos_state; }
 
    private:
     std::uint8_t pos_task{0};
