@@ -45,3 +45,7 @@ src/test/output_files/*
 jlink_ip.cmake
 
 .vscode
+
+
+# output
+output/docs
