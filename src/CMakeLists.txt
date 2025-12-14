@@ -5,6 +5,7 @@ set(SOURCE
     manager/configuration/config_handler.cpp
 
     application/app.cpp
+    application/task_timing/task_timing_calc.cpp
     
     types/task_object/task_object.cpp
     types/trace_entry/event_message/event_message.cpp

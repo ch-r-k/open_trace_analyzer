@@ -12,60 +12,19 @@ using types::trace::TaskSwitch;
 class TaskTimingCalculator
 {
    public:
-    TaskTimingCalculator(const std::list<TaskSwitch>& tasks) : tasks{tasks} {}
-
+    TaskTimingCalculator(const std::list<TaskSwitch>& tasks);
     ~TaskTimingCalculator() = default;
 
-    void process(uint64_t start_time,  //
-                 uint64_t end_time)
-    {
-        const auto tasks_filtered = filterTasks(start_time, end_time);
-        if (tasks_filtered.empty()) return;
+    void process(const uint64_t start_time,  //
+                 const uint64_t end_time);
 
-        const TaskSwitch* prev = nullptr;
+    std::list<TaskSwitch> filterTasks(const uint64_t start_time,  //
+                                      const uint64_t end_time);
 
-        for (const auto& e : tasks_filtered)
-        {
-            // Handle the first entry separately
-            if (!prev)
-            {
-                auto running = e.getFrom();
-                exec[running.getID()] += (e.getTimestamp());
-            }
-            else
-            {
-                auto dt = e.getTimestamp() - prev->getTimestamp();
-                auto running = prev->getTo();  // task active before this event
-                exec[running.getID()] += dt;
-            }
-
-            prev = &e;  // update for next iteration
-        }
-
-        auto last_running = prev->getTo();
-        exec[last_running.getID()] += (end_time - prev->getTimestamp());
-    }
-
-    std::list<TaskSwitch> filterTasks(uint64_t start_time,  //
-                                      uint64_t end_time)
-    {
-        std::list<TaskSwitch> result;
-
-        for (const auto& e : tasks)
-        {
-            if (e.getTimestamp() >= start_time && e.getTimestamp() <= end_time)
-            {
-                result.push_back(e);
-            }
-        }
-
-        return result;
-    }
-
-    std::uint64_t get(const std::string& id) { return exec[id]; }
+    std::uint64_t get(const std::string& id);
 
    private:
-    std::unordered_map<std::string, uint64_t> exec;
+    std::unordered_map<std::string, uint64_t> execution_time{};
 
     const std::list<TaskSwitch>& tasks;
     std::uint64_t start_time;
