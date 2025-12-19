@@ -18,4 +18,11 @@ std::uint64_t TraceEntry::getTimestamp() const { return timestamp; }
 
 TraceEntry::TraceType TraceEntry::getType() const { return type; }
 
+void TraceEntry::adjustTimestamp(double conversion_factor)
+{
+    timestamp_us = static_cast<double>(timestamp) * conversion_factor;
+}
+
+double TraceEntry::getTimestampUs() const { return timestamp_us; }
+
 }  // namespace types::trace

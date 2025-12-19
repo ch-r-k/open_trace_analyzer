@@ -111,4 +111,9 @@ std::string UserInputHandler::getConfigFileName() const
     return config_file_name;
 };
 
+double UserInputHandler::getTimestampScalingFactor() const
+{
+    return timestamp_scaling_factor;
+}
+
 }  // namespace manager::user_control

@@ -54,8 +54,10 @@ int ApplicationManager::execute(void)
         return 1;
     }
 
-    application =
-        std::make_unique<App>(*object_import, *qspy_import, *seq_export);
+    application = std::make_unique<App>(*object_import,  //
+                                        *qspy_import,    //
+                                        *seq_export,     //
+                                        config_handler->getTimestampScaling());
 
     try
     {

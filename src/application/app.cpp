@@ -12,10 +12,12 @@ using calculation::TaskTimingCalculator;
 
 App::App(IImportObject& object_import,  //
          IImportTrace& trace_import,    //
-         ISeqDiagram& seq_export)
+         ISeqDiagram& seq_export,       //
+         const double timestamp_scaling_factor)
     : object_import{object_import},  //
       trace_import{trace_import},    //
-      seq_export{seq_export}
+      seq_export{seq_export},        //
+      timestemp_scaling_factor{timestamp_scaling_factor}
 {
 }
 
@@ -56,6 +58,13 @@ void App::combineTraces(void)
 
 void App::process(void)
 {
+    // Adjust timestamps
+    for (auto& element : trace_entries)
+    {
+        element->adjustTimestamp(timestemp_scaling_factor);
+    }
+
+    // Calculate Task Timings
     TaskTimingCalculator timing_calc{task_switches};
 
     const std::uint64_t start_time = task_switches.front().getTimestamp();
@@ -63,17 +72,6 @@ void App::process(void)
     timing_calc.process(start_time, end_time);
 
     const double execute_time = end_time - start_time;
-    std::cout << "Execution Time: " << execute_time << "\n";
-
-    for (const auto element : task_objects)
-    {
-        const auto timing =
-            static_cast<double>(timing_calc.get(element.getName()));
-
-        std::cout << "Execution Time " <<  //
-            element.getName() << ": " <<   //
-            (timing * 100 / execute_time) << "\n";
-    }
 }
 
 void App::exportData(void)
@@ -88,8 +86,8 @@ void App::exportData(void)
 
     for (const auto& element : trace_entries)
     {
-        seq_export.addTimestamp(element->getTimestamp() -
-                                trace_entries.front()->getTimestamp());
+        seq_export.addTimestamp(element->getTimestampUs() -
+                                trace_entries.front()->getTimestampUs());
 
         auto task_switch = dynamic_cast<TaskSwitch*>(element);
         if (task_switch)

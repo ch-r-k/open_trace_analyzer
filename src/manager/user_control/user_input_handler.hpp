@@ -18,6 +18,7 @@ class UserInputHandler
     std::string getTraceFileName() const;
     std::string getOutputFileName() const;
     std::string getConfigFileName() const;
+    double getTimestampScalingFactor() const;
 
    private:
     void handleConfigFile();
@@ -34,6 +35,7 @@ class UserInputHandler
     std::string tasks_input_file_name{};
     std::string config_file_name{};
     std::string output_file_name{};
+    double timestamp_scaling_factor;
 
     static std::string helpMessage();
 };

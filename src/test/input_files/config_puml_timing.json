@@ -4,6 +4,7 @@
     "output_file": "src/test/output_files/output.puml",
     "output_file_type": "puml_timing",
     "task_object_file": "src/test/input_files/qspy_ao.json",
+    "timestamp_scaling_factor": 1.0,
     "txt_config": {
         "task_switch": {
             "regex": "^\\s*(\\d+)\\s+(Sch-(Next|Idle))\\s+Pri=(\\d+)->(\\d+)",

@@ -3,5 +3,6 @@
     "output_file": "src/test/input_files/output.puml",
     "output_file_type": "puml_sequence",
     "task_object_file": "src/test/input_files/qspy_ao.json",
+    "timestamp_scaling_factor": 1.0,
     "txt_config": {}
 }

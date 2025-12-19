@@ -19,12 +19,16 @@ ConfigHandler::ConfigHandler(const std::string& filename)
     file >> json;
 
     // Required fields
-    if (!json.contains("input_file_type") || !json.contains("output_file_type"))
+    if (!json.contains("input_file_type") ||
+        !json.contains("output_file_type") ||
+        !json.contains("timestamp_scaling_factor"))
     {
         throw ConfigurationException("Config file missing required fields");
     }
 
     loadInputType();
+
+    loadTimestampScaling();
 
     loadOutputType();
 
@@ -45,6 +49,11 @@ std::string ConfigHandler::getOutputFileName() const { return output_file; }
 OutputType ConfigHandler::getOutputFormat() const { return output_type; }
 
 InputType ConfigHandler::getInputFormat() const { return input_type; }
+
+double ConfigHandler::getTimestampScaling() const
+{
+    return timestamp_scaling_factor;
+}
 
 EventMessage* ConfigHandler::getEventMessageConfig() const
 {
@@ -81,6 +90,7 @@ void ConfigHandler::loadInputType()
                                      input_type_str);
     }
 }
+
 void ConfigHandler::loadOutputType()
 {
     // Parse output type
@@ -102,6 +112,12 @@ void ConfigHandler::loadOutputType()
         throw ConfigurationException("Invalid output_file_type: " +
                                      output_type_str);
     }
+}
+
+void ConfigHandler::loadTimestampScaling()
+{
+    // Parse output type
+    timestamp_scaling_factor = json["timestamp_scaling_factor"].get<double>();
 }
 
 void ConfigHandler::loadFilePaths()

@@ -133,18 +133,20 @@ The tool uses JSON configuration files to control the import and export process.
   "input_file": "path/to/input/trace.txt",
   "input_type": "txt",
   "output_file": "path/to/output/diagram",
-  "output_type": "puml_timing"
+  "output_type": "puml_timing",
+  "timestamp_scaling_factor": 1.0
 }
 ```
 
 \subsection configfields Configuration Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `input_file` | string | Yes | Path to the input trace file to be analyzed |
-| `input_type` | string | Yes | Format of the input file (`txt` for QSpy text format) |
-| `output_file` | string | Yes | Path where the output file will be written (without extension) |
-| `output_type` | string | Yes | Format for the output (`puml`, `puml_timing`, or `open_trace_viewer`) |
+| Field                      | Type   | Required | Description                                                           |
+| -------------------------- | ------ | -------- | --------------------------------------------------------------------- |
+| `input_file`               | string | Yes      | Path to the input trace file to be analyzed                           |
+| `input_type`               | string | Yes      | Format of the input file (`txt` for QSpy text format)                 |
+| `output_file`              | string | Yes      | Path where the output file will be written (without extension)        |
+| `output_type`              | string | Yes      | Format for the output (`puml`, `puml_timing`, or `open_trace_viewer`) |
+| `timestamp_scaling_factor` | double | Yes      | scales the timestamp by multiplication                                |
 
 \subsection inputtypes Supported Input Types
 

@@ -38,7 +38,8 @@ class App
    public:
     App(IImportObject& object_import,  //
         IImportTrace& trace_import,    //
-        ISeqDiagram& seq_export);
+        ISeqDiagram& seq_export,       //
+        const double timestemp_scaling_factor);
     ~App() = default;
 
     void importData(void);
@@ -48,6 +49,7 @@ class App
     void execute(void);
 
    private:
+    const double timestemp_scaling_factor;
     IImportObject& object_import;
     IImportTrace& trace_import;
     ISeqDiagram& seq_export;

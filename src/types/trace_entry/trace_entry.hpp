@@ -23,10 +23,13 @@ class TraceEntry
     bool operator<(const TraceEntry& other) const noexcept;
     TraceType getType() const;
     std::uint64_t getTimestamp() const;
+    double getTimestampUs() const;
+    void adjustTimestamp(double conversion_factor);
 
    protected:
     std::size_t line_number;
     std::uint64_t timestamp;
+    double timestamp_us{0};
     TraceType type;
 };
 

@@ -34,11 +34,14 @@ class ConfigHandler
     TaskSwitch* getTaskSwitchConfig() const;
     Note* getNoteConfig() const;
 
+    double getTimestampScaling() const;
+
    private:
     Json json;
     std::string input_file{};
     std::string output_file{};
     std::string task_object_file{};
+    double timestamp_scaling_factor;
     InputType input_type{InputType::TXT};
     OutputType output_type{OutputType::PUML_SEQ};
 
@@ -50,6 +53,7 @@ class ConfigHandler
     void loadInputType();
     void loadOutputType();
     void loadFilePaths();
+    void loadTimestampScaling();
     void loadTxtConfig();
     void loadDefaultTxtConfig();
     std::unique_ptr<TaskSwitch> loadDefaultTaskSwitch();
