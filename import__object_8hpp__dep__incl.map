@@ -1,0 +1,9 @@
+<map id="src/import/task_objects/import_object.hpp" name="src/import/task_objects/import_object.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="204,5,379,45"/>
+<area shape="rect" id="Node000002" href="$import__object_8cpp.html" title=" " alt="" coords="5,93,180,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,53,137,96,135,91,234,48"/>
+<area shape="rect" id="Node000003" href="$import_2task__objects_2test_8cpp.html" title=" " alt="" coords="204,93,379,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="294,59,294,93,289,93,289,59"/>
+<area shape="rect" id="Node000004" href="$manager_8cpp.html" title=" " alt="" coords="403,101,593,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="350,48,472,98,469,103,348,53"/>
+</map>

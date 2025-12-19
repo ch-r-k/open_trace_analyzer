@@ -1,0 +1,5 @@
+<map id="types::trace::StateMachine" name="types::trace::StateMachine">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,201,104"/>
+<area shape="rect" id="Node000002" href="$classtypes_1_1trace_1_1TraceEntry.html" title=" " alt="" coords="16,5,191,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,44,106,79,101,79,101,44"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="application::calculation::TaskTimingCalculator::process" name="application::calculation::TaskTimingCalculator::process">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,179,164"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1calculation_1_1TaskTimingCalculator.html#a810b17e9e3026f4cfbfa14ca2be58566" title=" " alt="" coords="229,5,403,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,107,226,70,240,63,243,68,228,75,151,112"/>
+<area shape="rect" id="Node000003" href="$classtypes_1_1trace_1_1TaskSwitch.html#a7d7e69dda66824eca557ceb9cf1b12db" title=" " alt="" coords="227,85,405,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,122,213,117,213,122,179,127"/>
+<area shape="rect" id="Node000004" href="$classtypes_1_1trace_1_1TraceEntry.html#a37d686e3eeb9ca7f2da1fa750057937d" title=" " alt="" coords="229,149,403,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="179,146,215,152,215,157,179,152"/>
+<area shape="rect" id="Node000005" href="$classtypes_1_1trace_1_1TaskSwitch.html#aa7086973020e3a26985a2b027be1518b" title=" " alt="" coords="227,213,405,253"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="148,162,228,198,246,205,244,210,226,203,146,166"/>
+</map>

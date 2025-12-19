@@ -1,0 +1,5 @@
+<map id="export_data::seq_diagram::OpenTraceViewer::addState" name="export_data::seq_diagram::OpenTraceViewer::addState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,215,45"/>
+<area shape="rect" id="Node000002" href="$classtypes_1_1task_1_1TaskObject.html#a9e4bad9d241b5ddfa0ef4fc4f97327c5" title=" " alt="" coords="263,5,436,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,23,249,23,249,28,215,28"/>
+</map>

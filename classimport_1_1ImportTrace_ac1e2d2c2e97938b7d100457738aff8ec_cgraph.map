@@ -1,0 +1,13 @@
+<map id="import::ImportTrace::get" name="import::ImportTrace::get">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,141,184,166"/>
+<area shape="rect" id="Node000002" href="$classimport_1_1txt__config_1_1EventMessage.html#a8f7ee54ec2a7775894002a70215c848e" title=" " alt="" coords="236,5,447,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,139,161,98,231,55,247,48,250,53,233,60,164,102,112,143"/>
+<area shape="rect" id="Node000003" href="$classimport_1_1txt__config_1_1TxtConfig.html#a0044adb375d4fbcc5b4432f600a1e811" title=" " alt="" coords="260,69,423,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,138,250,110,251,115,145,143"/>
+<area shape="rect" id="Node000004" href="$classimport_1_1txt__config_1_1EventMessage.html#ad67e28109425a2c8860070c05e13170c" title=" " alt="" coords="239,133,443,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,151,226,151,226,156,184,156"/>
+<area shape="rect" id="Node000005" href="$classimport_1_1txt__config_1_1TxtConfig.html#a6e54fbfc541d0eb897e089db748960e4" title=" " alt="" coords="232,197,451,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="145,164,251,191,250,196,144,169"/>
+<area shape="rect" id="Node000006" href="$classimport_1_1txt__config_1_1EventMessage.html#a129e9bec619b345aa2fa74e103693946" title=" " alt="" coords="246,261,437,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="112,164,164,204,233,247,250,254,247,259,231,252,161,209,109,168"/>
+</map>

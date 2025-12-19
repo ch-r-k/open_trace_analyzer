@@ -1,0 +1,16 @@
+<map id="src/types/trace_entry/task_switch/task_switch.hpp" name="src/types/trace_entry/task_switch/task_switch.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="78,5,290,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,181,136,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,48,81,67,66,80,54,95,48,112,48,131,60,168,55,170,43,132,43,111,50,92,62,76,78,62,113,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="204,181,271,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,45,213,92,234,167,229,168,208,94,190,47"/>
+<area shape="rect" id="Node000004" href="$trace__entry_8hpp.html" title=" " alt="" coords="65,101,199,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,47,149,90,144,87,170,44"/>
+<area shape="rect" id="Node000005" href="$task__object_8hpp.html" title=" " alt="" coords="275,93,445,133"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="224,43,310,85,308,90,221,48"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="125,128,90,172,86,169,121,125"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="149,124,212,171,209,175,146,128"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="332,136,268,176,266,172,329,131"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="331,181,389,207"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="363,134,363,167,357,167,357,134"/>
+</map>

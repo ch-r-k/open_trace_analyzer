@@ -1,0 +1,9 @@
+<map id="application::App::importData" name="application::App::importData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,215,88"/>
+<area shape="rect" id="Node000002" href="$classimport_1_1IImportTrace.html#a8d48b004277f0bad1db3e816384e6e92" title=" " alt="" coords="263,5,445,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,60,286,31,287,36,166,65"/>
+<area shape="rect" id="Node000003" href="$classimport_1_1IImportObject.html#a9547822bd9ada7ef7b77eaaf7cc67b94" title=" " alt="" coords="273,55,435,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,73,259,73,259,78,215,78"/>
+<area shape="rect" id="Node000004" href="$classimport_1_1IImportTrace.html#ae82dc5622e41ac1068e4fbc52221966a" title=" " alt="" coords="277,119,431,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="160,86,264,113,263,118,159,91"/>
+</map>

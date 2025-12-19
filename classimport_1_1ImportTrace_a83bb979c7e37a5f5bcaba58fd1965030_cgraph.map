@@ -1,0 +1,9 @@
+<map id="import::ImportTrace::get" name="import::ImportTrace::get">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,184,102"/>
+<area shape="rect" id="Node000002" href="$classimport_1_1txt__config_1_1TxtConfig.html#a0044adb375d4fbcc5b4432f600a1e811" title=" " alt="" coords="260,5,423,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,74,250,46,251,51,145,79"/>
+<area shape="rect" id="Node000003" href="$classimport_1_1txt__config_1_1Note.html#a84d93629fef010902770a00a8feee5fd" title=" " alt="" coords="271,69,411,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,87,258,87,258,92,184,92"/>
+<area shape="rect" id="Node000004" href="$classimport_1_1txt__config_1_1TxtConfig.html#a6e54fbfc541d0eb897e089db748960e4" title=" " alt="" coords="232,133,451,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="145,100,251,127,250,132,144,105"/>
+</map>

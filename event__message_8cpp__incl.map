@@ -1,0 +1,25 @@
+<map id="src/types/trace_entry/event_message/event_message.cpp" name="src/types/trace_entry/event_message/event_message.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="150,5,321,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="25,189,96,214"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,62,148,110,81,180,78,176,144,106,200,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="171,269,238,295"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,63,122,83,81,109,44,142,15,183,8,202,15,220,44,247,82,264,121,274,158,278,158,283,120,279,80,269,41,251,10,223,3,202,10,180,40,139,78,105,119,78,161,58"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="387,108,467,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="295,58,390,100,388,105,293,63"/>
+<area shape="rect" id="Node000005" href="$types_2trace__entry_2event__message_2event__message_8hpp.html" title=" " alt="" coords="159,108,312,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="238,60,238,94,233,94,233,60"/>
+<area shape="rect" id="Node000008" href="$trace__entry_8hpp.html" title=" " alt="" coords="417,189,552,214"/>
+<area shape="poly" id="edge14_Node000001_Node000008" title=" " alt="" coords="272,58,377,131,454,179,452,184,374,136,269,62"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="211,136,100,185,98,181,209,131"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="212,136,184,155,171,168,162,182,157,201,162,220,172,240,185,258,181,261,167,243,157,222,152,201,157,180,167,164,181,151,209,131"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="279,269,338,295"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="286,131,325,149,342,163,356,180,362,201,358,223,347,243,333,261,329,257,342,240,353,221,357,201,352,183,339,167,322,154,284,136"/>
+<area shape="rect" id="Node000007" href="$task__object_8hpp.html" title=" " alt="" coords="172,181,341,221"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="241,133,250,167,245,169,236,134"/>
+<area shape="poly" id="edge11_Node000005_Node000008" title=" " alt="" coords="272,131,436,182,435,187,271,136"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="246,223,222,259,218,256,242,220"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="271,220,296,256,291,259,267,223"/>
+<area shape="poly" id="edge13_Node000008_Node000003" title=" " alt="" coords="445,217,252,270,251,265,443,211"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="419,269,550,295"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="487,214,487,255,482,255,482,214"/>
+</map>
